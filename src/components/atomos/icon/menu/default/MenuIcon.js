@@ -4,7 +4,8 @@ import theme from "@/app/theme";
 
 const MenuIcon = () => (
   <ThemeProvider theme={theme}>
-    <MenuOutlinedIcon color="primary"></MenuOutlinedIcon>
+    <MenuOutlinedIcon color="info"></MenuOutlinedIcon>
   </ThemeProvider>
 );
+
 export default MenuIcon;

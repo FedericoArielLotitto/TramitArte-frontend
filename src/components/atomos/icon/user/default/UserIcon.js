@@ -4,7 +4,7 @@ import theme from "@/app/theme";
 
 const UserIcon = () => (
   <ThemeProvider theme={theme}>
-    <AccountBoxOutlinedIcon color="primary"></AccountBoxOutlinedIcon>
+    <AccountBoxOutlinedIcon color="info"></AccountBoxOutlinedIcon>
   </ThemeProvider>
 );
 export default UserIcon;

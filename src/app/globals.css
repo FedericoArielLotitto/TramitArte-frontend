@@ -38,7 +38,7 @@
   --callout-border-rgb: 172, 175, 176;
   --card-rgb: 180, 185, 188;
   --card-border-rgb: 131, 134, 135;
-  --primario: 'F6F4FF';
+  --primario: rgb(87,197,182,70);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -88,12 +88,7 @@ body {
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background: var(--primario);
 }
 
 a {
