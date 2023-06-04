@@ -1,3 +1,5 @@
+"use client"
+
 import { HeaderComponent } from "./header";
 import "./home.css"
 import React from "react";
@@ -5,8 +7,8 @@ import React from "react";
 const HomeComponent = () => (
   <div class="container">
         <HeaderComponent/>
-        <div class="home-conteiner">
-          <div class="columns-container">
+        <div className="home-conteiner">
+          <div className="columns-container">
           <div class="menu">
             <div class="items-container">
               <div class="menu-item">

@@ -1,4 +1,6 @@
-import './request-translation.css'
+"use client"
+
+import './page.css'
 import { useEffect, useState } from 'react';
 import { AppBar, BottomNavigation, BottomNavigationAction, Box, Button, Card, CardContent, IconButton, Toolbar, Typography } from "@mui/material";
 import { AccountBoxOutlined, HelpOutlineOutlined, HomeOutlined, MenuOutlined, SearchOutlined } from '@mui/icons-material';
