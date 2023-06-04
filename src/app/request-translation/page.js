@@ -1,6 +1,7 @@
 import './request-translation.css'
-import { AppBar, BottomNavigation, BottomNavigationAction, Box, Button, Card, CardContent, IconButton, Toolbar, Typography } from "@mui/material";
 import { useEffect, useState } from 'react';
+import { AppBar, BottomNavigation, BottomNavigationAction, Box, Button, Card, CardContent, IconButton, Toolbar, Typography } from "@mui/material";
+import { AccountBoxOutlined, HelpOutlineOutlined, HomeOutlined, MenuOutlined, SearchOutlined } from '@mui/icons-material';
 
 export default function request() {
     const [document, setDocument] = useState(null)
@@ -24,28 +25,18 @@ export default function request() {
             <Box sx={{ flexGrow: 1 }}>
                 <AppBar position="static" className="appbar">
                     <Toolbar>
-                    <IconButton
-                        size="large"
-                        color="inherit"
-                        aria-label="menu"
-                        sx={{ mr: 2 }}
-                    >
-                        {/* <MenuIcon /> */}
-                    </IconButton>
-                    <IconButton
-                        size="large"
-                        color="inherit"
-                        aria-label="menu"
-                        sx={{ mr: 2 }}
-                    >
-                        {/* <AccountBox /> */}
-                    </IconButton>
+                    <BottomNavigationAction
+                        icon={<MenuOutlined />}
+                    />
+                    <BottomNavigationAction
+                        icon={<AccountBoxOutlined />}
+                    />
                     </Toolbar>
                 </AppBar>
             </Box>
             {document == null
             ?
-            <Box>
+            <Box className="page-body">
                 <Card className="background">
                     <CardContent>
                         <Typography>Cargar Documento</Typography>
@@ -82,9 +73,9 @@ export default function request() {
                     className="footer"
                     showLabels
                 >
-                    {/* <BottomNavigationAction label="Inicio" icon={<RestoreIcon />} /> */}
-                    {/* <BottomNavigationAction label="Buscar" icon={<FavoriteIcon />} /> */}
-                    {/* <BottomNavigationAction label="Ayuda" icon={<LocationOnIcon />} /> */}
+                    <BottomNavigationAction label="Inicio" icon={<HomeOutlined />} />
+                    <BottomNavigationAction label="Buscar" icon={<SearchOutlined />} />
+                    <BottomNavigationAction label="Ayuda" icon={<HelpOutlineOutlined />} />
                 </BottomNavigation>
             </Box>
         </div>

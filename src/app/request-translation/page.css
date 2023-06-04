@@ -2,6 +2,10 @@ body {
     margin: 0;
 }
 
+.page-body {
+    min-height: calc(100% - 8rem);
+}
+
 .primary-color {
     background-color: #159895;
 }
@@ -11,9 +15,11 @@ body {
 }
 
 .appbar {
+    height: 4rem;
     background-color: #159895;
 }
 
 .footer {
+    height: 4rem;
     background-color: #159895;
 }
