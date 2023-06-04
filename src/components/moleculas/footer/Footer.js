@@ -1,30 +1,23 @@
 import theme from "@/app/theme";
 import HomeIcon from "@/components/atomos/icon/home/default/HomeIcons";
 import HelpIcon from "@/components/atomos/icon/help/default/HelpIcon";
+import BottomNavigationAction from '@mui/material/BottomNavigationAction';
+import BottomNavigation from '@mui/material/BottomNavigation';
+import { HomeOutlined } from "@mui/icons-material";
 
-const { Box, ThemeProvider, IconButton } = require("@mui/material");
+const { Box, ThemeProvider } = require("@mui/material");
 
 function Footer() {
   return (
     <ThemeProvider theme={theme}>
-      <Box
-        sx={{
-          width: "100%",
-          padding: "2% 0 2% 0",
-          backgroundColor: "primary.dark",
-          display: "flex",
-          justifyContent: "space-around",
-          position: 'absolute',
-          bottom: 0
-        }}
-      >
-        <IconButton>
-          <HomeIcon></HomeIcon>
-        </IconButton>
-        <IconButton>
-          <HelpIcon></HelpIcon>
-        </IconButton>
-      </Box>
+      <Box sx={{ width: "100%" }}>
+                <BottomNavigation
+                    className="footer"
+                >
+                    <BottomNavigationAction icon={<HomeIcon />} />
+                    <BottomNavigationAction icon={<HelpIcon />} />
+                </BottomNavigation>
+            </Box>
     </ThemeProvider>
   );
 }

@@ -3,7 +3,7 @@ body {
 }
 
 .page-body {
-    min-height: calc(100% - 8rem);
+    min-height: calc(100%);
 }
 
 .primary-color {
