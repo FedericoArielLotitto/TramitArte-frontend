@@ -14,7 +14,7 @@ function Footer() {
           backgroundColor: "primary.dark",
           display: "flex",
           justifyContent: "space-around",
-          position: 'fixed',
+          position: 'absolute',
           bottom: 0
         }}
       >
