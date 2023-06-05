@@ -1,0 +1,35 @@
+  .estado{
+    display: flex;
+    align-items: center;
+  }
+
+  .e-1{
+    display: flex;
+    align-items: center;
+    width: 6.25rem;
+    height: 1.9rem;
+
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.25rem;
+    color: #1A5F7A;
+  }
+
+  .e-2{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    font-weight: 800;
+    font-size: 0.75rem;
+    line-height: 1rem;
+
+    color: #692420;
+
+    width: 12.5rem;
+    height: 2.7rem;
+
+    background: #F6F4FF;
+    border: 1px solid rgba(105, 36, 32, 0.75);
+    box-shadow: 0px 0px 8px 4px rgba(0, 43, 91, 0.2);
+    border-radius: 0.625rem;
+  }

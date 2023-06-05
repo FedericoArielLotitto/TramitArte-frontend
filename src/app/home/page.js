@@ -1,8 +1,9 @@
 "use client"
 
-import { HeaderComponent } from "./header";
+import { HeaderComponent } from "./header/header";
 import "./home.css"
 import React from "react";
+import TramiteComponent from "./tramite/tramite";
 
 const HomeComponent = () => (
   <div class="container">
@@ -22,21 +23,7 @@ const HomeComponent = () => (
               </div>
             </div>
           </div>
-          <div class="tramite-container">
-            <div class="tramite">
-              <div class="p1-t">
-                <p>Aún no iniciaste tu trámite</p>
-              </div>
-              <div class="p2-t"> 
-                <p>¡Inicialo acá y conseguí tu ciudadanía!</p>
-              </div>
-              <div class="tramite-bottom">
-                <div class="p3-t">
-                  <p>Iniciar trámite</p>
-                </div>
-              </div>
-            </div>
-          </div>
+          <TramiteComponent/>
         </div>
       </div>
     </div>
