@@ -9,6 +9,7 @@
     display: grid;
     align-items: center;
     text-align: center;
+    justify-content: center;
     color: #692420;
     font-style: normal;
     width: 37rem;

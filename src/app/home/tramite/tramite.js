@@ -56,9 +56,9 @@ const TramiteComponent = () => {
               <div className="p2-t">
                 <p>¡Inicialo acá y conseguí tu ciudadanía!</p>
               </div>
-              <div className="tramite-bottom">
-                <ButtomSubmitSecundarioDesktop text={"Iniciar trámite"} event={handleClick} />
-              </div>
+                <div className="tramite-bottom">
+                  <ButtomSubmitSecundarioDesktop text={"Iniciar trámite"} event={handleClick} />
+                </div>
             </div>
           )}
         </div>
