@@ -7,17 +7,15 @@ import { Box, CircularProgress} from "@mui/material";
 
 const TramiteComponent = () => {
     const [isClicked, setIsClicked] = useState(false)
-    const dashArray = "8.75rem" * Math.PI
-    const dashOffset = dashArray - (dashArray * 60) / 100
 
     const handleClick = () => {
         setIsClicked(!isClicked)
     }
 
     return (
-        <div className="tramite-container">
+        <div className="card-container">
           {isClicked ? (
-            <div className="tramite-iniciado">
+            <div className="card-iniciado">
               <div className="codigo-porcentaje">
                 <div className="codigo">
                     <div className="c-1">
@@ -51,7 +49,7 @@ const TramiteComponent = () => {
               </div>
             </div>
           ) : (
-            <div className="tramite-no-iniciado">
+            <div className="card-no-iniciado">
               <div className="p1-t">
                 <p>Aún no iniciaste tu trámite</p>
               </div>

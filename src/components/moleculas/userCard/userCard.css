@@ -1,0 +1,28 @@
+.request-card{
+    width: 57.4rem;
+    height: 28.7rem;
+    display: grid;
+    align-items: center;
+    background: rgba(217, 217, 217, 0.75);
+    border-radius: 3.125em;
+    margin-bottom: 1.875em;
+}
+
+.card-info{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.user-info{
+    font-size: 2em;
+    line-height: 2.4em;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    color: #000000;
+}
+
+.user-info-header{
+    border-bottom: 5px solid;
+}
