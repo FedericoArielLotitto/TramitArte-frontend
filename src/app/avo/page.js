@@ -5,10 +5,12 @@ import { HeaderComponent } from "../home/header/header"
 import "../home/home.css"
 import "./page.css"
 import ButtomSubmitSecundarioDesktop from "@/components/atomos/button/submit/secundarioDesktop/ButtomSubmitSecundarioDesktop"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Button, Modal } from "@mui/material"
 import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutlined';
 import FileUploadOutlinedIcon from '@mui/icons-material/FileUploadOutlined';
+import Footer from "@/components/moleculas/footer/Footer"
+import CustomAppBar from "@/components/moleculas/appBar/CustomAppBar"
 
 const styleButton = {
     fontFamily: 'Montserrat',
@@ -26,10 +28,11 @@ const AvoComponent = () => {
     const menuUser = ["Traductores Registrados", "Family Search", "Preguntas"]
    // const fileTitles = ["Certificado de nacimiento", "Certificado de matrimonio", "Certificado de defunción", "Documentos de identidad(Pasaporte, DNI, otros)"]
     const [isModalOpen, setIsModalOpen] = useState(false)
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth)
     const avo1 = ""
     const avo2 = ""
     const avo3 = ""
-    const avo4 = []
+    const avo4 = ""
 
     const fileCards = [
         { title: "Certificado de nacimiento", variable: avo1 },
@@ -44,14 +47,32 @@ const AvoComponent = () => {
 
     const handleFileSelect = () => {
         document.getElementById('file-input').click();
-    };
+    }
+
+    // Renderiza la pantalla
+    useEffect(() => {
+        const handleResize = () => {
+        setWindowWidth(window.innerWidth);
+        }
+
+        window.addEventListener('resize', handleResize);
+
+        // Elimina el event listener al desmontar el componente
+        return () => {
+        window.removeEventListener('resize', handleResize);
+        }
+    }, [])
 
     return(
     <div class="container">
-        <HeaderComponent/>
+        {windowWidth <= 576 ? (
+          <CustomAppBar/>
+        ) : (<HeaderComponent/>)}
         <div className="home-conteiner">
             <div className="columns-container">
-              <MenuComponent array={menuUser}/>
+            {windowWidth <= 576 ? (
+                <></>
+              ) : (<MenuComponent array={menuUser}/>)}
               <div className="contenido">
                 {fileCards.map((card, index) => (
                     <div className="card" key={index}>
@@ -59,7 +80,7 @@ const AvoComponent = () => {
                             <p>{card.title}</p>
                         </div>
                         <div className="file-btn">
-                            {card.variable === "" || card.variable === [] ? (
+                            {card.variable === "" || card.variable == [] ? (
                             <ButtomSubmitSecundarioDesktop text="Ingresar archivo" event={handleModal} />
                             ) : (
                             <p>Acá hay un archivo</p>
@@ -81,19 +102,32 @@ const AvoComponent = () => {
                 <div className="drop-file-container">
                     <div className="drag-drop-file">
                         <div className="icon-container">
-                            <FileUploadOutlinedIcon style={{color:"#57C5B6", width:"9rem", height:"9rem"}}/>
+                            {windowWidth <= 576 ? (
+                                <FileUploadOutlinedIcon style={{color:"#57C5B6", width:"3.75rem", height:"3.75rem"}}/>
+                            ) : (
+                                <FileUploadOutlinedIcon style={{color:"#57C5B6", width:"9rem", height:"9rem"}}/>
+                            )}
                         </div>
-                        <div className="text-container">
-                            <p>Arrastrá y soltá el archivo o </p>
-                            <Button className="upload-button" onClick={handleFileSelect} style={styleButton}>
-                                <p>elegí uno</p>
-                            </Button>
-                             <input type="file" id="file-input" style={{ display: 'none' }} />
-                        </div>
+                        {windowWidth <= 576 ? (
+                            <></>
+                        ) : (
+                            <div className="text-container">
+                                <p>Arrastrá y soltá el archivo o </p>
+                                <Button className="upload-button" onClick={handleFileSelect} style={styleButton}>
+                                    <p>elegí uno</p>
+                                </Button>
+                                <input type="file" id="file-input" style={{ display: 'none' }} />
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>
         </Modal>
+        {windowWidth <= 576 ? (
+          <div className="footer-container">
+            <Footer/>
+          </div>
+        ) : (<></>)}
     </div>
     )
 }

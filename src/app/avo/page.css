@@ -56,8 +56,8 @@
 }
 
 .drag-drop-file{
-    width: 801px;
-    height: 278.09px;
+    width: 50rem;
+    height: 17.375rem;
     display: grid;
     justify-content: center;
     align-items: center;
@@ -79,8 +79,8 @@
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 600;
-    font-size: 24px;
-    line-height: 29px;
+    font-size: 1.5em;
+    line-height: 1.8em;
     text-align: center;
 
     color: #002B5B;
@@ -89,4 +89,42 @@
 .icon-container{
     display: flex;
     justify-content: center;
+}
+
+.footer-container{
+    position: fixed;
+}
+
+@Media (max-width: 576px){
+    .card{
+        width: 25rem;
+        padding-bottom: 100px;
+    }
+
+    .file-btn{
+        padding-top: 20px;
+    }
+
+    .modal-content{
+        width: 17.44rem;
+        height: 14.875rem;
+        display: grid;
+    }
+
+    .drag-drop-file{
+        width: 17rem;
+        height: 100%;
+        border: 0;  
+    }
+
+    .drop-file-container{
+        height: 50%;
+    }
+
+    .name-file{
+        font-size: 18px;
+        line-height: 22px;
+        width: 174px;
+        height: 65px;
+    }
 }

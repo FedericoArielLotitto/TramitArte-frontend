@@ -13,6 +13,7 @@ function Footer() {
       <Box sx={{ width: "100%" }}>
                 <BottomNavigation
                     className="footer"
+                    sx={{ backgroundColor: "primary.dark" }}
                 >
                     <BottomNavigationAction icon={<HomeIcon />} />
                     <BottomNavigationAction icon={<HelpIcon />} />

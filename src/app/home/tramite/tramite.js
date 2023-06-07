@@ -4,6 +4,7 @@ import ButtomSubmitSecundarioDesktop from "@/components/atomos/button/submit/sec
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 import State from "@/components/atomos/state/state";
 import { Box, CircularProgress} from "@mui/material";
+import CustomCard from "@/components/moleculas/card/CustomCard";
 
 const TramiteComponent = () => {
     const [isClicked, setIsClicked] = useState(false)
@@ -27,7 +28,9 @@ const TramiteComponent = () => {
                 </div>
                 <div className="porcentaje">
                   <Box position="relative" display="inline-flex">
-                    <CircularProgress variant="determinate" value={60} style={{width:"18.75rem", height:"18.75rem"}}/>
+                    {window.innerWidth <= 576 ? (
+                      <CircularProgress variant="determinate" value={60} style={{width:"12.5rem", height:"12.5rem"}}/>
+                    ) : (<CircularProgress variant="determinate" value={60} style={{width:"18.75rem", height:"18.75rem"}}/>)}
                     <Box
                       top={0}
                       left={0}
@@ -49,16 +52,20 @@ const TramiteComponent = () => {
               </div>
             </div>
           ) : (
-            <div className="card-no-iniciado">
-              <div className="p1-t">
-                <p>Aún no iniciaste tu trámite</p>
-              </div>
-              <div className="p2-t">
-                <p>¡Inicialo acá y conseguí tu ciudadanía!</p>
-              </div>
-                <div className="tramite-bottom">
-                  <ButtomSubmitSecundarioDesktop text={"Iniciar trámite"} event={handleClick} />
-                </div>
+            <div>
+              {window.innerWidth <= 576 ? (
+              CustomCard(handleClick)
+              ) : (<div className="card-no-iniciado">
+                  <div className="p1-t">
+                    <p>Aún no iniciaste tu trámite</p>
+                  </div>
+                  <div className="p2-t">
+                    <p>¡Inicialo acá y conseguí tu ciudadanía!</p>
+                  </div>
+                    <div className="tramite-bottom">
+                      <ButtomSubmitSecundarioDesktop text={"Iniciar trámite"} event={handleClick} />
+                    </div>
+                </div>)}
             </div>
           )}
         </div>

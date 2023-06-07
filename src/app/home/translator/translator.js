@@ -21,13 +21,23 @@ const TranslatorComponent = ({users, onDelete}) => {
             //         <UserCardComponent users={users} onDelete={handleDeleteUser}/>
             //     </div>
             // </div>
-            <Scrollbar style={{height: "100vh"}}>
-                <div className="request-container">
-                <div className="request-card-container">
-                    <UserCardComponent users={users} onDelete={handleDeleteUser}/>
-                </div>
-                </div>
-            </Scrollbar>
+            <>
+                {window.innerWidth <= 576 ? (
+                    <div className="request-container">
+                        <div className="request-card-container">
+                            <UserCardComponent users={users} onDelete={handleDeleteUser}/>
+                        </div>
+                    </div>
+                ) : (
+                    <Scrollbar style={{height: "100vh", width:"100%"}}>
+                        <div className="request-container">
+                            <div className="request-card-container">
+                                <UserCardComponent users={users} onDelete={handleDeleteUser}/>
+                            </div>
+                        </div>
+                    </Scrollbar>
+                )}
+            </>
         ) : (
             <div className="card-container">
                 <div className="card-no-iniciado">

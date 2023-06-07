@@ -29,7 +29,7 @@ const UserCardComponent = ({users, onDelete}) => {
                         <p>Documento: {user.document}</p>
                         <p>Id de trámite: {user.id}</p>
                     </div>
-                    <Avatar src={user.image} style={{ width: "15.6em", height: "15.6em" }} />
+                    {window.innerWidth <= 576 ? (<></>) : (<Avatar src={user.image} style={{ width: "15.6em", height: "15.6em" }} />)}
                 </div>
                 <div className="card-info">
                     <ButtonSubmitDesktop texto={"Aceptar"} event={() => onDelete(index)}/>

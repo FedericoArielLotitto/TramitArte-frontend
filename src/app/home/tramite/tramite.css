@@ -104,3 +104,52 @@
     font-family: 'Montserrat';
     font-style: normal;
   }
+
+  @Media (max-width: 576px){
+    .card-iniciado{
+      width: 18rem;
+      height: 23.8rem;
+    }
+
+    .codigo-porcentaje{
+      display: grid;
+      width: 18rem;
+    }
+
+    .codigo{
+      display: flex;
+      height: 1.375em;
+      width: 18em;
+    }
+
+    .c-1{
+      font-size: 16px;
+      line-height: 20px;
+      height: 0;
+    }
+
+    .c-2{
+      font-size: 16px;
+      line-height: 20px;
+      height: 0;
+      padding-left:10px;
+    }
+
+    .porcentaje{
+      width: 100%;
+      font-size: 3em;
+      line-height: 3.69em;
+    }
+
+    .estado-paso{
+      display: grid;
+      font-size: 16px;
+      line-height: 20px;
+    }
+
+    .card-no-iniciado{
+      width: 15rem;
+      height: 11rem;
+      border-radius: 3.125rem;
+    }
+  }
