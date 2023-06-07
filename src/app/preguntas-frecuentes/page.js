@@ -7,12 +7,15 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import "./preguntas.css"
-
+import { ThemeProvider } from '@emotion/react'
+import theme from "@/app/theme"
 function PreguntasFrecuentes() {
   return (
     <div>
+      <ThemeProvider theme={theme}>
+
       <Accordion>
-        <AccordionSummary
+        <AccordionSummary sx={{backgroundColor:"terciario.main" , color:"terciario.contrastText"}}
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
           id="panel1a-header"
@@ -88,6 +91,7 @@ function PreguntasFrecuentes() {
           </Typography>
         </AccordionDetails>
       </Accordion>
+      </ThemeProvider>
     </div>
   );
 }
