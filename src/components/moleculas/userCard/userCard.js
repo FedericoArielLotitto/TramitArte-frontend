@@ -32,8 +32,7 @@ const UserCardComponent = ({users, onDelete}) => {
                     {window.innerWidth <= 576 ? (<></>) : (<Avatar src={user.image} style={{ width: "15.6em", height: "15.6em" }} />)}
                 </div>
                 <div className="card-info">
-                    <ButtonSubmitDesktop texto={"Aceptar"} event={() => onDelete(index)}/>
-                    <ButtonSubmitDesktop texto={"Rechazar"} type={"cancel"} event={() => onDelete(index)}/>
+                    <ButtonSubmitDesktop texto={"Notificar"} event={() => onDelete(index)}/>
                 </div>
             </div>
         ))}
