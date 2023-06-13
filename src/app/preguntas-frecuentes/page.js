@@ -8,53 +8,63 @@ import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import "./preguntas.css"
 import { ThemeProvider } from '@emotion/react'
-import theme from "@/app/theme"
+import theme from "@/app/theme";
+import Map from './map';
+//import { useMediaQuery } from 'react-responsive';
+
 function PreguntasFrecuentes() {
+  //const isMobile = window.innerWidth <= 768;
+
   return (
-    <div>
+    <div >
       <ThemeProvider theme={theme}>
 
       <Accordion>
-        <AccordionSummary sx={{backgroundColor:"terciario.main" , color:"terciario.contrastText"}}
-          expandIcon={<ExpandMoreIcon />}
+        <AccordionSummary sx={{backgroundColor:"terciario.main" , color:"terciario.contrastText",
+        margin:'2% 7%', justifyContent: 'center', alignItems: 'center', borderRadius:70}}
+          expandIcon={<ExpandMoreIcon sx={{color: "terciario.contrastText"}}/>}
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
           <Typography >¿Cómo saber cuál es mi AVO?</Typography>
         </AccordionSummary>
-        <AccordionDetails>
+        <AccordionDetails sx={{color: "terciario.main", margin:'0% 8%'}}> 
           <Typography>
             Podés realizar la búsqueda de tu AVO (antepasado italiano que emigró) en:
-            Family Search
-            Antenati
-            My Heritage
+            <ul>
+              <li><a href="https://www.familysearch.org/">Family Search</a></li>
+              <li><a href="https://antenati.cultura.gov.it/?lang=es">Antenati</a></li>
+              <li><a href="https://www.myheritage.es/">My Heritage</a></li>
+            </ul>
             Una vez terminada la búsqueda, cargá los datos en la sección Etapa 1
           </Typography>
         </AccordionDetails>
-      </Accordion>
+      </Accordion >
       <Accordion>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
+        <AccordionSummary sx={{backgroundColor:"terciario.main" , color:"terciario.contrastText",
+        margin:'2% 7%', justifyContent: 'center', alignItems: 'center', borderRadius:70}}
+          expandIcon={<ExpandMoreIcon sx={{color: "terciario.contrastText"}}/>}
           aria-controls="panel2a-content"
           id="panel2a-header"
         >
           <Typography>¿Dónde está el consulado más cercano?</Typography>
         </AccordionSummary>
-        <AccordionDetails>
+        <AccordionDetails sx={{color: "terciario.main", margin:'0% 8%'}}>
           <Typography>
-            Acá iría la geolocalización
+            <Map />
           </Typography>
         </AccordionDetails>
       </Accordion>
       <Accordion>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
+        <AccordionSummary sx={{backgroundColor:"terciario.main" , color:"terciario.contrastText",
+        margin:'2% 7%', justifyContent: 'center', alignItems: 'center', borderRadius:70}}
+          expandIcon={<ExpandMoreIcon sx={{color: "terciario.contrastText"}}/>}
           aria-controls="panel3a-content"
           id="panel3a-header"
         >
           <Typography>¿Cómo solicitar la partida de nacimiento de mi AVO?</Typography>
         </AccordionSummary>
-        <AccordionDetails>
+        <AccordionDetails sx={{color: "terciario.main", margin:'0% 8%'}}>
           <Typography>
           Si el avo nació antes de 1861, la partida es de Bautismo y hay que solicitarla en la Parroquia en que nació.
           Si nació después, es de comuna y se solicita en la comuna correspondiente.
@@ -62,30 +72,32 @@ function PreguntasFrecuentes() {
         </AccordionDetails>
       </Accordion>
       <Accordion>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
+        <AccordionSummary sx={{backgroundColor:"terciario.main" , color:"terciario.contrastText",
+        margin:'2% 7%', justifyContent: 'center', alignItems: 'center', borderRadius:70}}
+          expandIcon={<ExpandMoreIcon sx={{color: "terciario.contrastText"}}/>}
           aria-controls="panel4a-content"
           id="panel4a-header"
         >
           <Typography>¿De dónde obtengo el mail y el teléfono de la Comuna en la que nació?</Typography>
         </AccordionSummary>
-        <AccordionDetails>
+        <AccordionDetails sx={{color: "terciario.main", margin:'0% 8%'}}>
           <Typography>
           En el sitio oficial de la comuna puede aparecer como:
-          1- Ufficio Anagrafe
-          2- Ufficio di Stato Civile
+          <p>1- Ufficio Anagrafe</p>
+          <p>2- Ufficio di Stato Civile</p>
           </Typography>
         </AccordionDetails>
       </Accordion>
       <Accordion>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
+        <AccordionSummary sx={{backgroundColor:"terciario.main" , color:"terciario.contrastText",
+        margin:'2% 7%', justifyContent: 'center', alignItems: 'center', borderRadius:70}}
+          expandIcon={<ExpandMoreIcon sx={{color: "terciario.contrastText"}}/>}
           aria-controls="panel5a-content"
           id="panel5a-header"
         >
           <Typography>¿Qué certificados necesito?</Typography>
         </AccordionSummary>
-        <AccordionDetails>
+        <AccordionDetails sx={{color: "terciario.main", margin:'0% 8%'}}>
           <Typography>
           Necesitás el certificado de nacimiento de tu AVO, y todos los descendientes directos hasta llegar a vos. Si se casó en Italia, deberás tener el certificado de matrimonio.
           </Typography>
