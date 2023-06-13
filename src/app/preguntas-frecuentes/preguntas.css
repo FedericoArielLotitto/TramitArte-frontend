@@ -1,0 +1,11 @@
+rectangulo{
+    position: absolute;
+    width: 283px;
+    height: 260px;
+    left: 0px;
+    top: 1px;
+
+    background: rgba(246, 244, 255, 0.5);
+    border: 1px solid #692420;
+    border-radius: 15px;
+}
