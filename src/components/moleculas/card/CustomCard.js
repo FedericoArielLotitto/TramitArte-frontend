@@ -3,7 +3,7 @@ import ButtonSubmitSecundario from "@/components/atomos/button/submit/secundario
 import { ThemeProvider } from "@emotion/react";
 import { Box, Container, Typography } from "@mui/material";
 
-function CustomCard() {
+function CustomCard(event) {
   return (
     <ThemeProvider theme={theme}>
       <Box
@@ -20,7 +20,7 @@ function CustomCard() {
           {"¡Inicialo acá y consegúi tu ciudadanía!"}
         </Typography>
         <Box sx={{ display: 'flex', justifyContent: 'center'}}>
-          <ButtonSubmitSecundario texto="iniciar trámite"></ButtonSubmitSecundario>
+          <ButtonSubmitSecundario texto="iniciar trámite" event={event}></ButtonSubmitSecundario>
         </Box>
       </Box>
     </ThemeProvider>

@@ -10,9 +10,10 @@ const { Box, ThemeProvider } = require("@mui/material");
 function Footer() {
   return (
     <ThemeProvider theme={theme}>
-      <Box sx={{ width: "100%" }}>
+      <Box sx={{ width: "100%", position: "fixed", bottom: 0 }}>
                 <BottomNavigation
                     className="footer"
+                    sx={{ backgroundColor: "primary.dark" }}
                 >
                     <BottomNavigationAction icon={<HomeIcon />} />
                     <BottomNavigationAction icon={<HelpIcon />} />

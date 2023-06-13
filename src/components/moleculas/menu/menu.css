@@ -2,20 +2,18 @@
     width: 20rem;
     min-height: 100vh;
     background-color: #1A5F7A;
-}
+ }
 
-.items-container{
+ .items-container{
+    min-height: 100vh;
+    background-color: #1A5F7A;
     display: grid;
     text-align: start;
     justify-content: right;
     margin-top: 1em;
-}
+ }
 
-p{
-    margin: 0px;
-}
-
-.menu-item{
+.menu-item {
     display: flex;
     width: 9em;
     height: 3.75rem;
@@ -29,3 +27,4 @@ p{
     padding-top: 0.5rem;
     border-bottom: 4px solid #F6F4FF;
 }
+
