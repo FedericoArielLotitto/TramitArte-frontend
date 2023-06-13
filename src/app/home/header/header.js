@@ -2,7 +2,7 @@ import AccountBoxOutlinedIcon from '@mui/icons-material/AccountBoxOutlined';
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 import "./header.css"
 
-export const HeaderComponent = () =>{
+export const HeaderComponent = () => {
     return(<div class="header">
           <div class="logo">
             Logo de la aplicacion

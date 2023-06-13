@@ -4,16 +4,14 @@
     justify-content: center;
     width: 3rem;
     padding-right: 1rem;
-  }
-
-  .logo{
+ }
+.logo{
     align-items: center;
     text-align: center;
     width: 6rem;
     padding-left: 1rem;
-  }
-
-  .header {
+ }
+.header {
     display: flex;
     justify-content: space-between;
     align-items: center;
