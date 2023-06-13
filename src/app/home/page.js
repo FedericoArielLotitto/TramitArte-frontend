@@ -1,6 +1,6 @@
 "use client"
 
-import { HeaderComponent } from "./header";
+import { HeaderComponent } from "./header/header";
 import "./home.css"
 import React from "react";
 

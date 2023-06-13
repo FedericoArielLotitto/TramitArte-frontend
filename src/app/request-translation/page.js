@@ -3,20 +3,25 @@ import "./page.css";
 import theme from "@/app/theme";
 
 import { useState } from "react";
-import { AppBar, Avatar, Box, Button, Card, Grid, IconButton, Input, Toolbar, Typography, useMediaQuery } from "@mui/material";
+import { Avatar, Box, Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Grid, IconButton, Input, Toolbar, Typography, useMediaQuery } from "@mui/material";
 import { ThemeProvider } from "@emotion/react";
+import { HeaderComponent } from "../home/header/header";
 import Footer from "@/components/moleculas/footer/Footer";
 import CustomAppBar from "@/components/moleculas/appBar/CustomAppBar";
-import MenuIcon from "@/components/atomos/icon/menu/default/MenuIcon";
-import UserIcon from "@/components/atomos/icon/user/default/UserIcon";
-import HomeIcon from "@/components/atomos/icon/home/default/HomeIcons";
 import ButtonSubmit from "@/components/atomos/button/submit/default/ButtonSubmit";
 import SendIcon from "@/components/atomos/icon/send/Send.Icon";
+import MenuComponent from "@/components/moleculas/menu/menu";
 
 export default function request() {
   const [document, setDocument] = useState(false)
+  const [userType, setUserType] = useState("user")
 
   const matches = useMediaQuery('(min-width: 576px)')  
+
+  const menuUser = ["Traductores Registrados", "Family Search", "Preguntas"]
+  const menuTranslator = ["Traducciones Realizadas", "Solicitudes Pendientes", "Solicitudes de Traducción"]
+
+  const arrayTemp = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
 
   const handleClickDocument = () => {
     console.log("Hola loco");
@@ -32,54 +37,45 @@ export default function request() {
       { matches ? (
           <div className='page-wrapper'>
             <ThemeProvider theme={theme}>
-              <Box sx={{ backgroundColor: "primary.dark" }}>
-                <AppBar sx={{ backgroundColor: "primary.dark" }} position="static">
-                  <Toolbar>
-                    <IconButton
-                      size="large"
-                      color="inherit"
-                      aria-label="menu"
-                      sx={{ justifyContent: 'flex-start', flexGrow: 1 }}
-                    >
-                      <MenuIcon />
-                    </IconButton>
-                    <Input
-                      aria-label="search-bar"
-                      sx={{ justifyContent: 'flex-end' }}
-                    />
-                    <IconButton size="large"
-                      color="inherit"
-                      aria-label="menu"
-                      sx={{ justifyContent: 'flex-end'}}
-                      >
-                      <UserIcon />
-                    </IconButton>
-                    <IconButton size="large"
-                      color="inherit"
-                      aria-label="menu"
-                      sx={{ justifyContent: 'flex-end'}}
-                      >
-                      <HomeIcon />
-                    </IconButton>
-                  </Toolbar>
-                </AppBar>
-              </Box>
-              <div>
-                <Box
-                  className='profile-details'
-                  sx={{
-                      width: 1/5,
-                      height: '100vh',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      alignItems: 'center',
-                      backgroundColor: 'secondary.main'
-                    }}
-                >
-                  hola loco
+              <HeaderComponent />
+              <Box sx={{ display: 'flex', flexDirection: 'row' }}>
+                <MenuComponent array={menuUser}/>
+                <Box className='page-body'>
+                  <Grid
+                    container
+                    spacing={1}
+                    sx={{ justifyContent: 'space-between'}}
+                  >
+
+                  {arrayTemp.map(() => (
+                    <Card sx={{ maxWidth: 345, margin: '1rem' }}>
+                      <CardMedia
+                        component="img"
+                        height="140"
+                        image="https://img.freepik.com/free-vector/illustration-paper_53876-5860.jpg?w=826&t=st=1686592542~exp=1686593142~hmac=2ad82beefe2bcbb825d13506e6c5d0899c4535d225105cd145f93b06c08c9aae"
+                      />
+                      <CardContent>
+                        <Typography gutterBottom variant="h5" component="div">
+                          Nombre - Apellido
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                          Ofrezco Traducciones de calidad a buen precio
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                          $ 7.777
+                        </Typography>
+                      </CardContent>
+                      <CardActions>
+                        <Button size="small" color="primary" onClick={handleClick()}>
+                          Solicitar
+                        </Button>
+                      </CardActions>
+                    </Card>
+                  ))}
+
+                  </Grid>
                 </Box>
-                {/* Grilla falopa */}
-              </div>
+              </Box>
             </ThemeProvider>
           </div>
         )
@@ -94,7 +90,7 @@ export default function request() {
                 >
                   <Box
                     backgroundColor="secondary.main"
-                    className="card-body"
+                    className="doc-upload"
                   >
                     <Typography className="font-basics">Cargar Documento</Typography>
                     <ButtonSubmit
@@ -117,213 +113,23 @@ export default function request() {
 
                   <Grid>
 
-                    <Card
-                      className="falopa"
-                      onClick={handleClick}
-                    >
-                      <Box sx={{ padding: '0.5rem', backgroundColor: "primary.dark" }}>
-                        <Avatar />
-                      </Box>
-                      <Box sx={{ flexDirection: "column", padding: '0 1rem' }}>
-                        <Typography>Nombre Apellido</Typography>
-                        <Typography>$ 7.777</Typography>
-                      </Box>
-                      <Box sx={{ padding: '0 1rem' }}>
-                        <SendIcon color="info"/>
-                      </Box>
-                    </Card>
-
-                    <Card
-                      className="falopa"
-                      onClick={handleClick}
-                    >
-                      <Box sx={{ padding: '0.5rem', backgroundColor: "primary.dark" }}>
-                        <Avatar />
-                      </Box>
-                      <Box sx={{ flexDirection: "column", padding: '0 1rem' }}>
-                        <Typography>Nombre Apellido</Typography>
-                        <Typography>$ 7.777</Typography>
-                      </Box>
-                      <Box sx={{ padding: '0 1rem' }}>
-                        <SendIcon color="info"/>
-                      </Box>
-                    </Card>
-
-                    <Card
-                      className="falopa"
-                      onClick={handleClick}
-                    >
-                      <Box sx={{ padding: '0.5rem', backgroundColor: "primary.dark" }}>
-                        <Avatar />
-                      </Box>
-                      <Box sx={{ flexDirection: "column", padding: '0 1rem' }}>
-                        <Typography>Nombre Apellido</Typography>
-                        <Typography>$ 7.777</Typography>
-                      </Box>
-                      <Box sx={{ padding: '0 1rem' }}>
-                        <SendIcon color="info"/>
-                      </Box>
-                    </Card>
-
-                    <Card
-                      className="falopa"
-                      onClick={handleClick}
-                    >
-                      <Box sx={{ padding: '0.5rem', backgroundColor: "primary.dark" }}>
-                        <Avatar />
-                      </Box>
-                      <Box sx={{ flexDirection: "column", padding: '0 1rem' }}>
-                        <Typography>Nombre Apellido</Typography>
-                        <Typography>$ 7.777</Typography>
-                      </Box>
-                      <Box sx={{ padding: '0 1rem' }}>
-                        <SendIcon color="info"/>
-                      </Box>
-                    </Card>
-
-                    <Card
-                      className="falopa"
-                      onClick={handleClick}
-                    >
-                      <Box sx={{ padding: '0.5rem', backgroundColor: "primary.dark" }}>
-                        <Avatar />
-                      </Box>
-                      <Box sx={{ flexDirection: "column", padding: '0 1rem' }}>
-                        <Typography>Nombre Apellido</Typography>
-                        <Typography>$ 7.777</Typography>
-                      </Box>
-                      <Box sx={{ padding: '0 1rem' }}>
-                        <SendIcon color="info"/>
-                      </Box>
-                    </Card>
-
-                    <Card
-                      className="falopa"
-                      onClick={handleClick}
-                    >
-                      <Box sx={{ padding: '0.5rem', backgroundColor: "primary.dark" }}>
-                        <Avatar />
-                      </Box>
-                      <Box sx={{ flexDirection: "column", padding: '0 1rem' }}>
-                        <Typography>Nombre Apellido</Typography>
-                        <Typography>$ 7.777</Typography>
-                      </Box>
-                      <Box sx={{ padding: '0 1rem' }}>
-                        <SendIcon color="info"/>
-                      </Box>
-                    </Card>
-
-                    <Card
-                      className="falopa"
-                      onClick={handleClick}
-                    >
-                      <Box sx={{ padding: '0.5rem', backgroundColor: "primary.dark" }}>
-                        <Avatar />
-                      </Box>
-                      <Box sx={{ flexDirection: "column", padding: '0 1rem' }}>
-                        <Typography>Nombre Apellido</Typography>
-                        <Typography>$ 7.777</Typography>
-                      </Box>
-                      <Box sx={{ padding: '0 1rem' }}>
-                        <SendIcon color="info"/>
-                      </Box>
-                    </Card>
-
-                    <Card
-                      className="falopa"
-                      onClick={handleClick}
-                    >
-                      <Box sx={{ padding: '0.5rem', backgroundColor: "primary.dark" }}>
-                        <Avatar />
-                      </Box>
-                      <Box sx={{ flexDirection: "column", padding: '0 1rem' }}>
-                        <Typography>Nombre Apellido</Typography>
-                        <Typography>$ 7.777</Typography>
-                      </Box>
-                      <Box sx={{ padding: '0 1rem' }}>
-                        <SendIcon color="info"/>
-                      </Box>
-                    </Card>
-
-                    <Card
-                      className="falopa"
-                      onClick={handleClick}
-                    >
-                      <Box sx={{ padding: '0.5rem', backgroundColor: "primary.dark" }}>
-                        <Avatar />
-                      </Box>
-                      <Box sx={{ flexDirection: "column", padding: '0 1rem' }}>
-                        <Typography>Nombre Apellido</Typography>
-                        <Typography>$ 7.777</Typography>
-                      </Box>
-                      <Box sx={{ padding: '0 1rem' }}>
-                        <SendIcon color="info"/>
-                      </Box>
-                    </Card>
-
-                    <Card
-                      className="falopa"
-                      onClick={handleClick}
-                    >
-                      <Box sx={{ padding: '0.5rem', backgroundColor: "primary.dark" }}>
-                        <Avatar />
-                      </Box>
-                      <Box sx={{ flexDirection: "column", padding: '0 1rem' }}>
-                        <Typography>Nombre Apellido</Typography>
-                        <Typography>$ 7.777</Typography>
-                      </Box>
-                      <Box sx={{ padding: '0 1rem' }}>
-                        <SendIcon color="info"/>
-                      </Box>
-                    </Card>
-
-                    <Card
-                      className="falopa"
-                      onClick={handleClick}
-                    >
-                      <Box sx={{ padding: '0.5rem', backgroundColor: "primary.dark" }}>
-                        <Avatar />
-                      </Box>
-                      <Box sx={{ flexDirection: "column", padding: '0 1rem' }}>
-                        <Typography>Nombre Apellido</Typography>
-                        <Typography>$ 7.777</Typography>
-                      </Box>
-                      <Box sx={{ padding: '0 1rem' }}>
-                        <SendIcon color="info"/>
-                      </Box>
-                    </Card>
-
-                    <Card
-                      className="falopa"
-                      onClick={handleClick}
-                    >
-                      <Box sx={{ padding: '0.5rem', backgroundColor: "primary.dark" }}>
-                        <Avatar />
-                      </Box>
-                      <Box sx={{ flexDirection: "column", padding: '0 1rem' }}>
-                        <Typography>Nombre Apellido</Typography>
-                        <Typography>$ 7.777</Typography>
-                      </Box>
-                      <Box sx={{ padding: '0 1rem' }}>
-                        <SendIcon color="info"/>
-                      </Box>
-                    </Card>
-
-                    <Card
-                      className="falopa"
-                      onClick={handleClick}
-                    >
-                      <Box sx={{ padding: '0.5rem', backgroundColor: "primary.dark" }}>
-                        <Avatar />
-                      </Box>
-                      <Box sx={{ flexDirection: "column", padding: '0 1rem' }}>
-                        <Typography>Nombre Apellido</Typography>
-                        <Typography>$ 7.777</Typography>
-                      </Box>
-                      <Box sx={{ padding: '0 1rem' }}>
-                        <SendIcon color="info"/>
-                      </Box>
-                    </Card>
+                    {arrayTemp.map(() => (
+                      <Card
+                        className="card-body"
+                        onClick={handleClick}
+                      >
+                        <Box sx={{ padding: '0.5rem', backgroundColor: "primary.dark" }}>
+                          <Avatar />
+                        </Box>
+                        <Box sx={{ flexDirection: "column", padding: '0 1rem' }}>
+                          <Typography>Nombre Apellido</Typography>
+                          <Typography>$ 7.777</Typography>
+                        </Box>
+                        <Box sx={{ padding: '0 1rem' }}>
+                          <SendIcon color="info"/>
+                        </Box>
+                      </Card>
+                    ))}
 
                   </Grid>
 

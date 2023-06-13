@@ -7,7 +7,7 @@
     min-height: calc(100vh - 7rem);
 }
 
-.card-body {
+.doc-upload {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -17,7 +17,7 @@
     opacity: 90%;
 }
 
-.falopa {
+.card-body {
     display: flex;
     flex-direction: row;
     justify-content: center;
