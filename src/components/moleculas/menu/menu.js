@@ -1,6 +1,10 @@
 import "./menu.css"
 
-const MenuComponent = ({array}) => (
+import breakpoints from "@/app/breakpoints"
+import { useMediaQuery } from "@mui/material"
+import { Braah_One } from "next/font/google"
+
+const MenuComponent = ({array}) => !useMediaQuery(`(max-width: ${breakpoints.mobile})`) && (
     <div class="menu">
             <div class="items-container">
                 {array.map((item, index) => (

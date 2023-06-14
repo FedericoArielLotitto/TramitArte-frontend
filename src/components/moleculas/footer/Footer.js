@@ -3,12 +3,16 @@ import HomeIcon from "@/components/atomos/icon/home/default/HomeIcons";
 import HelpIcon from "@/components/atomos/icon/help/default/HelpIcon";
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import BottomNavigation from '@mui/material/BottomNavigation';
-import { HomeOutlined } from "@mui/icons-material";
+import breakpoints from "@/app/breakpoints";
+import { useMediaQuery } from "@mui/material";
 
 const { Box, ThemeProvider } = require("@mui/material");
 
 function Footer() {
-  return (
+  let esResolucionMobile = useMediaQuery(`(max-width: ${breakpoints.mobile})`)
+
+  
+  return esResolucionMobile && (
     <ThemeProvider theme={theme}>
       <Box sx={{ width: "100%", position: "fixed", bottom: 0 }}>
                 <BottomNavigation
