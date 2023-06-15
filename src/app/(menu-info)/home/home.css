@@ -6,13 +6,13 @@ body, html {
   
   .home-container {
     display: grid;
-    grid-template-rows: 100vh;
+    
   }
   
   .columns-container {
     display: grid;
     grid-template-columns: 20rem 1fr;
-    height: 100vh;
+    min-height: 100vh;
   }
 
   .footer-container{

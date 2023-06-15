@@ -17,7 +17,7 @@ class User {
 }
 
 const HomeComponent = () => {
-  const userType = "Basura";
+  const userType = "Traductors";
   const menuUser = ["Traductores Registrados", "Family Search", "Preguntas"];
   const menuTranslator = [
     "Traducciones Realizadas",
@@ -32,7 +32,6 @@ const HomeComponent = () => {
   );
   const userArray = [user1, user1, user1, user1];
   const [users, setUsers] = useState(userArray);
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   const handleDeleteUser = (updatedUsers) => {
     setUsers(updatedUsers);

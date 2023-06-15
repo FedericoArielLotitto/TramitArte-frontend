@@ -1,15 +1,13 @@
 import { useState } from "react";
 import "./tramite.css";
 import ButtomSubmitSecundarioDesktop from "@/components/atomos/button/submit/secundarioDesktop/ButtomSubmitSecundarioDesktop";
-import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
-import State from "@/components/atomos/state/state";
-import { Box, CircularProgress } from "@mui/material";
 import CustomCard from "@/components/moleculas/card/CustomCard";
-import TramiteCardComponent from "./tramiteCard/tramiteCard";
+import { useMediaQuery } from "@mui/material";
+import breakpoints from "@/app/breakpoints";
 
 const TramiteComponent = () => {
   const [isClicked, setIsClicked] = useState(false);
-  const [stage, setStage] = useState(1)
+  const esResolucionMobile = useMediaQuery(`(max-width: ${breakpoints.mobile})`)
 
   const handleClick = async () => {
     const response = await fetch(process.env.BASE_URL, {
@@ -22,17 +20,10 @@ const TramiteComponent = () => {
       setIsClicked(!isClicked);}).catch((e) => console.log(e));
   };
 
-  const changeStage = () => {
-    setStage(stage+1)
-  }
-
   return (
     <div className="card-container">
-      {isClicked ? (
-        <TramiteCardComponent stage={stage} changeStage={changeStage}/>
-      ) : (
         <div>
-          {window.innerWidth <= 576 ? (
+          {esResolucionMobile ? (
             CustomCard(handleClick)
           ) : (
             <div className="card-no-iniciado">
@@ -51,7 +42,6 @@ const TramiteComponent = () => {
             </div>
           )}
         </div>
-      )}
     </div>
   );
 };

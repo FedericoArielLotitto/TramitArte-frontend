@@ -1,20 +1,23 @@
 import State from "@/components/atomos/state/state"
-import { Box, Button, CircularProgress } from "@mui/material"
+import { Box, Button, CircularProgress, useMediaQuery } from "@mui/material"
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import "../tramite.css"
 import "./tramiteCard.css"
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import ButtomSubmitSecundarioDesktop from "@/components/atomos/button/submit/secundarioDesktop/ButtomSubmitSecundarioDesktop";
 import ButtonSubmitSecundario from "@/components/atomos/button/submit/secundario/ButtonSubmitSecundario";
+import breakpoints from "@/app/breakpoints";
 
 function TramiteCardComponent({stage, changeStage}){
+    const esResolucionMobile = useMediaQuery(`(max-width: ${breakpoints.mobile})`)
+
     return (
         <div className="card-iniciado">
             <div className="codigo-porcentaje">
                 <div className="codigo">
                     <div className="c-1">
                         <p>Código de trámite:</p>
-                        {window.innerWidth <= 576 ? (
+                        {esResolucionMobile ? (
                             <p>X9889MW</p>
                         ) : (
                             <></>
@@ -27,7 +30,7 @@ function TramiteCardComponent({stage, changeStage}){
                     </Box>
                 </div>
                 <div className="grafico-numero">
-                    {window.innerWidth <= 576 ? (
+                    {esResolucionMobile ? (
                         <></>
                     ) : (
                         <div className="c-2">
@@ -36,7 +39,7 @@ function TramiteCardComponent({stage, changeStage}){
                     )}
                     <div className="porcentaje">
                         <Box position="relative" display="inline-flex" >
-                            {window.innerWidth <= 576 ? (
+                            {esResolucionMobile ? (
                             <CircularProgress
                                 variant="determinate"
                                 value={stage*10}
@@ -74,7 +77,7 @@ function TramiteCardComponent({stage, changeStage}){
                     </div>
                 ) : (
                     <>
-                        {window.innerWidth <= 576 ? (
+                        {esResolucionMobile ? (
                             <div className="avo-button">
                                 <ButtonSubmitSecundario texto="Cargar AVO" event={changeStage}></ButtonSubmitSecundario>
                             </div>
