@@ -17,11 +17,9 @@ import { usuariosService } from "@/services/usuario.service";
 
 export default function request() {
   const [document, setDocument] = useState(false)
-  const [userType, setUserType] = useState("user")
   const [translator, setTranslator] = useState([])
   
   const menuUser = ["Traductores Registrados", "Family Search", "Preguntas"]
-  const menuTranslator = ["Traducciones Realizadas", "Solicitudes Pendientes", "Solicitudes de Traducción"]
 
   const matches = useMediaQuery('(min-width: 576px)')  
 
@@ -56,7 +54,7 @@ export default function request() {
                   <Grid
                     container
                     spacing={1}
-                    sx={{ justifyContent: 'space-between'}}
+                    sx={{ justifyContent: 'space-between' }}
                   >
 
                   {translator.map((item) => (
