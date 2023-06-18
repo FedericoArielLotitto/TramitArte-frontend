@@ -2,26 +2,33 @@
 import "./page.css";
 import theme from "@/app/theme";
 
-import { useState } from "react";
-import { Avatar, Box, Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Grid, IconButton, Input, Toolbar, Typography, useMediaQuery } from "@mui/material";
+import { useEffect, useState } from "react";
+import { Avatar, Box, Button, Card, CardActions, CardContent, CardMedia, Grid, Typography, useMediaQuery } from "@mui/material";
 import { ThemeProvider } from "@emotion/react";
-import { HeaderComponent } from "../home/header/header";
+
+import { HeaderComponent } from "../(menu-info)/home/header/header";
 import Footer from "@/components/moleculas/footer/Footer";
 import CustomAppBar from "@/components/moleculas/appBar/CustomAppBar";
 import ButtonSubmit from "@/components/atomos/button/submit/default/ButtonSubmit";
 import SendIcon from "@/components/atomos/icon/send/Send.Icon";
 import MenuComponent from "@/components/moleculas/menu/menu";
 
+import { usuariosService } from "@/services/usuario.service";
+
 export default function request() {
   const [document, setDocument] = useState(false)
   const [userType, setUserType] = useState("user")
-
-  const matches = useMediaQuery('(min-width: 576px)')  
-
+  const [translator, setTranslator] = useState([])
+  
   const menuUser = ["Traductores Registrados", "Family Search", "Preguntas"]
   const menuTranslator = ["Traducciones Realizadas", "Solicitudes Pendientes", "Solicitudes de Traducción"]
 
-  const arrayTemp = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+  const matches = useMediaQuery('(min-width: 576px)')  
+
+  const getTranslators = async () => {
+    list = await usuariosService.getTranslators()
+    setTranslator(list)
+  }
 
   const handleClickDocument = () => {
     console.log("Hola loco");
@@ -31,6 +38,11 @@ export default function request() {
   const handleClick = () => {
     console.log("Hola loco");
   }
+
+  useEffect(() => {
+    getTranslators()
+    console.log(document)
+  }), []
 
   return (
     <div>
@@ -47,7 +59,7 @@ export default function request() {
                     sx={{ justifyContent: 'space-between'}}
                   >
 
-                  {arrayTemp.map(() => (
+                  {translator.map((item) => (
                     <Card sx={{ maxWidth: 345, margin: '1rem' }}>
                       <CardMedia
                         component="img"
@@ -56,13 +68,13 @@ export default function request() {
                       />
                       <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
-                          Nombre - Apellido
+                          {item.name} - {item.surname}
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
-                          Ofrezco Traducciones de calidad a buen precio
+                          {item.description}
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
-                          $ 7.777
+                          $ {item.price}
                         </Typography>
                       </CardContent>
                       <CardActions>
@@ -113,7 +125,7 @@ export default function request() {
 
                   <Grid>
 
-                    {arrayTemp.map(() => (
+                    {translator.map((item) => (
                       <Card
                         className="card-body"
                         onClick={handleClick}
@@ -122,8 +134,8 @@ export default function request() {
                           <Avatar />
                         </Box>
                         <Box sx={{ flexDirection: "column", padding: '0 1rem' }}>
-                          <Typography>Nombre Apellido</Typography>
-                          <Typography>$ 7.777</Typography>
+                          <Typography>{item.name} {item.surname}</Typography>
+                          <Typography>$ {item.price}</Typography>
                         </Box>
                         <Box sx={{ padding: '0 1rem' }}>
                           <SendIcon color="info"/>
