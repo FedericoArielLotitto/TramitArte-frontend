@@ -1,0 +1,30 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    background-color: #57C5B6;
+  }
+  
+  .home-container {
+    display: grid;
+    grid-template-rows: 100vh;
+  }
+  
+  .columns-container {
+    display: grid;
+    grid-template-columns: 20rem 1fr;
+    height: 100vh;
+  }
+
+  .footer-container{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+  }
+
+  @Media (max-width: 576px){
+    .columns-container{
+      display: flex;
+      justify-content: center;
+    }
+  }
