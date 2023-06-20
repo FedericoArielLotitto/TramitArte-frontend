@@ -1,8 +1,6 @@
 "use client";
 
 import Footer from "@/components/moleculas/footer/Footer";
-import ButtonSubmit from "@/components/atomos/button/submit/default/ButtonSubmit";
-import ButtonSubmitSecundario from "@/components/atomos/button/submit/secundario/ButtonSubmitSecundario";
 import CustomAppBar from "@/components/moleculas/appBar/CustomAppBar";
 import CustomCard from "@/components/moleculas/card/CustomCard";
 import { Box } from "@mui/material";
