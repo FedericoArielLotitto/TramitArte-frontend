@@ -5,6 +5,7 @@ const turquesaMedio = '#57c5b6';
 const verdeAzulado = '#1A5F7A';
 const cyanOscuro = '#159895';
 const granate = '#692420';
+const coolBlack = '#002B5B'
 
 const theme = createTheme({
     palette: {
@@ -24,6 +25,11 @@ const theme = createTheme({
         terciario: {
             main: granate,
             contrastText: blancoFantasma
+        },
+        resaltado: {
+            main: coolBlack,
+            contrastText: blancoFantasma,
+            dark: ''
         }
     }
 })
