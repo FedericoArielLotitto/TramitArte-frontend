@@ -1,9 +1,9 @@
-import theme from "@/app/theme";
-import { CardMedia, ThemeProvider } from "@mui/material";
+import './Logo.css';
 
 function Logo({ height, width }) {
   return (
       <img
+        className="fondo"
         height={height}
         width={width}
         src="/assets/logo/logo.png"
