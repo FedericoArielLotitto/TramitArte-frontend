@@ -15,7 +15,7 @@ function Rol() {
   const [rol, setRol] = useState("SOLICITANTE");
   const router = useRouter();
   const esMobile = useMediaQuery("(max-width: 576px)");
-  
+
   const handleEleccionRol = (event) => {
     setRol(event.target.innerText);
     setEsVisible(true);
@@ -24,10 +24,10 @@ function Rol() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Box sx={{ backgroundColor: "primary.main", minHeight: "100vh" }}>
+      <Box sx={{ backgroundColor: "primary.main", minHeight: "100vh", height: '100vh'}}>
         <Box
           sx={{
-            minHeight: "100%",
+            minHeight: "50%",
             display: "flex",
             justifyContent: "space-around",
             alignItems: "center",
@@ -37,12 +37,12 @@ function Rol() {
         >
           <ButtonTerciario
             onClick={handleEleccionRol}
-            width={esMobile ? "90%" : "auto"}
+            width={esMobile ? "90%" : "30%"}
             texto={"SOLICITANTE"}
           ></ButtonTerciario>
           <ButtonResaltado
             onClick={handleEleccionRol}
-            width={esMobile ? "90%" : "auto"}
+            width={esMobile ? "90%" : "30%"}
             texto={"TRADUCTOR"}
           ></ButtonResaltado>
         </Box>
