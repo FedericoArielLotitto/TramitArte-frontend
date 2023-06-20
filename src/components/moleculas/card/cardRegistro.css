@@ -1,0 +1,48 @@
+
+
+input{
+    background: #F6F4FF;
+    box-shadow: 0px 0px 10px 6px rgba(246, 244, 255, 0.25);
+    border-radius: 30px;
+    height:45px;
+    width:80%;
+    margin:3%;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin:10%;
+   
+}
+p{
+    margin-left: 5%;
+    align-items: flex-start;
+    color:#F6F4FF;
+    font-size: small;
+}
+
+.boton{
+    display:flex;
+    justify-content: center;
+    margin-top: 5%;
+    padding:5%
+}
+
+.p-secundario{
+    color:#57C5B6;
+    text-decoration: underline;
+}
+
+.registrate{
+    display:flex;
+    justify-content: space-around;
+}
+
+.recuperar-contrasena{
+    display:flex;
+    justify-content: center;
+    margin-top: 2%;
+}
+
