@@ -54,8 +54,8 @@ function Rol() {
           }}
         >
           <Logo
-            width={esMobile ? "50%" : "15%"}
-            height={esMobile ? "50%" : "15%"}
+            width={esMobile ? "70%" : "25%"}
+            height={esMobile ? "70%" : "25%"}
           />
         </Box>
         <ConfirmationModal
