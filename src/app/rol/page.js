@@ -6,7 +6,7 @@ import theme from "@/app/theme";
 import Logo from "@/components/atomos/logo/Logo";
 import ButtonTerciario from "@/components/atomos/button/submit/terciario/ButtonTerciario";
 import ButtonSubmitSecundario from "@/components/atomos/button/submit/secundario/ButtonSubmitSecundario";
-import ButtonResaltado from "@/components/atomos/button/submit/resaltado/ButtonTerciario";
+import ButtonResaltado from "@/components/atomos/button/submit/resaltado/ButtonResaltado";
 
 function Rol() {
   return (
