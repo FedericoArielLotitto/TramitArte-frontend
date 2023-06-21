@@ -5,10 +5,15 @@ import { Box } from "@mui/material";
 import theme from "@/app/theme";
 import Logo from "@/components/atomos/logo/Logo";
 import ButtonTerciario from "@/components/atomos/button/submit/terciario/ButtonTerciario";
-import ButtonSubmitSecundario from "@/components/atomos/button/submit/secundario/ButtonSubmitSecundario";
 import ButtonResaltado from "@/components/atomos/button/submit/resaltado/ButtonResaltado";
+import {useSearchParams} from "next/navigation"
 
 function Rol() {
+  const searchParams = useSearchParams()
+
+  console.log(searchParams.get("email"));
+
+
   return (
     <ThemeProvider theme={theme}>
       <Box sx={{ backgroundColor: 'primary.main', height: "100vh" }}>
