@@ -3,15 +3,15 @@ import Link from "next/link";
 
 const { Button, ThemeProvider } = require("@mui/material");
 
-const ButtonResaltado = ({ texto, width, event }) => (
+const ButtonResaltado = ({ texto, width, onClick }) => (
   <ThemeProvider theme={theme}>
     <Button
       sx={{ borderRadius: "45px", width: width }}
-      onClick={event}
+      onClick={onClick}
       variant="contained"
       color="resaltado"
     >
-      <Link href="/home" replace={true}>{texto}</Link>
+      {texto}
     </Button>
   </ThemeProvider>
 );

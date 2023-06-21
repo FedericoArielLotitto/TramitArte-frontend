@@ -1,11 +1,12 @@
 import AccountBoxOutlinedIcon from '@mui/icons-material/AccountBoxOutlined';
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 import "./header.css"
+import Logo from '@/components/atomos/logo/Logo';
 
 export const HeaderComponent = () => {
     return(<div class="header">
           <div class="logo">
-            Logo de la aplicacion
+            <Logo width={'60%'} />
           </div>
           <div class="header-button" style={{display: "flex"}}>
             <div className="other-button">
