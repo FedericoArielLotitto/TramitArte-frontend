@@ -6,14 +6,7 @@ import theme from "@/app/theme";
 import Logo from "@/components/atomos/logo/Logo";
 import ButtonTerciario from "@/components/atomos/button/submit/terciario/ButtonTerciario";
 import ButtonResaltado from "@/components/atomos/button/submit/resaltado/ButtonResaltado";
-
 import {useSearchParams} from "next/navigation"
-
-function Rol() {
-  const searchParams = useSearchParams()
-
-  console.log(searchParams.get("email"));
-
 import ConfirmationModal from "@/components/moleculas/confirmationModal/ConfirmationModal";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
@@ -23,6 +16,8 @@ function Rol() {
   const [rol, setRol] = useState("SOLICITANTE");
   const router = useRouter();
   const esMobile = useMediaQuery("(max-width: 576px)");
+  const searchParams = useSearchParams()
+  console.log(searchParams.get("email"));
 
   const handleEleccionRol = (event) => {
     setRol(event.target.innerText);

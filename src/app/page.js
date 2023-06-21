@@ -5,7 +5,7 @@ import styles from "./page.module.css";
 export default function Home() {
   return (
     <UserProvider>
-      <main className={styles.main}>
+      <main className="main color-change-2x">
         <div className={styles.description}>
           <div className={styles.center}>
             <Image
@@ -24,7 +24,7 @@ export default function Home() {
               className={styles.card}
               target="_blank"
               rel="noopener noreferrer"
-              >
+            >
               <h2>
                 logIn <span>-&gt;</span>
               </h2>
@@ -43,7 +43,6 @@ export default function Home() {
           </div>
         </div>
       </main>
-   
-              </UserProvider>
+    </UserProvider>
   );
 }
