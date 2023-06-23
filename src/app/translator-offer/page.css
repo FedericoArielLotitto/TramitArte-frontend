@@ -1,27 +1,28 @@
 .page-body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     padding: 2rem;
     min-height: calc(100vh - 7rem);
+    width: 100%;
 }
 
-.doc-upload {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem;
-    border-radius: 0.5rem;
-    opacity: 90%;
+.grid-style {
+    display: inline-block;
+    max-height: 6rem;
+    overflow: auto;
+    white-space: nowrap;
 }
+
+/* .grid-style {
+    display: flex;
+    overflow-x: hidden
+} */
 
 .card-body {
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    align-items: center;
     margin: 1rem;
-    border-radius: 2rem;
+    border-radius: 1rem;
     opacity: 70%;
 }
 
@@ -33,6 +34,7 @@
 
 .font-secondary {
     font-weight: bold;
+    text-align: center;
     color: black;
 }
 
