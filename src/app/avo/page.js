@@ -1,7 +1,7 @@
 "use client"
 
 import MenuComponent from "@/components/moleculas/menu/menu"
-import "../(menu-info)/home/home.css"
+import "../../components/home/home.css"
 import "./page.css"
 import ButtomSubmitSecundarioDesktop from "@/components/atomos/button/submit/secundarioDesktop/ButtomSubmitSecundarioDesktop"
 import { useEffect, useState } from "react"
@@ -11,7 +11,7 @@ import FileUploadOutlinedIcon from '@mui/icons-material/FileUploadOutlined';
 import Footer from "@/components/moleculas/footer/Footer"
 import CustomAppBar from "@/components/moleculas/appBar/CustomAppBar"
 import breakpoints from "../breakpoints"
-import { HeaderComponent } from "../(menu-info)/home/header/header"
+import { HeaderComponent } from "../../components/header/header"
 
 const styleButton = {
     fontFamily: 'Montserrat',
@@ -49,20 +49,6 @@ const AvoComponent = () => {
     const handleFileSelect = () => {
         document.getElementById('file-input').click();
     }
-
-    // Renderiza la pantalla
-    useEffect(() => {
-        const handleResize = () => {
-        setWindowWidth(window.innerWidth);
-        }
-
-        window.addEventListener('resize', handleResize);
-
-        // Elimina el event listener al desmontar el componente
-        return () => {
-        window.removeEventListener('resize', handleResize);
-        }
-    }, [])
 
     return(
     <div class="container">

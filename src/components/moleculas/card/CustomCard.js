@@ -13,10 +13,10 @@ function CustomCard(event) {
           padding: '5%'
         }}
       >
-        <Typography textAlign="center" color="terciario">
+        <Typography textAlign="center" color="terciario.main">
           {"Aún no iniciaste tu trámite"}
         </Typography>
-        <Typography textAlign="center" color="terciario" variant="h6">
+        <Typography textAlign="center" color="terciario.main" variant="h6">
           {"¡Inicialo acá y consegúi tu ciudadanía!"}
         </Typography>
         <Box sx={{ display: 'flex', justifyContent: 'center'}}>

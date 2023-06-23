@@ -1,9 +1,11 @@
 import ButtonSubmitDesktop from "@/components/atomos/button/submit/defaultDesktop/ButtonSubmitDesktop"
-import { Avatar } from "@mui/material"
+import { Avatar, useMediaQuery } from "@mui/material"
 import "./userCard.css"
+import breakpoints from "@/app/breakpoints"
 
 const UserCardComponent = ({users, onDelete}) => {
- 
+    const esResolucionMobile = useMediaQuery(`(max-width: ${breakpoints.mobile})`)
+
     return(
     <>
         {users.map((user, index) => (
@@ -29,7 +31,7 @@ const UserCardComponent = ({users, onDelete}) => {
                         <p>Documento: {user.document}</p>
                         <p>Id de trámite: {user.id}</p>
                     </div>
-                    {window.innerWidth <= 576 ? (<></>) : (<Avatar src={user.image} style={{ width: "15.6em", height: "15.6em" }} />)}
+                    {esResolucionMobile ? (<></>) : (<Avatar src={user.image} style={{ width: "15.6em", height: "15.6em" }} />)}
                 </div>
                 <div className="card-info">
                     <ButtonSubmitDesktop texto={"Notificar"} event={() => onDelete(index)}/>

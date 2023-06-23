@@ -3,9 +3,9 @@
 import State from "@/components/atomos/state/state"
 import { Box, Button, CircularProgress, useMediaQuery } from "@mui/material"
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
-import "../home/tramite/tramite.css"
-import "../home/tramite/tramiteCard/tramiteCard.css"
-import "../home/home.css"
+import "../../../components/tramite/tramite.css"
+import "../../../components/tramiteCard/tramiteCard.css"
+import "../../../components/home/home.css"
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import MenuComponent from "@/components/moleculas/menu/menu";
 import breakpoints from "@/app/breakpoints";
