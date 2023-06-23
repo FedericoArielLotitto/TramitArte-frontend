@@ -6,7 +6,7 @@ import theme from "@/app/theme";
 import Logo from "@/components/atomos/logo/Logo";
 import ButtonTerciario from "@/components/atomos/button/submit/terciario/ButtonTerciario";
 import ButtonResaltado from "@/components/atomos/button/submit/resaltado/ButtonResaltado";
-import {useSearchParams} from "next/navigation"
+import { useSearchParams } from "next/navigation";
 import ConfirmationModal from "@/components/moleculas/confirmationModal/ConfirmationModal";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
@@ -16,7 +16,7 @@ function Rol() {
   const [rol, setRol] = useState("SOLICITANTE");
   const router = useRouter();
   const esMobile = useMediaQuery("(max-width: 576px)");
-  const searchParams = useSearchParams()
+  const searchParams = useSearchParams();
   console.log(searchParams.get("email"));
 
   const handleEleccionRol = (event) => {
@@ -26,7 +26,13 @@ function Rol() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Box sx={{ backgroundColor: "primary.main", minHeight: "100vh", height: '100vh'}}>
+      <Box
+        sx={{
+          backgroundColor: "primary.main",
+          minHeight: "100vh",
+          height: "100vh",
+        }}
+      >
         <Box
           sx={{
             minHeight: "50%",
@@ -63,7 +69,19 @@ function Rol() {
         <ConfirmationModal
           esVisible={esVisible}
           handleRechazar={() => setEsVisible(false)}
-          handleConfirmar={() => router.push("/home")}
+          handleConfirmar={async () => {
+            await fetch("http://localhost:8585/api/usuario", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                correoElectronico: searchParams.get("email"),
+                rol: rol,
+                nombre: "nombre",
+                apellido: "apellido"
+              }),
+            });
+            router.push("/home");
+          }}
           texto={`¿Estás seguro de iniciar sesión como ${rol}?`}
         ></ConfirmationModal>
       </Box>

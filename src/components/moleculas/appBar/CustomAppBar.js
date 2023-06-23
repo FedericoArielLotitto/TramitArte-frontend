@@ -4,7 +4,7 @@ import UserIcon from "@/components/atomos/icon/user/default/UserIcon";
 import { ThemeProvider } from "@emotion/react";
 import { AppBar, Box, Toolbar, IconButton } from "@mui/material";
 
-function CustomAppBar() {
+function CustomAppBar({cerrarSesion}) {
   return (
     <ThemeProvider theme={theme}>
       <Box sx={{ backgroundColor: "primary.dark" }}>
