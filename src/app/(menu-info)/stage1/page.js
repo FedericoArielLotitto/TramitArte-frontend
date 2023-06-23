@@ -1,9 +1,9 @@
 "use client"
 
 import { Box, Button, CircularProgress, useMediaQuery } from "@mui/material"
-import "../home/tramite/tramite.css"
-import "../home/tramite/tramiteCard/tramiteCard.css"
-import "../home/home.css"
+import "../../../components/tramite/tramite.css"
+import "../../../components/tramiteCard/tramiteCard.css"
+import "../../../components/home/home.css"
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import ButtomSubmitSecundarioDesktop from "@/components/atomos/button/submit/secundarioDesktop/ButtomSubmitSecundarioDesktop";
 import ButtonSubmitSecundario from "@/components/atomos/button/submit/secundario/ButtonSubmitSecundario";

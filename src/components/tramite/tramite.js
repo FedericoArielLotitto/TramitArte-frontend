@@ -1,9 +1,9 @@
 import { useState } from "react";
 import "./tramite.css";
 import ButtomSubmitSecundarioDesktop from "@/components/atomos/button/submit/secundarioDesktop/ButtomSubmitSecundarioDesktop";
-import CustomCard from "@/components/moleculas/card/CustomCard";
 import { useMediaQuery } from "@mui/material";
 import breakpoints from "@/app/breakpoints";
+import CustomCard from "../moleculas/card/CustomCard";
 
 const TramiteComponent = () => {
   const [isClicked, setIsClicked] = useState(false);

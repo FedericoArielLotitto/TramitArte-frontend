@@ -2,7 +2,7 @@
 
 import CustomAppBar from "@/components/moleculas/appBar/CustomAppBar";
 import Footer from "@/components/moleculas/footer/Footer";
-import { HeaderComponent } from "./home/header/header";
+import { HeaderComponent } from "../../components/header/header";
 import breakpoints  from "@/app/breakpoints"
 import { useMediaQuery } from "@mui/material";
 
