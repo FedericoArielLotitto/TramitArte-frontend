@@ -33,10 +33,58 @@ export default function request() {
                   <Grid
                     container
                     spacing={1}
-                    sx={{ justifyContent: 'space-between' }}
+                    sx={{ justifyContent: 'center' }}
                   >
 
-                    <Card sx={{ maxWidth: 345, margin: '1rem' }}>
+                    <Card sx={{ maxWidth: 345, margin: '1rem', padding: '1rem' }}>
+                        <CardMedia
+                            component="img"
+                            height="140"
+                            image="https://img.freepik.com/free-vector/illustration-paper_53876-5860.jpg?w=826&t=st=1686592542~exp=1686593142~hmac=2ad82beefe2bcbb825d13506e6c5d0899c4535d225105cd145f93b06c08c9aae"
+                        />
+                        <CardContent>
+                            <Typography gutterBottom variant="h5" component="div">
+                                item.name - item.surname
+                            </Typography>
+                            <Typography variant="body2" color="text.secondary">
+                                item.description
+                            </Typography>
+                            <Typography variant="body2" color="text.secondary">
+                                $ item.price
+                            </Typography>
+                        </CardContent>
+                        <CardActions>
+                            <Button size="small" color="primary">
+                                Aceptad Solicitud
+                            </Button>
+                        </CardActions>
+                    </Card>
+
+                    <Card sx={{ maxWidth: 345, margin: '1rem', padding: '1rem' }}>
+                        <CardMedia
+                            component="img"
+                            height="140"
+                            image="https://img.freepik.com/free-vector/illustration-paper_53876-5860.jpg?w=826&t=st=1686592542~exp=1686593142~hmac=2ad82beefe2bcbb825d13506e6c5d0899c4535d225105cd145f93b06c08c9aae"
+                        />
+                        <CardContent>
+                            <Typography gutterBottom variant="h5" component="div">
+                                item.name - item.surname
+                            </Typography>
+                            <Typography variant="body2" color="text.secondary">
+                                item.description
+                            </Typography>
+                            <Typography variant="body2" color="text.secondary">
+                                $ item.price
+                            </Typography>
+                        </CardContent>
+                        <CardActions>
+                            <Button size="small" color="primary">
+                                Aceptad Solicitud
+                            </Button>
+                        </CardActions>
+                    </Card>
+
+                    <Card sx={{ maxWidth: 345, margin: '1rem', padding: '1rem' }}>
                         <CardMedia
                             component="img"
                             height="140"
@@ -77,34 +125,138 @@ export default function request() {
                         <Typography className="font-secondary">
                             Soltantes buscando traducciones
                         </Typography>
-                            <Grid sx={{ display: "flex", flexDirection: "row" }}>
-                                <Card
-                                    className="card-body"
-                                    onClick={handleClick}
-                                >
-                                    <Box sx={{ padding: '0.5rem', backgroundColor: "primary.dark" }}>
-                                        <Avatar />
-                                    </Box>
-                                </Card>
+                            <Grid className="grid-style">
 
-                                <Card
-                                    className="card-body"
-                                    onClick={handleClick}
-                                >
-                                    <Box sx={{ padding: '0.5rem', backgroundColor: "primary.dark" }}>
-                                        <Avatar />
-                                    </Box>
-                                </Card>
+                              <Card
+                                className="card-body"
+                                onClick={handleClick}
+                              >
+                                <Box sx={{ padding: '0.5rem', backgroundColor: "primary.dark" }}>
+                                  <Avatar />
+                                </Box>
+                                <Box sx={{ flexDirection: "column", padding: '0 1rem' }}>
+                                  <Typography>item.name</Typography>
+                                  <Typography>item.surname</Typography>
+                                </Box>
+                                <Box sx={{ padding: '0 1rem' }}>
+                                  <SendIcon color="info"/>
+                                </Box>
+                              </Card>
 
-                                <Card
-                                    className="card-body"
-                                    onClick={handleClick}
-                                >
-                                    <Box sx={{ padding: '0.5rem', backgroundColor: "primary.dark" }}>
-                                        <Avatar />
-                                    </Box>
-                                </Card>
+                              <Card
+                                className="card-body"
+                                onClick={handleClick}
+                              >
+                                <Box sx={{ padding: '0.5rem', backgroundColor: "primary.dark" }}>
+                                  <Avatar />
+                                </Box>
+                                <Box sx={{ flexDirection: "column", padding: '0 1rem' }}>
+                                  <Typography>item.name</Typography>
+                                  <Typography>item.surname</Typography>
+                                </Box>
+                                <Box sx={{ padding: '0 1rem' }}>
+                                  <SendIcon color="info"/>
+                                </Box>
+                              </Card>
+
+                              <Card
+                                className="card-body"
+                                onClick={handleClick}
+                              >
+                                <Box sx={{ padding: '0.5rem', backgroundColor: "primary.dark" }}>
+                                  <Avatar />
+                                </Box>
+                                <Box sx={{ flexDirection: "column", padding: '0 1rem' }}>
+                                  <Typography>item.name</Typography>
+                                  <Typography>item.surname</Typography>
+                                </Box>
+                                <Box sx={{ padding: '0 1rem' }}>
+                                  <SendIcon color="info"/>
+                                </Box>
+                              </Card>
+
                             </Grid>
+
+                            <Grid
+                              container
+                              spacing={1}
+                              sx={{ justifyContent: 'center' }}
+                            >
+
+                              <Card sx={{ maxWidth: 345, margin: '1rem', padding: '1rem' }}>
+                                  <CardMedia
+                                      component="img"
+                                      height="140"
+                                      image="https://img.freepik.com/free-vector/illustration-paper_53876-5860.jpg?w=826&t=st=1686592542~exp=1686593142~hmac=2ad82beefe2bcbb825d13506e6c5d0899c4535d225105cd145f93b06c08c9aae"
+                                  />
+                                  <CardContent>
+                                      <Typography gutterBottom variant="h5" component="div">
+                                          item.name - item.surname
+                                      </Typography>
+                                      <Typography variant="body2" color="text.secondary">
+                                          item.description
+                                      </Typography>
+                                      <Typography variant="body2" color="text.secondary">
+                                          $ item.price
+                                      </Typography>
+                                  </CardContent>
+                                  <CardActions>
+                                      <Button size="small" color="primary">
+                                          Aceptad Solicitud
+                                      </Button>
+                                  </CardActions>
+                              </Card>
+
+                              <Card sx={{ maxWidth: 345, margin: '1rem', padding: '1rem' }}>
+                                  <CardMedia
+                                      component="img"
+                                      height="140"
+                                      image="https://img.freepik.com/free-vector/illustration-paper_53876-5860.jpg?w=826&t=st=1686592542~exp=1686593142~hmac=2ad82beefe2bcbb825d13506e6c5d0899c4535d225105cd145f93b06c08c9aae"
+                                  />
+                                  <CardContent>
+                                      <Typography gutterBottom variant="h5" component="div">
+                                          item.name - item.surname
+                                      </Typography>
+                                      <Typography variant="body2" color="text.secondary">
+                                          item.description
+                                      </Typography>
+                                      <Typography variant="body2" color="text.secondary">
+                                          $ item.price
+                                      </Typography>
+                                  </CardContent>
+                                  <CardActions>
+                                      <Button size="small" color="primary">
+                                          Aceptad Solicitud
+                                      </Button>
+                                  </CardActions>
+                              </Card>
+
+                              <Card sx={{ maxWidth: 345, margin: '1rem', padding: '1rem' }}>
+                                  <CardMedia
+                                      component="img"
+                                      height="140"
+                                      image="https://img.freepik.com/free-vector/illustration-paper_53876-5860.jpg?w=826&t=st=1686592542~exp=1686593142~hmac=2ad82beefe2bcbb825d13506e6c5d0899c4535d225105cd145f93b06c08c9aae"
+                                  />
+                                  <CardContent>
+                                      <Typography gutterBottom variant="h5" component="div">
+                                          item.name - item.surname
+                                      </Typography>
+                                      <Typography variant="body2" color="text.secondary">
+                                          item.description
+                                      </Typography>
+                                      <Typography variant="body2" color="text.secondary">
+                                          $ item.price
+                                      </Typography>
+                                  </CardContent>
+                                  <CardActions>
+                                      <Button size="small" color="primary">
+                                          Aceptad Solicitud
+                                      </Button>
+                                  </CardActions>
+                              </Card>
+
+                            </Grid>
+                            
                     </Box>
                 </Box>
               </ThemeProvider>
