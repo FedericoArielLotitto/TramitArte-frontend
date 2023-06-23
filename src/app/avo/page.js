@@ -1,16 +1,17 @@
 "use client"
 
 import MenuComponent from "@/components/moleculas/menu/menu"
-import { HeaderComponent } from "../home/header/header"
-import "../home/home.css"
+import "../(menu-info)/home/home.css"
 import "./page.css"
 import ButtomSubmitSecundarioDesktop from "@/components/atomos/button/submit/secundarioDesktop/ButtomSubmitSecundarioDesktop"
 import { useEffect, useState } from "react"
-import { Button, Modal } from "@mui/material"
+import { Button, Modal, useMediaQuery } from "@mui/material"
 import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutlined';
 import FileUploadOutlinedIcon from '@mui/icons-material/FileUploadOutlined';
 import Footer from "@/components/moleculas/footer/Footer"
 import CustomAppBar from "@/components/moleculas/appBar/CustomAppBar"
+import breakpoints from "../breakpoints"
+import { HeaderComponent } from "../(menu-info)/home/header/header"
 
 const styleButton = {
     fontFamily: 'Montserrat',
@@ -28,7 +29,7 @@ const AvoComponent = () => {
     const menuUser = ["Traductores Registrados", "Family Search", "Preguntas"]
    // const fileTitles = ["Certificado de nacimiento", "Certificado de matrimonio", "Certificado de defunción", "Documentos de identidad(Pasaporte, DNI, otros)"]
     const [isModalOpen, setIsModalOpen] = useState(false)
-    const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+    const esResolucionMobile = useMediaQuery(`(max-width: ${breakpoints.mobile})`)
     const avo1 = ""
     const avo2 = ""
     const avo3 = ""
@@ -65,12 +66,12 @@ const AvoComponent = () => {
 
     return(
     <div class="container">
-        {windowWidth <= 576 ? (
+        {esResolucionMobile ? (
           <CustomAppBar/>
         ) : (<HeaderComponent/>)}
         <div className="home-conteiner">
             <div className="columns-container">
-            {windowWidth <= 576 ? (
+            {esResolucionMobile ? (
                 <></>
               ) : (<MenuComponent array={menuUser}/>)}
               <div className="contenido">
@@ -102,13 +103,13 @@ const AvoComponent = () => {
                 <div className="drop-file-container">
                     <div className="drag-drop-file">
                         <div className="icon-container">
-                            {windowWidth <= 576 ? (
+                            {esResolucionMobile ? (
                                 <FileUploadOutlinedIcon style={{color:"#57C5B6", width:"3.75rem", height:"3.75rem"}}/>
                             ) : (
                                 <FileUploadOutlinedIcon style={{color:"#57C5B6", width:"9rem", height:"9rem"}}/>
                             )}
                         </div>
-                        {windowWidth <= 576 ? (
+                        {esResolucionMobile ? (
                             <></>
                         ) : (
                             <div className="text-container">
@@ -123,7 +124,7 @@ const AvoComponent = () => {
                 </div>
             </div>
         </Modal>
-        {windowWidth <= 576 ? (
+        {esResolucionMobile ? (
           <div className="footer-container">
             <Footer/>
           </div>

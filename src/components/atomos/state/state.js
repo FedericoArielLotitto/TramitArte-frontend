@@ -1,10 +1,7 @@
 import "./state.css"
 
-const State = ({text, icon, type}) => (
+const State = ({text, icon}) => (
     <div className="estado">
-        <div className="e-1">
-            <p>{type}</p>
-        </div>
         <div className="e-2">
             <p>{text}</p>
             {icon}

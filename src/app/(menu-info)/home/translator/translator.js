@@ -1,9 +1,9 @@
 import UserCardComponent from "@/components/moleculas/userCard/userCard"
 import "../tramite/tramite.css"
 import "./translator.css"
-import { Scrollbar } from "react-scrollbars-custom"
 
 const TranslatorComponent = ({users, onDelete}) => {
+
     const handleDeleteUser = (index) => {
         const updatedUsers = [...users]
         updatedUsers.splice(index, 1)
@@ -22,21 +22,11 @@ const TranslatorComponent = ({users, onDelete}) => {
             //     </div>
             // </div>
             <>
-                {window.innerWidth <= 576 ? (
-                    <div className="request-container">
-                        <div className="request-card-container">
-                            <UserCardComponent users={users} onDelete={handleDeleteUser}/>
-                        </div>
+                <div className="request-container">
+                    <div className="request-card-container">
+                        <UserCardComponent users={users} onDelete={handleDeleteUser}/>
                     </div>
-                ) : (
-                    <Scrollbar style={{height: "100vh", width:"100%"}}>
-                        <div className="request-container">
-                            <div className="request-card-container">
-                                <UserCardComponent users={users} onDelete={handleDeleteUser}/>
-                            </div>
-                        </div>
-                    </Scrollbar>
-                )}
+                </div>
             </>
         ) : (
             <div className="card-container">

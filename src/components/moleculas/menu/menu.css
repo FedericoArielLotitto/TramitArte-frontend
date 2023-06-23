@@ -5,7 +5,6 @@
  }
 
  .items-container{
-    min-height: 100vh;
     background-color: #1A5F7A;
     display: grid;
     text-align: start;
