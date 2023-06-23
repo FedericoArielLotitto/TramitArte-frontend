@@ -80,7 +80,7 @@ function Rol() {
                 apellido: "apellido"
               }),
             });
-            router.push("/home");
+            router.push("/home-translator");
           }}
           texto={`¿Estás seguro de iniciar sesión como ${rol}?`}
         ></ConfirmationModal>
