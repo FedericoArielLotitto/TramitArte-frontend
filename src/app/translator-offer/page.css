@@ -8,6 +8,7 @@
     display: inline-block;
     max-height: 6rem;
     overflow: auto;
+    white-space: nowrap;
 }
 
 /* .grid-style {

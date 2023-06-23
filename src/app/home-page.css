@@ -5,6 +5,7 @@
 
 .marca__disposicion {
     display: flex;
+    padding: 1.2rem;
 }
 
 .marca__background{

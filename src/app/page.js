@@ -14,15 +14,15 @@ export default function Home() {
     <UserProvider>
       <main className="main">
         <div className="marca marca__disposicion marca__background">
-          <section className={styles.card + " marca--h1__disposicion"}>
+          <section className="marca--h1__disposicion">
             <h1 className="marca--titulo__resaltado">
               TRAMITARTE
             </h1>
           </section>
           <a
             href="/api/auth/login"
-            className={styles.card}
-            target="_blank"
+            className=""
+            // target="_blank"
             rel="noopener noreferrer"
           >
             {esMobile ? <LoginIcon></LoginIcon> : <h2>Iniciar Sesi&oacute;n</h2>}
