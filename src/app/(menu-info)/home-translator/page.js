@@ -15,11 +15,6 @@ class User {
   }
   
   const HomeTranslatorComponent = () => {
-    const menuTranslator = [
-      "Traducciones Realizadas",
-      "Solicitudes Pendientes",
-      "Solicitudes de Traducción",
-    ];
     const user1 = new User(
       "Mateo Pastorini",
       "ASDFDF8787",
@@ -37,7 +32,7 @@ class User {
       <div class="container">
         <div className="home-conteiner">
             <div className="columns-container">
-              <MenuComponent array={menuTranslator} />
+              <MenuComponent/>
               <TranslatorComponent users={users} onDelete={handleDeleteUser} />
             </div>
         </div>

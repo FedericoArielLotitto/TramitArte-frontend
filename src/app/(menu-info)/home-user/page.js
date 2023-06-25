@@ -5,13 +5,12 @@ import TramiteComponent from "../../../components/tramite/tramite";
 import "../../../components/home/home.css"
 
 const HomeUserComponent = () => {
-    const menuUser = ["Traductores Registrados", "Family Search", "Preguntas"];
 
     return (
       <div class="container">
         <div className="home-conteiner">
             <div className="columns-container">
-              <MenuComponent array={menuUser} />
+              <MenuComponent/>
               <TramiteComponent />
             </div>
         </div>
