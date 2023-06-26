@@ -26,3 +26,22 @@
     border-bottom: 4px solid #F6F4FF;
 }
 
+@media (max-width: 576px) {
+    .menu{
+        min-width: 100vw;
+        display:flex;
+        text-align:center;
+        justify-content:center;
+        align-items:start;
+    }
+
+    .items_container{
+        align-items: center;
+    }
+
+    .menu-item{
+        margin-top:2rem;
+        min-width:80vw;
+        justify-content: center;
+    }
+}
