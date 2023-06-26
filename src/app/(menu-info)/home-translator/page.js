@@ -23,7 +23,7 @@ class User {
     const user1 = new User(
       "Mateo Pastorini",
       "ASDFDF8787",
-      "https://i.pinimg.com/564x/e8/ac/0c/e8ac0c49baf56bc75d422e4d4d863f43.jpg",
+      "https://img.freepik.com/fotos-premium/vista-lateral-perfil-retrato-hombre-barbudo-joven-guapo-tranquilo-serio-camisa-negra-pie-mirando-adelante-tiro-estudio-interior-aislado-sobre-fondo-pared-blanca-clara_2221-7780.jpg",
       "Certificado.pdf"
     );
     const userArray = [user1, user1, user1, user1];
