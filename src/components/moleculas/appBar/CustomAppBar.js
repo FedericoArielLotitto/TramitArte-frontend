@@ -7,10 +7,12 @@ import { useState } from 'react';
 import MenuComponent from "../menu/menu";
 import ClearIcon from '@mui/icons-material/Clear';
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
+import { useRouter } from "next/navigation";
 
 function CustomAppBar({ cerrarSesion }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [menuAnchorEl, setMenuAnchorEl] = useState(null);
+  const router = useRouter();
 
   const menuItemStyle = {
     fontFamily: "Montserrat",
@@ -70,7 +72,7 @@ function CustomAppBar({ cerrarSesion }) {
                 },
               }}
             >
-              <MenuItem style={menuItemStyle}>Mi cuenta</MenuItem>
+              <MenuItem style={menuItemStyle} onClick={() => router.push("/profile-user")}>Mi cuenta</MenuItem>
               <hr color="#159895" style={{marginLeft:"10px", marginRight:"10px"}}></hr>
               <MenuItem onClick={cerrarSesion} style={menuItemStyle} sx={{justifyContent:"space-between"}}>
                   Cerrar<br></br>sesión
