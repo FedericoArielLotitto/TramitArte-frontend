@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@auth0/auth0-react": "^2.1.1",
+    "@auth0/nextjs-auth0": "^2.6.2",
     "@chakra-ui/next-js": "^2.1.4",
     "@chakra-ui/react": "^2.7.0",
     "@emotion/react": "^11.11.0",
@@ -16,6 +18,7 @@
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.13.4",
+    "axios": "^1.4.0",
     "eslint": "8.41.0",
     "eslint-config-next": "13.4.4",
     "framer-motion": "^10.12.16",
@@ -23,6 +26,8 @@
     "next": "13.4.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-responsive": "^9.0.2"
+    "react-responsive": "^9.0.2",
+    "react-scrollbars-custom": "^4.1.1",
+    "tailwindcss": "^3.3.2"
   }
 }

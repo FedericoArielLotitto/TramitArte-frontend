@@ -19,7 +19,8 @@ function PreguntasFrecuentes() {
     <div sx={{height: '100%', backgroundColor: ThemeProvider.blancoFantasma}}>
       <ThemeProvider theme={theme}>
 
-      <Accordion >
+      <Accordion sx={{ padding: '2%', margin: 0}}>
+
         <AccordionSummary sx={{backgroundColor:"terciario.main" , color:"terciario.contrastText",
         margin:'2% 7%', justifyContent: 'center', alignItems: 'center', borderRadius:70}}
           expandIcon={<ExpandMoreIcon sx={{color: "terciario.contrastText"}}/>}
@@ -40,7 +41,7 @@ function PreguntasFrecuentes() {
           </Typography>
         </AccordionDetails>
       </Accordion >
-      <Accordion>
+      <Accordion sx={{ padding: '2%', margin: 0}}>
         <AccordionSummary sx={{backgroundColor:"terciario.main" , color:"terciario.contrastText",
         margin:'2% 7%', justifyContent: 'center', alignItems: 'center', borderRadius:70}}
           expandIcon={<ExpandMoreIcon sx={{color: "terciario.contrastText"}}/>}
@@ -55,7 +56,7 @@ function PreguntasFrecuentes() {
           </Typography>
         </AccordionDetails>
       </Accordion>
-      <Accordion>
+      <Accordion sx={{ padding: '2%', margin: 0}}>
         <AccordionSummary sx={{backgroundColor:"terciario.main" , color:"terciario.contrastText",
         margin:'2% 7%', justifyContent: 'center', alignItems: 'center', borderRadius:70}}
           expandIcon={<ExpandMoreIcon sx={{color: "terciario.contrastText"}}/>}
@@ -71,7 +72,7 @@ function PreguntasFrecuentes() {
           </Typography>
         </AccordionDetails>
       </Accordion>
-      <Accordion>
+      <Accordion sx={{ padding: '2%', margin: 0}}>
         <AccordionSummary sx={{backgroundColor:"terciario.main" , color:"terciario.contrastText",
         margin:'2% 7%', justifyContent: 'center', alignItems: 'center', borderRadius:70}}
           expandIcon={<ExpandMoreIcon sx={{color: "terciario.contrastText"}}/>}
@@ -88,7 +89,7 @@ function PreguntasFrecuentes() {
           </Typography>
         </AccordionDetails>
       </Accordion>
-      <Accordion>
+      <Accordion sx={{ padding: '2%', margin: 0}}>
         <AccordionSummary sx={{backgroundColor:"terciario.main" , color:"terciario.contrastText",
         margin:'2% 7%', justifyContent: 'center', alignItems: 'center', borderRadius:70}}
           expandIcon={<ExpandMoreIcon sx={{color: "terciario.contrastText"}}/>}

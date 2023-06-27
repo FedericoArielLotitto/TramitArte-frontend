@@ -1,25 +1,41 @@
-body {
-    margin: 0;
-}
-
 .page-body {
-    min-height: calc(100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    min-height: calc(100vh - 7rem);
 }
 
-.primary-color {
-    background-color: #159895;
+.doc-upload {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    opacity: 90%;
 }
 
-.background {
-    background-color: #57C5B6;
+.card-body {
+    display: flex;
+    flex-direction: row;
+    margin: 1rem;
+    border-radius: 2rem;
+    opacity: 70%;
 }
 
-.appbar {
-    height: 4rem;
-    background-color: #159895;
+.font-basics {
+    font-weight: bold;
+    color: white;
+    padding: 0.5rem;
+}
+
+.font-secondary {
+    font-weight: bold;
+    color: black;
 }
 
 .footer {
-    height: 4rem;
     background-color: #159895;
 }
