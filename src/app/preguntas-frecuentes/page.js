@@ -16,10 +16,10 @@ function PreguntasFrecuentes() {
   //const isMobile = window.innerWidth <= 768;
 
   return (
-    <div >
+    <div sx={{height: '100%', backgroundColor: ThemeProvider.blancoFantasma}}>
       <ThemeProvider theme={theme}>
 
-      <Accordion>
+      <Accordion >
         <AccordionSummary sx={{backgroundColor:"terciario.main" , color:"terciario.contrastText",
         margin:'2% 7%', justifyContent: 'center', alignItems: 'center', borderRadius:70}}
           expandIcon={<ExpandMoreIcon sx={{color: "terciario.contrastText"}}/>}
@@ -32,9 +32,9 @@ function PreguntasFrecuentes() {
           <Typography>
             Podés realizar la búsqueda de tu AVO (antepasado italiano que emigró) en:
             <ul>
-              <li><a href="https://www.familysearch.org/">Family Search</a></li>
-              <li><a href="https://antenati.cultura.gov.it/?lang=es">Antenati</a></li>
-              <li><a href="https://www.myheritage.es/">My Heritage</a></li>
+              <li><a href="https://www.familysearch.org/" target="_blank" rel="noopener noreferrer">Family Search</a></li>
+              <li><a href="https://antenati.cultura.gov.it/?lang=es" target="_blank" rel="noopener noreferrer">Antenati</a></li>
+              <li><a href="https://www.myheritage.es/" target="_blank" rel="noopener noreferrer">My Heritage</a></li>
             </ul>
             Una vez terminada la búsqueda, cargá los datos en la sección Etapa 1
           </Typography>
