@@ -54,13 +54,13 @@ export default function request() {
                         />
                         <CardContent>
                             <Typography gutterBottom variant="h5" component="div">
-                                item.name - item.surname
+                                {item.name} - {item.surname}
                             </Typography>
                             <Typography variant="body2" color="text.secondary">
-                                item.description
+                                {item.description}
                             </Typography>
                             <Typography variant="body2" color="text.secondary">
-                                $ item.price
+                                $ {item.price}
                             </Typography>
                         </CardContent>
                         <CardActions>
@@ -69,6 +69,7 @@ export default function request() {
                             </Button>
                         </CardActions>
                       </Card>
+
                     ))}
 
                   </Grid>
@@ -99,8 +100,8 @@ export default function request() {
                                   <Avatar />
                                 </Box>
                                 <Box sx={{ flexDirection: "column", padding: '0 1rem' }}>
-                                  <Typography>item.name</Typography>
-                                  <Typography>item.surname</Typography>
+                                  <Typography>{item.name}</Typography>
+                                  <Typography>{item.surname}</Typography>
                                 </Box>
                                 <Box sx={{ padding: '0 1rem' }}>
                                   <SendIcon color="info"/>
@@ -125,13 +126,10 @@ export default function request() {
                                   />
                                   <CardContent>
                                       <Typography gutterBottom variant="h5" component="div">
-                                          item.name - item.surname
+                                          {item.name} - {item.surname}
                                       </Typography>
                                       <Typography variant="body2" color="text.secondary">
-                                          item.description
-                                      </Typography>
-                                      <Typography variant="body2" color="text.secondary">
-                                          $ item.price
+                                          $ {item.price}
                                       </Typography>
                                   </CardContent>
                                   <CardActions>
