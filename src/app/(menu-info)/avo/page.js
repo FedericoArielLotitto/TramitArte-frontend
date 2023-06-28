@@ -5,10 +5,11 @@ import "@/app/components/home/home.css";
 import "./page.css";
 import ButtomSubmitSecundarioDesktop from "@/app/components/atomos/button/submit/secundarioDesktop/ButtomSubmitSecundarioDesktop";
 import { useEffect, useState } from "react";
-import { Button, Modal, useMediaQuery } from "@mui/material";
+import { Avatar, Button, CardMedia, Modal, useMediaQuery } from "@mui/material";
 import ModeEditOutlineOutlinedIcon from "@mui/icons-material/ModeEditOutlineOutlined";
 import FileUploadOutlinedIcon from "@mui/icons-material/FileUploadOutlined";
 import breakpoints from "@/app/breakpoints";
+import { render } from "react-dom";
 // import IconButton from "@mui/material";
 
 const styleButton = {
@@ -28,6 +29,7 @@ const AvoComponent = () => {
   // const fileTitles = ["Certificado de nacimiento", "Certificado de matrimonio", "Certificado de defunción", "Documentos de identidad(Pasaporte, DNI, otros)"]
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [tituloElegido, setTituloElegido] = useState("");
+  const [nombreArchivo, setNombreArchivo] = useState("")
   const esResolucionMobile = useMediaQuery(
     `(max-width: ${breakpoints.mobile})`
   );
@@ -51,8 +53,9 @@ const AvoComponent = () => {
     },
   ];
 
-  const handleModal = (tituloElegido) => {
+  const handleModal = (tituloElegido, nombre) => {
     setTituloElegido(tituloElegido);
+    setNombreArchivo(nombre)
     setIsModalOpen(!isModalOpen);
   };
 
@@ -61,15 +64,16 @@ const AvoComponent = () => {
   };
 
   const handleOnChange = (event) => {
+    console.log(event.target.files)
     setTituloElegido(
       event.target.files[0]
         ? event.target.files[0].name
         : "No seleccionaste archivo"
     );
-    if(tituloElegido === "Certificado de nacimiento") setCertificadoNacimiento(event.target.file[0])
-    if(tituloElegido === "Certificado de defunción") setCertficadoDefuncion(event.target.file[0])
-    if(tituloElegido === "DNI Frente") setDniFrente(event.target.file[0])
-    if(tituloElegido === "DNI Dorso") setDniDorso(event.target.file[0])
+    if(tituloElegido === "Certificado de nacimiento") setCertificadoNacimiento(event.target.files[0])
+    if(tituloElegido === "Certificado de defunción") setCertficadoDefuncion(event.target.files[0])
+    if(tituloElegido === "DNI Frente") setDniFrente(event.target.files[0])
+    if(tituloElegido === "DNI Dorso") setDniDorso(event.target.files[0])
     setIsModalOpen(!isModalOpen);
   };
 
@@ -88,10 +92,26 @@ const AvoComponent = () => {
                   {card.variable === null ? (
                     <ButtomSubmitSecundarioDesktop
                       text="Ingresar archivo"
-                      event={() => handleModal(card.title)}
+                      event={() => handleModal(card.title, "")}
                     />
                   ) : (
-                    <p>Acá hay un archivo</p>
+                    <div className="archive-card">
+                      <div className="image-file">
+                        <Avatar src="https://img.freepik.com/vector-premium/archivo-diseno-dibujos-animados_274619-1285.jpg?w=2000"
+                        style={{width:"70px", height:"70px"}}></Avatar>
+                      </div>
+                      <div className="file-name-date">
+                        <p>{card.variable.name}</p>
+                        <p>Cargado el {new Date().toLocaleDateString()}</p>
+                      </div>
+                      <div className="edit-btn">
+                        <Button style={{borderRadius:"50px"}} onClick={() => handleModal(card.title, card.variable.name)}>
+                          <ModeEditOutlineOutlinedIcon
+                          style={{ width: "3rem", height: "3rem", color: "#1A5F7A" }}
+                          />
+                        </Button>
+                      </div>
+                    </div>
                   )}
                 </div>
               </div>
@@ -108,10 +128,9 @@ const AvoComponent = () => {
           <div className="name-edit">
             <div className="name-file">
               <p>{tituloElegido}</p>
+              <hr></hr>
+              <p>{nombreArchivo}</p>
             </div>
-            <ModeEditOutlineOutlinedIcon
-              style={{ width: "3rem", height: "3rem", color: "#1A5F7A" }}
-            />
           </div>
           <div className="drop-file-container">
             <div className="drag-drop-file">

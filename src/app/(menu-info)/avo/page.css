@@ -103,6 +103,9 @@
 
     .file-btn{
         padding-top: 20px;
+        justify-content: center;
+        align-items: center;
+        display: flex;
     }
 
     .modal-content{
@@ -126,5 +129,40 @@
         line-height: 22px;
         width: 174px;
         height: 65px;
+    }
+
+    .archive-card{
+        width: 300px;
+        height: 80px;
+        border-radius: 50px;
+        background-color: #FFFFFF;
+        border: 3px solid #002B5B;
+        color: black; 
+        display: flex;
+    }
+
+    .image-file{
+        display: flex;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .file-name-date{
+        font-family: Montserrat;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 15px;
+        letter-spacing: 0em;
+        display: grid;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .edit-btn{
+        height: 100%;
+        display: flex;
+        align-items: center;
+        padding-left: 20px;
     }
 }
