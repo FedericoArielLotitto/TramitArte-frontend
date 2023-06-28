@@ -12,7 +12,7 @@ function Map() {
     }).addTo(map);
 
     var myIcon = L.icon({
-      iconUrl: 'my-icon.png',
+      iconUrl: 'location-dot-solid.svg',
       iconSize: [10, 10],
       iconAnchor: [10, 10],
       popupAnchor: [-3, -76],
