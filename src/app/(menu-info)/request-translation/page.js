@@ -57,8 +57,8 @@ export default function request() {
                     sx={{ justifyContent: 'space-between' }}
                   >
                   
-                  {translator ? <Typography color='info'>No hay traductores registrados</Typography> : Array.from(translator).map((item) => (
-                    <Card sx={{ maxWidth: 345, margin: '1rem' }}>
+                  {translator ? <Typography color='info'>No hay traductores registrados</Typography> : Array.from(translator).map((item, index) => (
+                    <Card sx={{ maxWidth: 345, margin: '1rem' }} key={index}>
                       <CardMedia
                         component="img"
                         height="140"
@@ -124,10 +124,11 @@ export default function request() {
 
                   <Grid>
 
-                    {translator ? <Typography color='info'>No hay traductores registrados</Typography> : translator.map((item) => (
+                    {translator ? <Typography color='info'>No hay traductores registrados</Typography> : translator.map((item, index) => (
                       <Card
                         className="card-body"
                         onClick={handleClick}
+                        key={index}
                       >
                         <Box sx={{ padding: '0.5rem', backgroundColor: "primary.dark" }}>
                           <Avatar />

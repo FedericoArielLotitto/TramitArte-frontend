@@ -37,6 +37,11 @@ function CustomAppBar({ cerrarSesion }) {
     setMenuAnchorEl(null);
   };
 
+  const handleChangePage = (path) =>{
+    setMenuAnchorEl(null);
+    router.push(path)
+  }
+
   return (
     <ThemeProvider theme={theme}>
       <Box sx={{ backgroundColor: 'primary.dark' }}>
@@ -74,9 +79,9 @@ function CustomAppBar({ cerrarSesion }) {
             >
               <MenuItem style={menuItemStyle} onClick={() => router.push("/profile-user")}>Mi cuenta</MenuItem>
               <hr color="#159895" style={{marginLeft:"10px", marginRight:"10px"}}></hr>
-              <MenuItem style={menuItemStyle} onClick={() => router.push("/user-dni")}>Mis documentos</MenuItem>
+              <MenuItem style={menuItemStyle} onClick={() => handleChangePage("/user-dni")}>Mis documentos</MenuItem>
               <hr color="#159895" style={{marginLeft:"10px", marginRight:"10px"}}></hr>
-              <MenuItem style={menuItemStyle} onClick={() => router.push("/avo")}>Documentos AVO</MenuItem>
+              <MenuItem style={menuItemStyle} onClick={() => handleChangePage("/avo")}>Documentos AVO</MenuItem>
               <hr color="#159895" style={{marginLeft:"10px", marginRight:"10px"}}></hr>
               <MenuItem onClick={cerrarSesion} style={menuItemStyle} sx={{justifyContent:"space-between"}}>
                   Cerrar<br></br>sesión
