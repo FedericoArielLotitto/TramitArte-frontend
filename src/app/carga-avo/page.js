@@ -19,22 +19,44 @@ function CargaAVO() {
   const esMobile = useMediaQuery("(max-width: 576px)");
   const router = useRouter();
   const [value, setValue] = useState('female');
+  const [avo, setAvo] = useState({nombre: "fEDERICO", apellido: "lotitto", fechaNacimiento: "25/10/1995", sexo: "MASCULINO"})
 
   const handleChange = (event) => {
     setValue(event.target.value);
+    setAvo({
+      ...avo,
+      sexo: value
+    })
+  };
+
+  const nameInput = (event) => {
+    setAvo({
+      ...avo,
+      nombre: event.target.value
+    })
+  };
+
+  const surnameInput = (event) => {
+    setAvo({
+      ...avo,
+      apellido: event.target.value
+    })
+  };
+
+  const birthInput = (event) => {
+    setAvo({
+      ...avo,
+      fechaNacimiento: event.target.value
+    })
   };
 
   const handelOnClick = () => {
     tramiteService
-      .cargarAVO({
-        nombre: "fEDERICO",
-        apellido: "lotitto",
-        fechaNacimiento: "25/10/1995",
-        sexo: "MASCULINO",
-      })
+      .cargarAVO({ avo })
       .then(() => router.push("/stage2"))
       .catch((e) => console.log(e));
   };
+
   return (
     <ThemeProvider theme={theme}>
       <Box
@@ -63,6 +85,7 @@ function CargaAVO() {
             label="Nombre"
             defaultValue=""
             variant="standard"
+            onChange={nameInput}
           />
           <TextField
             sx={{ width: esMobile ? "90%" : "30%", margin: "5%" }}
@@ -71,6 +94,7 @@ function CargaAVO() {
             label="Apellido"
             defaultValue=""
             variant="standard"
+            onChange={surnameInput}
           />
           <Box
             sx={{
@@ -90,6 +114,7 @@ function CargaAVO() {
               label="Fecha de Nacimiento"
               defaultValue=""
               variant="standard"
+              onChange={birthInput}
             />
           </Box>
           <Box sx={{ width: esMobile ? "90%" : "30%", paddingY: "5%" }}>
