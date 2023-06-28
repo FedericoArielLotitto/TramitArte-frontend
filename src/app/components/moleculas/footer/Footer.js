@@ -3,7 +3,7 @@ import HomeIcon from "@/app/components/atomos/icon/home/default/HomeIcons";
 import HelpIcon from "@/app/components/atomos/icon/help/default/HelpIcon";
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import BottomNavigation from '@mui/material/BottomNavigation';
-import breakpoints from "@/app/breakpoints";
+import breakpoints from "@/app/breakpoints.js";
 import { useMediaQuery } from "@mui/material";
 import { useRouter } from "next/navigation";
 

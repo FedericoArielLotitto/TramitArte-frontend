@@ -17,6 +17,7 @@ export const HeaderComponent = () => {
         <div className="other-button">
           <AccountBoxOutlinedIcon
             style={{ width: "33px", height: "33px" }}
+            onClick={() => router.push("/profile-user")}
           ></AccountBoxOutlinedIcon>
         </div>
         <div className="other-button">
