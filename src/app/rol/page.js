@@ -3,11 +3,11 @@
 import { ThemeProvider } from "@emotion/react";
 import { Box, useMediaQuery } from "@mui/material";
 import theme from "@/app/theme";
-import Logo from "@/components/atomos/logo/Logo";
-import ButtonTerciario from "@/components/atomos/button/submit/terciario/ButtonTerciario";
-import ButtonResaltado from "@/components/atomos/button/submit/resaltado/ButtonResaltado";
+import Logo from '@/app/components/atomos/logo/Logo'
+import ButtonTerciario from "@/app/components/atomos/button/submit/terciario/ButtonTerciario";
+import ButtonResaltado from "@/app/components/atomos/button/submit/resaltado/ButtonResaltado";
 import { useSearchParams } from "next/navigation";
-import ConfirmationModal from "@/components/moleculas/confirmationModal/ConfirmationModal";
+import ConfirmationModal from "@/app/components/moleculas/confirmationModal/ConfirmationModal";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
@@ -80,7 +80,7 @@ function Rol() {
                 apellido: "apellido"
               }),
             });
-            router.push("/home-translator");
+            router.push(`/home/${rol.toLowerCase()}`);
           }}
           texto={`¿Estás seguro de iniciar sesión como ${rol}?`}
         ></ConfirmationModal>

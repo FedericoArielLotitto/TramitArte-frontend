@@ -1,6 +1,6 @@
 import theme from "@/app/theme";
-import MenuIcon from "@/components/atomos/icon/menu/default/MenuIcon";
-import UserIcon from "@/components/atomos/icon/user/default/UserIcon";
+import MenuIcon from "@/app/components/atomos/icon/menu/default/MenuIcon";
+import UserIcon from "@/app/components/atomos/icon/user/default/UserIcon";
 import { ThemeProvider } from "@emotion/react";
 import { AppBar, Box, Toolbar, IconButton, Menu, MenuItem } from "@mui/material";
 import { useState } from 'react';

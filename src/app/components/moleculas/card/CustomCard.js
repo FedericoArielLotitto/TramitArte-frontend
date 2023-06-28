@@ -1,5 +1,5 @@
 import theme from "@/app/theme";
-import ButtonSubmitSecundario from "@/components/atomos/button/submit/secundario/ButtonSubmitSecundario";
+import ButtonSubmitSecundario from "@/app/components/atomos/button/submit/secundario/ButtonSubmitSecundario";
 import { ThemeProvider } from "@emotion/react";
 import { Box, Container, Typography } from "@mui/material";
 

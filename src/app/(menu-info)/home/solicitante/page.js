@@ -1,8 +1,8 @@
 "use client";
 
-import MenuComponent from "@/components/moleculas/menu/menu";
-import TramiteComponent from "../../../components/tramite/tramite";
-import "../../../components/home/home.css"
+import MenuComponent from "@/app/components/moleculas/menu/menu";
+import TramiteComponent from "@/app/components/tramite/tramite";
+import "@/app/components/home/home.css"
 
 const HomeUserComponent = () => {
 

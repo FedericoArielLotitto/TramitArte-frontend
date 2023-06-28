@@ -49,7 +49,7 @@ const UserProfile = () => {
         <div className="profile-container">
             <div className="profile">
                 <div className="close-container">
-                    <Button style={buttonStyle} onClick={() => router.push("/home-user")}>
+                    <Button style={buttonStyle} onClick={() => router.back()}>
                         <CloseIcon style={{width:"1.6rem", height:"1.6rem"}}/>
                     </Button>
                 </div>

@@ -6,14 +6,15 @@ import { useEffect, useState } from "react";
 import { Avatar, Box, Button, Card, CardActions, CardContent, CardMedia, Grid, Typography, useMediaQuery } from "@mui/material";
 import { ThemeProvider } from "@emotion/react";
 
-import { HeaderComponent } from "../(menu-info)/home/header/header";
-import Footer from "@/components/moleculas/footer/Footer";
-import CustomAppBar from "@/components/moleculas/appBar/CustomAppBar";
-import ButtonSubmit from "@/components/atomos/button/submit/default/ButtonSubmit";
-import SendIcon from "@/components/atomos/icon/send/Send.Icon";
-import MenuComponent from "@/components/moleculas/menu/menu";
+// import { HeaderComponent } from "../(menu-info)/home/header/header";
+import Footer from "@/app/components/moleculas/footer/Footer";
+import CustomAppBar from "@/app/components/moleculas/appBar/CustomAppBar";
+import ButtonSubmit from "@/app/components/atomos/button/submit/default/ButtonSubmit";
+import SendIcon from "@/app/components/atomos/icon/send/Send.Icon";
+import MenuComponent from "@/app/components/moleculas/menu/menu";
 
 import { usuariosService } from "@/services/usuario.service";
+import Link from "next/link";
 
 export default function request() {
   const [document, setDocument] = useState(false)
@@ -24,7 +25,7 @@ export default function request() {
   const matches = useMediaQuery('(min-width: 576px)')  
 
   const getTranslators = async () => {
-    list = await usuariosService.getTranslators()
+    let list = await usuariosService.getTranslators()
     setTranslator(list)
   }
 
@@ -39,15 +40,14 @@ export default function request() {
 
   useEffect(() => {
     getTranslators()
-    console.log(document)
-  }), []
+  }, [])
 
   return (
     <div>
       { matches ? (
           <div className='page-wrapper'>
             <ThemeProvider theme={theme}>
-              <HeaderComponent />
+              {/* <HeaderComponent /> */}
               <Box sx={{ display: 'flex', flexDirection: 'row' }}>
                 <MenuComponent array={menuUser}/>
                 <Box className='page-body'>
@@ -57,7 +57,7 @@ export default function request() {
                     sx={{ justifyContent: 'space-between' }}
                   >
 
-                  {translator.map((item) => (
+                  {translator && Array.from(translator).map((item) => (
                     <Card sx={{ maxWidth: 345, margin: '1rem' }}>
                       <CardMedia
                         component="img"
@@ -91,7 +91,6 @@ export default function request() {
         )
         : (
           <div className="page-wrapper">
-            <CustomAppBar />
               <ThemeProvider theme={theme}>
               {document == false ? (
                 <Box
@@ -146,7 +145,6 @@ export default function request() {
                 </Box>
               )}
               </ThemeProvider>
-            <Footer />
           </div>
         )
       }

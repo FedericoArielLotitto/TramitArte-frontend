@@ -1,8 +1,8 @@
 "use client";
 
-import MenuComponent from "@/components/moleculas/menu/menu";
-import TranslatorComponent from "../../../components/translator/translator";
-import "../../../components/home/home.css"
+import MenuComponent from "@/app/components/moleculas/menu/menu";
+import TranslatorComponent from "@/app/omponents/translator/translator";
+import "@/app/components/home/home.css"
 import { useState } from "react";
 
 class User {

@@ -2,8 +2,7 @@
 
 import { UserProvider } from "@auth0/nextjs-auth0/client";
 import LoginIcon from '@mui/icons-material/Login';
-import styles from "./page.module.css";
-import Logo from "@/components/atomos/logo/Logo";
+import Logo from '@/app/components/atomos/logo/Logo'
 import "./home-page.css";
 import { useMediaQuery } from "@mui/material";
 

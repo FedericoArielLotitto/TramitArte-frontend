@@ -1,7 +1,7 @@
 import AccountBoxOutlinedIcon from "@mui/icons-material/AccountBoxOutlined";
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 import "./header.css";
-import Logo from "@/components/atomos/logo/Logo";
+import Logo from "@/app/components/atomos/logo/Logo";
 import { IconButton } from "@mui/material";
 import { useRouter } from "next/navigation";
 

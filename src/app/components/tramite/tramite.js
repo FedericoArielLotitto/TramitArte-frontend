@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./tramite.css";
-import ButtomSubmitSecundarioDesktop from "@/components/atomos/button/submit/secundarioDesktop/ButtomSubmitSecundarioDesktop";
+import ButtomSubmitSecundarioDesktop from "@/app/components/atomos/button/submit/secundarioDesktop/ButtomSubmitSecundarioDesktop";
 import { useMediaQuery } from "@mui/material";
 import breakpoints from "@/app/breakpoints";
 import CustomCard from "../moleculas/card/CustomCard";
