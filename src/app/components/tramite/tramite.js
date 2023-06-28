@@ -4,10 +4,12 @@ import ButtomSubmitSecundarioDesktop from "@/app/components/atomos/button/submit
 import { useMediaQuery } from "@mui/material";
 import breakpoints from "@/app/breakpoints";
 import CustomCard from "../moleculas/card/CustomCard";
+import { useRouter } from "next/navigation";
 
 const TramiteComponent = () => {
   const [isClicked, setIsClicked] = useState(false);
   const esResolucionMobile = useMediaQuery(`(max-width: ${breakpoints.mobile})`)
+  const router = useRouter()
 
   const handleClick = async () => {
     const response = await fetch(process.env.BASE_URL, {
@@ -16,7 +18,7 @@ const TramiteComponent = () => {
         "content-type": "application/json",
       },
     }).then((response) => {
-      console.log(response)
+      router.push("/stage1")
       setIsClicked(!isClicked);}).catch((e) => console.log(e));
   };
 
