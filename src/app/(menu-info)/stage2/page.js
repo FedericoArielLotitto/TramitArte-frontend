@@ -1,14 +1,15 @@
 "use client"
 
-import State from "@/components/atomos/state/state"
+import State from "@/app/components/atomos/state/state";
 import { Box, Button, CircularProgress, useMediaQuery } from "@mui/material"
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
-import "../../../components/tramite/tramite.css"
-import "../../../components/tramiteCard/tramiteCard.css"
-import "../../../components/home/home.css"
+import "@/app/components/tramite/tramite.css"
+import "@/app/components/tramiteCard/tramiteCard.css"
+import "@/app/components/home/home.css"
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-import MenuComponent from "@/components/moleculas/menu/menu";
+import MenuComponent from "@/app/components/moleculas/menu/menu";
 import breakpoints from "@/app/breakpoints";
+
 
 function Stage2Component(){
     const menuUser = ["Traductores Registrados", "Family Search", "Preguntas"];

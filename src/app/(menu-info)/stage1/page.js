@@ -1,13 +1,13 @@
 "use client"
 
 import { Box, Button, CircularProgress, useMediaQuery } from "@mui/material"
-import "../../../components/tramite/tramite.css"
-import "../../../components/tramiteCard/tramiteCard.css"
-import "../../../components/home/home.css"
+import "@/app/components/tramite/tramite.css"
+import "@/app/components/tramiteCard/tramiteCard.css"
+import "@/app/components/home/home.css"
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-import ButtomSubmitSecundarioDesktop from "@/components/atomos/button/submit/secundarioDesktop/ButtomSubmitSecundarioDesktop";
-import ButtonSubmitSecundario from "@/components/atomos/button/submit/secundario/ButtonSubmitSecundario";
-import MenuComponent from "@/components/moleculas/menu/menu";
+import ButtomSubmitSecundarioDesktop from "@/app/components/atomos/button/submit/secundarioDesktop/ButtomSubmitSecundarioDesktop";
+import ButtonSubmitSecundario from "@/app/components/atomos/button/submit/secundario/ButtonSubmitSecundario";
+import MenuComponent from "@/app/components/moleculas/menu/menu";
 import breakpoints from "@/app/breakpoints"
 
 function Stage1Component(){
