@@ -69,9 +69,9 @@ const styleButton = {
         <div className="home-conteiner">
           <div className="columns-container">
             {esResolucionMobile ? <></> : <MenuComponent array={menuUser} />}
-            <div className="contenido">
+            <div className="contenido-userdni">
               {fileCards.map((card, index) => (
-                <div className="card" key={index}>
+                <div className="card-userdni" key={index}>
                   <div className="file-title">
                     <p>{card.title}</p>
                   </div>

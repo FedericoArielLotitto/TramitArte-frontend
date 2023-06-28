@@ -1,12 +1,14 @@
 "use client"
 
-import { Avatar, Button } from "@mui/material"
-import "./profile-user.css"
+import { Avatar, Button, TextField } from "@mui/material"
+import "../profile-user/profile-user.css"
+import"./page.css"
 import BadgeIcon from '@mui/icons-material/Badge';
 import CakeIcon from '@mui/icons-material/Cake';
-import EditIcon from '@mui/icons-material/Edit';
 import CloseIcon from '@mui/icons-material/Close';
 import { useRouter } from "next/navigation";
+import DoneIcon from '@mui/icons-material/Done';
+import { useState } from "react";
 
 const infoIconStyle = {
     height:"2.4rem",
@@ -25,24 +27,7 @@ const buttonStyle = {
     alignItems: "center"
 }
 
-class User {
-    constructor(name, id, image, birthdate, username) {
-      this.name = name;
-      this.id = id;
-      this.image = image;
-      this.birthdate = birthdate;
-      this.username = username
-    }
-  }
-
-const user1 = new User(
-    "Estéban Echeverría", 
-    0, 
-    "https://img.freepik.com/fotos-premium/vista-lateral-perfil-retrato-hombre-barbudo-joven-guapo-tranquilo-serio-camisa-negra-pie-mirando-adelante-tiro-estudio-interior-aislado-sobre-fondo-pared-blanca-clara_2221-7780.jpg",
-    "25/10/1995",
-    "Mateador Argentino")
-
-const UserProfile = () => {
+const UserProfileEdit = () => {
     const router = useRouter();
 
     return(
@@ -54,26 +39,26 @@ const UserProfile = () => {
                     </Button>
                 </div>
                 <div className="photo-name">
-                    <Avatar style={{width:"7rem", height:"7rem", border:"5px solid #1A5F7A"}} src={user1.image}/>
-                    <div className="username">
-                        {user1.username}
+                    <Avatar style={{width:"7rem", height:"7rem", border:"5px solid #1A5F7A"}}/>
+                    <div className="username-edit">
+                        <CustomTextField label={"Username"}/>
                     </div>
                 </div>
                 <div className="full-name">
                     <BadgeIcon style={infoIconStyle}/>
-                    <div className="profile-info">
-                        {user1.name}
+                    <div className="profile-info-edit">
+                        <CustomTextField label={"Full name"}/>
                     </div>
                 </div>
                 <div className="birthdate">
                     <CakeIcon style={infoIconStyle}/>
-                    <div className="profile-info">
-                        {user1.birthdate}
+                    <div className="profile-info-edit">
+                        <CustomTextField label={"Birthdate"}/>
                     </div>
                 </div>
                 <div className="edit-container">
-                    <Button style={buttonStyle} onClick={() => router.push("/profile-edit")}>
-                        <EditIcon style={{width:"1.6rem", height:"1.6rem"}}/>
+                    <Button style={buttonStyle} onClick={() => router.back()}>
+                        <DoneIcon style={{width:"1.6rem", height:"1.6rem"}}/>
                     </Button>
                 </div>
             </div>
@@ -81,4 +66,24 @@ const UserProfile = () => {
     )
 }
 
-export default UserProfile
+const CustomTextField = ({ label, ...other }) => {
+    const [touched, setTouched] = useState(false)
+  
+    return (
+      <TextField
+        className="edit-input"
+        style={{
+          backgroundColor: '#ffffff',
+          width: '100%',
+          marginTop: '20px',
+        }}
+        label={label}
+        size="small"
+        {...other}
+        error={(touched || other.buttonTouched)}
+        onBlur={() => setTouched(true)}
+      />
+    )
+  }
+
+export default UserProfileEdit
