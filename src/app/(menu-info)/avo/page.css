@@ -165,4 +165,10 @@
         align-items: center;
         padding-left: 20px;
     }
+
+    .rollback-btn{
+        display: flex;
+        justify-content: right;
+        padding-top: 10px;
+    }
 }

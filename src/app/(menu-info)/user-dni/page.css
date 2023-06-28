@@ -27,4 +27,10 @@
     .contenido-userdni{
         display: block;
     }
+
+    .rollback-btn{
+        display: flex;
+        justify-content: right;
+        padding-top: 10px;
+    }
 }
