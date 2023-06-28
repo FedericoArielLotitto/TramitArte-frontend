@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { Box, TextField, ThemeProvider, IconButton } from "@mui/material";
 import theme from "@/app/theme";
 import ButtonResaltado from "../components/atomos/button/submit/resaltado/ButtonResaltado";
@@ -17,6 +18,11 @@ import FormLabel from '@mui/material/FormLabel';
 function CargaAVO() {
   const esMobile = useMediaQuery("(max-width: 576px)");
   const router = useRouter();
+  const [value, setValue] = useState('female');
+
+  const handleChange = (event) => {
+    setValue(event.target.value);
+  };
 
   const handelOnClick = () => {
     tramiteService
@@ -87,14 +93,9 @@ function CargaAVO() {
             />
           </Box>
           <Box sx={{ width: esMobile ? "90%" : "30%", paddingY: "5%" }}>
-            <ButtonResaltado
-              width={"100%"}
-              texto={"AVANZAR A ETAPA 2"}
-              onClick={() => handelOnClick()}
-            ></ButtonResaltado>
-            <FormControl>
+            <FormControl sx={{ paddingY: '5%'}}>
               <FormLabel id="demo-controlled-radio-buttons-group">
-                Gender
+                Sexo
               </FormLabel>
               <RadioGroup
                 aria-labelledby="demo-controlled-radio-buttons-group"
@@ -114,6 +115,11 @@ function CargaAVO() {
                 />
               </RadioGroup>
             </FormControl>
+            <ButtonResaltado
+              width={"100%"}
+              texto={"AVANZAR A ETAPA 2"}
+              onClick={() => handelOnClick()}
+            ></ButtonResaltado>
           </Box>
         </Box>
       </Box>
