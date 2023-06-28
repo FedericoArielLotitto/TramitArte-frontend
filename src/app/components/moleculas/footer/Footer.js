@@ -5,12 +5,14 @@ import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import breakpoints from "@/app/breakpoints";
 import { useMediaQuery } from "@mui/material";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 const { Box, ThemeProvider } = require("@mui/material");
+const location = window.location
 
 function Footer() {
   let esResolucionMobile = useMediaQuery(`(max-width: ${breakpoints.mobile})`)
+  const router = useRouter()
   
   return esResolucionMobile && (
     <ThemeProvider theme={theme}>
@@ -19,8 +21,8 @@ function Footer() {
                     className="footer"
                     sx={{ backgroundColor: "primary.dark" }}
                 >
-                    <BottomNavigationAction icon={<HomeIcon />} />
-                    <BottomNavigationAction icon={<HelpIcon />} />
+                    <BottomNavigationAction onClick={() => router.push(`/home/solicitante`)} icon={<HomeIcon />} />
+                    <BottomNavigationAction onClick={() => router.push('/preguntas-frecuentes')} icon={<HelpIcon />} />
                 </BottomNavigation>
             </Box>
     </ThemeProvider>

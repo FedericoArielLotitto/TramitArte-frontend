@@ -56,8 +56,8 @@ export default function request() {
                     spacing={1}
                     sx={{ justifyContent: 'space-between' }}
                   >
-
-                  {translator && Array.from(translator).map((item) => (
+                  
+                  {translator ? <Typography color='info'>No hay traductores registrados</Typography> : Array.from(translator).map((item) => (
                     <Card sx={{ maxWidth: 345, margin: '1rem' }}>
                       <CardMedia
                         component="img"
@@ -92,37 +92,39 @@ export default function request() {
         : (
           <div className="page-wrapper">
               <ThemeProvider theme={theme}>
-              {document == false ? (
+              {
+              // document == false ? (
+              //   <Box
+              //     backgroundColor="primary.main"
+              //     className="page-body"
+              //   >
+              //     <Box
+              //       backgroundColor="secondary.main"
+              //       className="doc-upload"
+              //     >
+              //       <Typography className="font-basics">Cargar Documento</Typography>
+              //       <ButtonSubmit
+              //         className="font-basics"
+              //         texto={"Cargar Documento"}
+              //         event={handleClickDocument}
+              //       />
+              //     </Box>
+              //   </Box>
+              // ) : 
+              (
                 <Box
                   backgroundColor="primary.main"
                   className="page-body"
                 >
-                  <Box
-                    backgroundColor="secondary.main"
-                    className="doc-upload"
-                  >
-                    <Typography className="font-basics">Cargar Documento</Typography>
-                    <ButtonSubmit
-                      className="font-basics"
-                      texto={"Cargar Documento"}
-                      event={handleClickDocument}
-                    />
-                  </Box>
-                </Box>
-              ) : (
-                <Box
-                  backgroundColor="primary.main"
-                  className="page-body"
-                >
-                  <Typography
+                  {/* <Typography
                     className="font-secondary"
                   >
                     Cambiar por el input xD
-                  </Typography>
+                  </Typography> */}
 
                   <Grid>
 
-                    {translator.map((item) => (
+                    {translator ? <Typography color='info'>No hay traductores registrados</Typography> : translator.map((item) => (
                       <Card
                         className="card-body"
                         onClick={handleClick}
