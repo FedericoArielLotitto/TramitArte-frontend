@@ -1,4 +1,4 @@
-import UserCardComponent from "@/components/moleculas/userCard/userCard"
+import UserCardComponent from "@/app/components/moleculas/userCard/userCard"
 import "../tramite/tramite.css"
 import "./translator.css"
 

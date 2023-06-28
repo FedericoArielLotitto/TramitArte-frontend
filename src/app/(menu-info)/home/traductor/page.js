@@ -1,7 +1,7 @@
 "use client";
 
 import MenuComponent from "@/app/components/moleculas/menu/menu";
-import TranslatorComponent from "@/app/omponents/translator/translator";
+import TranslatorComponent from "@/app/components/translator/translator";
 import "@/app/components/home/home.css"
 import { useState } from "react";
 

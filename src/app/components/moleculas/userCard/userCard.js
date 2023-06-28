@@ -1,4 +1,4 @@
-import ButtonSubmitDesktop from "@/components/atomos/button/submit/defaultDesktop/ButtonSubmitDesktop"
+import ButtonSubmitDesktop from "@/app/components/atomos/button/submit/defaultDesktop/ButtonSubmitDesktop"
 import { Avatar, useMediaQuery } from "@mui/material"
 import "./userCard.css"
 import breakpoints from "@/app/breakpoints"
