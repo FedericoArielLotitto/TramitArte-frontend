@@ -10,6 +10,8 @@ import { Avatar, Button, Modal, useMediaQuery } from "@mui/material";
 import ModeEditOutlineOutlinedIcon from "@mui/icons-material/ModeEditOutlineOutlined";
 import FileUploadOutlinedIcon from "@mui/icons-material/FileUploadOutlined";
 import breakpoints from "@/app/breakpoints";
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { useRouter } from "next/navigation";
 // import IconButton from "@mui/material";
 
 const styleButton = {
@@ -30,6 +32,7 @@ const styleButton = {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [tituloElegido, setTituloElegido] = useState("");
     const [nombreArchivo, setNombreArchivo] = useState("")
+    const router = useRouter();
     const esResolucionMobile = useMediaQuery(
       `(max-width: ${breakpoints.mobile})`
     );
@@ -70,6 +73,11 @@ const styleButton = {
           <div className="columns-container">
             {esResolucionMobile ? <></> : <MenuComponent array={menuUser} />}
             <div className="contenido-userdni">
+              <div className="rollback-btn">
+                <Button style={{backgroundColor:"white", height:"50px", borderRadius:"20px"}} onClick={() => router.back()}>
+                  <ArrowBackIcon/>
+                </Button>
+              </div>
               {fileCards.map((card, index) => (
                 <div className="card-userdni" key={index}>
                   <div className="file-title">
