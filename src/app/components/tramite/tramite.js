@@ -5,6 +5,7 @@ import { useMediaQuery } from "@mui/material";
 import breakpoints from "@/app/breakpoints";
 import CustomCard from "../moleculas/card/CustomCard";
 import { useRouter } from "next/navigation";
+import { tramiteService } from "@/services/tramite.service";
 
 const TramiteComponent = () => {
   const [isClicked, setIsClicked] = useState(false);
@@ -12,12 +13,7 @@ const TramiteComponent = () => {
   const router = useRouter()
 
   const handleClick = async () => {
-    const response = await fetch(process.env.BASE_URL, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-    }).then((response) => {
+    const response = await tramiteService.iniciarTramite().then((response) => {
       router.push("/stage1")
       setIsClicked(!isClicked);}).catch((e) => console.log(e));
   };
