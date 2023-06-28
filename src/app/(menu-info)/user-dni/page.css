@@ -30,7 +30,7 @@
 
     .rollback-btn{
         display: flex;
-        justify-content: right;
+        justify-content: space-between;
         padding-top: 10px;
     }
 }

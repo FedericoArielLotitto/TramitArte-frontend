@@ -18,7 +18,7 @@ import ButtonSubmitSecundario from "@/app/components/atomos/button/submit/secund
 import ButtomSubmitSecundarioDesktop from "@/app/components/atomos/button/submit/secundarioDesktop/ButtomSubmitSecundarioDesktop";
 
 
-function Stage2Component(){
+function Stage4Component(){
     const menuUser = ["Traductores Registrados", "Family Search", "Preguntas"];
     const esResolucionMobile = useMediaQuery(`(max-width: ${breakpoints.mobile})`)
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -63,13 +63,13 @@ function Stage2Component(){
                                         {esResolucionMobile ? (
                                         <CircularProgress
                                             variant="determinate"
-                                            value={40}
+                                            value={80}
                                             style={{ width: "12.5rem", height: "12.5rem" }}
                                         />
                                         ) : (
                                         <CircularProgress
                                             variant="determinate"
-                                            value={40}
+                                            value={80}
                                             style={{ width: "18.75rem", height: "18.75rem" }}
                                         />
                                         )}
@@ -85,7 +85,7 @@ function Stage2Component(){
                                         >
                                         <div className="etapa">
                                             <p>Etapa</p>
-                                            <p>2</p>
+                                            <p>4</p>
                                         </div>
                                         </Box>
                                     </Box>
@@ -93,11 +93,11 @@ function Stage2Component(){
                             </div>
                             {esResolucionMobile ? (
                                         <div className="avo-button">
-                                            <ButtonSubmitSecundario texto="Cargar documentación" event={() => router.push("/user-dni")}></ButtonSubmitSecundario>
+                                            <ButtonSubmitSecundario texto="Traducir documentos" event={() => router.push("/stage5")}></ButtonSubmitSecundario>
                                         </div>
                                         ) : (
                                         <div className="avo-button">
-                                            <ButtomSubmitSecundarioDesktop text={"Cargar documentación"} event={() => router.push("/user-dni")}/>
+                                            <ButtomSubmitSecundarioDesktop text={"Traducir documentos"} event={() => router.push("/stage5")}/>
                                         </div>
                                     )}
                         </div>
@@ -127,4 +127,4 @@ function Stage2Component(){
     )
 }
 
-export default Stage2Component
+export default Stage4Component

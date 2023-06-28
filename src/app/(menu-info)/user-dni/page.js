@@ -12,6 +12,7 @@ import FileUploadOutlinedIcon from "@mui/icons-material/FileUploadOutlined";
 import breakpoints from "@/app/breakpoints";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useRouter } from "next/navigation";
+import DoneIcon from '@mui/icons-material/Done';
 // import IconButton from "@mui/material";
 
 const styleButton = {
@@ -74,6 +75,9 @@ const styleButton = {
             {esResolucionMobile ? <></> : <MenuComponent array={menuUser} />}
             <div className="contenido-userdni">
               <div className="rollback-btn">
+                <Button style={{width:"50px", height:"50px", backgroundColor:"white", borderRadius:"20px"}} onClick={() => router.push("/stage3")}>
+                  <DoneIcon style={{width:"35px", height:"35px", color:"black"}}/>
+                </Button>
                 <Button style={{backgroundColor:"white", height:"50px", borderRadius:"20px"}} onClick={() => router.back()}>
                   <ArrowBackIcon/>
                 </Button>

@@ -59,13 +59,13 @@ function Stage1Component(){
                                         {esResolucionMobile ? (
                                         <CircularProgress
                                             variant="determinate"
-                                            value={10}
+                                            value={20}
                                             style={{ width: "12.5rem", height: "12.5rem" }}
                                         />
                                         ) : (
                                         <CircularProgress
                                             variant="determinate"
-                                            value={10}
+                                            value={20}
                                             style={{ width: "18.75rem", height: "18.75rem" }}
                                         />
                                         )}
@@ -89,7 +89,7 @@ function Stage1Component(){
                             </div>
                                     {esResolucionMobile ? (
                                         <div className="avo-button">
-                                            <ButtonSubmitSecundario texto="Cargar AVO"></ButtonSubmitSecundario>
+                                            <ButtonSubmitSecundario texto="Cargar AVO" event={() => router.push("/carga-avo")}></ButtonSubmitSecundario>
                                         </div>
                                         ) : (
                                         <div className="avo-button">
