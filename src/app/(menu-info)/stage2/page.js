@@ -1,7 +1,7 @@
 "use client"
 
 import State from "@/app/components/atomos/state/state";
-import { Box, Button, CircularProgress, useMediaQuery } from "@mui/material"
+import { Box, Button, CircularProgress, Modal, useMediaQuery } from "@mui/material"
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import "@/app/components/tramite/tramite.css"
 import "@/app/components/tramiteCard/tramiteCard.css"
@@ -9,11 +9,23 @@ import "@/app/components/home/home.css"
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import MenuComponent from "@/app/components/moleculas/menu/menu";
 import breakpoints from "@/app/breakpoints";
+import CloseIcon from '@mui/icons-material/Close';
+import DoneIcon from '@mui/icons-material/Done';
+import { useRouter } from "next/navigation"
+import { useState } from "react";
+import "../stage1/page.css"
 
 
 function Stage2Component(){
     const menuUser = ["Traductores Registrados", "Family Search", "Preguntas"];
     const esResolucionMobile = useMediaQuery(`(max-width: ${breakpoints.mobile})`)
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const router = useRouter();
+
+    const handleModal = () => {
+        setIsModalOpen(!isModalOpen);
+    };
 
     return (
             <div className="columns-container">
@@ -31,7 +43,7 @@ function Stage2Component(){
                                     )}
                                 </div>
                                 <Box>
-                                        <Button style={{background:"red", color:"white", borderRadius:"30px", marginRight:"10px", marginBottom:"25px"}}>
+                                        <Button style={{background:"red", color:"white", borderRadius:"30px", marginRight:"10px", marginBottom:"25px"}} onClick={handleModal}>
                                             <DeleteForeverIcon style={{height:"44px", width:"44px"}}/>
                                         </Button>
                                 </Box>
@@ -84,6 +96,26 @@ function Stage2Component(){
                         </div>
                     </div>
                 </div>
+                <Modal
+                    open={isModalOpen}
+                    onClose={handleModal}
+                    className="modal-container"
+                >
+                    <>
+                        <div className="mensaje">
+                            <p>Estas por cancelar el tramite iniciado</p>
+                            <p>¿Estas seguro?</p>
+                            <div className="modal-btn">
+                                <Button style={{width:"78px", height:"78px", backgroundColor:"#C55757"}} onClick={handleModal}>
+                                    <CloseIcon style={{width:"35px", height:"35px", color:"white"}}/>
+                                </Button>
+                                <Button style={{width:"78px", height:"78px", backgroundColor:"#57C5B6"}} onClick={() => router.push("/home/solicitante")}>
+                                    <DoneIcon style={{width:"35px", height:"35px", color:"black"}}/>
+                                </Button>
+                            </div>
+                        </div>
+                    </>
+                </Modal>
             </div>
     )
 }
