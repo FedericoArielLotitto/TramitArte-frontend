@@ -1,7 +1,8 @@
-import theme from "@/app/theme";
-import ButtonSubmitSecundario from "@/app/components/atomos/button/submit/secundario/ButtonSubmitSecundario";
+import theme from "../../../theme";
+
 import { ThemeProvider } from "@emotion/react";
 import { Box, Container, Typography } from "@mui/material";
+import ButtonSubmitSecundario from "../../atomos/button/submit/secundario/ButtonSubmitSecundario";
 
 function CustomCard(event) {
   return (

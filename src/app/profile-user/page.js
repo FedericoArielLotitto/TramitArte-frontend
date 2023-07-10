@@ -6,7 +6,7 @@ import BadgeIcon from '@mui/icons-material/Badge';
 import CakeIcon from '@mui/icons-material/Cake';
 import EditIcon from '@mui/icons-material/Edit';
 import CloseIcon from '@mui/icons-material/Close';
-import { useRouter } from "next/navigation";
+import { useNavigate } from "react-router-dom";
 
 const infoIconStyle = {
     height:"2.4rem",
@@ -43,13 +43,13 @@ const user1 = new User(
     "Mateador Argentino")
 
 const UserProfile = () => {
-    const router = useRouter();
+    const navigate = useNavigate();
 
     return(
         <div className="profile-container">
             <div className="profile">
                 <div className="close-container">
-                    <Button style={buttonStyle} onClick={() => router.back()}>
+                    <Button style={buttonStyle} onClick={() => navigate(-1)}>
                         <CloseIcon style={{width:"1.6rem", height:"1.6rem"}}/>
                     </Button>
                 </div>
@@ -72,7 +72,7 @@ const UserProfile = () => {
                     </div>
                 </div>
                 <div className="edit-container">
-                    <Button style={buttonStyle} onClick={() => router.push("/profile-edit")}>
+                    <Button style={buttonStyle} onClick={() => navigate("/profile-edit")}>
                         <EditIcon style={{width:"1.6rem", height:"1.6rem"}}/>
                     </Button>
                 </div>

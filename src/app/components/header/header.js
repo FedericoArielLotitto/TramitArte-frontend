@@ -1,12 +1,12 @@
 import AccountBoxOutlinedIcon from "@mui/icons-material/AccountBoxOutlined";
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 import "./header.css";
-import Logo from "@/app/components/atomos/logo/Logo";
 import { IconButton } from "@mui/material";
-import { useRouter } from "next/navigation";
+import Logo from "../atomos/logo/Logo";
+import { useNavigate } from "react-router-dom";
 
 export const HeaderComponent = () => {
-  const router = useRouter()
+  const navigate = useNavigate()
   
   return (
     <div class="header">
@@ -17,11 +17,11 @@ export const HeaderComponent = () => {
         <div className="other-button">
           <AccountBoxOutlinedIcon
             style={{ width: "33px", height: "33px" }}
-            onClick={() => router.push("/profile-user")}
+            onClick={() => navigate("/profile-user")}
           ></AccountBoxOutlinedIcon>
         </div>
         <div className="other-button">
-          <IconButton onClick={() => router.push("/api/auth/logout")}>
+          <IconButton onClick={() => navigate("/api/auth/logout")}>
             <LogoutOutlinedIcon
               style={{ width: "33px", height: "33px" }}
             ></LogoutOutlinedIcon>

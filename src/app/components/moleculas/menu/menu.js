@@ -1,9 +1,10 @@
 import "./menu.css";
 
-import breakpoints from "@/app/breakpoints";
+
 import { useMediaQuery } from "@mui/material";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
+
+import { Link, useNavigate } from "react-router-dom";
+import breakpoints from "../../../breakpoints";
 
 const MenuComponent = ({ isOpen }) => {
   const menuTranslator = [
@@ -35,7 +36,7 @@ const MenuComponent = ({ isOpen }) => {
   // const menuUser = ["Traductores Registrados", "Family Search", "Preguntas"];
 
   const type = "Traductor";
-  const router = useRouter()
+  const navigation = useNavigate()
   const location = window.location
   return !useMediaQuery(`(max-width: ${breakpoints.mobile})`) || isOpen ? (
     location.pathname.includes("traductor") ? (

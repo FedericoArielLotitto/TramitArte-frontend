@@ -1,7 +1,9 @@
-import ButtonSubmitDesktop from "@/app/components/atomos/button/submit/defaultDesktop/ButtonSubmitDesktop"
+
 import { Avatar, useMediaQuery } from "@mui/material"
 import "./userCard.css"
-import breakpoints from "@/app/breakpoints"
+import breakpoints from "../../../breakpoints"
+import ButtonSubmitDesktop from "../../atomos/button/submit/defaultDesktop/ButtonSubmitDesktop"
+
 
 const UserCardComponent = ({users, onDelete}) => {
     const esResolucionMobile = useMediaQuery(`(max-width: ${breakpoints.mobile})`)

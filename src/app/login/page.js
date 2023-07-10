@@ -1,9 +1,10 @@
 "use client"
 
-import BasicCardLogin from "../../components/moleculas/card/cardLogin";
+
+import BasicCardLogin from "../components/moleculas/card/cardLogin";
 import "../registro/registroLogin.css"
 
-function Registro() {
+function Login() {
     return  (
       <div class="card-container">
       <BasicCardLogin/>
@@ -11,4 +12,4 @@ function Registro() {
     )
 }
 
-export default Registro;
+export default Login;

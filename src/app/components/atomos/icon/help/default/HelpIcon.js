@@ -1,6 +1,6 @@
 import { ThemeProvider } from "@emotion/react";
 import HelpOutlineOutlinedIcon from '@mui/icons-material/HelpOutlineOutlined';
-import theme from "@/app/theme";
+import theme from "../../../../../theme";
 
 const HelpIcon = () => (
   <ThemeProvider theme={theme}>

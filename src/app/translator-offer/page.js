@@ -1,20 +1,20 @@
 "use client";
 import "./page.css";
-import theme from "@/app/theme";
+import theme from "../theme";
 
 import { useState } from "react";
 import { Avatar, Box, Button, Card, CardActions, CardContent, CardMedia, Grid, Typography, useMediaQuery } from "@mui/material";
 import { ThemeProvider } from "@emotion/react";
 
-import { HeaderComponent } from "../(menu-info)/home/header/header";
-import Footer from "@/components/moleculas/footer/Footer";
-import CustomAppBar from "@/components/moleculas/appBar/CustomAppBar";
-import MenuComponent from "@/components/moleculas/menu/menu";
-import SendIcon from "@/components/atomos/icon/send/Send.Icon";
+import { HeaderComponent } from "../components/header/header";
+import Footer from "../components/moleculas/footer/Footer";
+import CustomAppBar from "../components/moleculas/appBar/CustomAppBar";
+import MenuComponent from "../components/moleculas/menu/menu";
+import SendIcon from "../components/atomos/icon/send/Send.Icon";
 
-import { usuariosService } from "@/services/usuario.service";
+import { usuariosService } from "../../services/usuario.service";
 
-export default function request() {
+export default function TranslatorOffer() {
   const [users, setUsers] = useState([])
   
   const menuTranslator = ["Traducciones Realizadas", "Solicitudes Pendientes", "Solicitudes de Traducción"]
@@ -22,7 +22,7 @@ export default function request() {
   const matches = useMediaQuery('(min-width: 576px)')
 
   const getUsers = async () => {
-    list = await usuariosService.getUsers()
+    const list = await usuariosService.getUsers()
     setUsers(list)
   }
 

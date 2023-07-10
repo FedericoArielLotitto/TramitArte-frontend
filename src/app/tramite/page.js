@@ -1,8 +1,8 @@
 "use client";
 
-import Footer from "@/components/moleculas/footer/Footer";
-import CustomAppBar from "@/components/moleculas/appBar/CustomAppBar";
-import CustomCard from "@/components/moleculas/card/CustomCard";
+import Footer from "../components/moleculas/footer/Footer";
+import CustomAppBar from "../components/moleculas/appBar/CustomAppBar";
+import CustomCard from "../components/moleculas/card/CustomCard";
 import { Box } from "@mui/material";
 
 function InicioTramite() {

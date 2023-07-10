@@ -8,21 +8,21 @@ import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import "./preguntas.css";
 import { ThemeProvider } from "@emotion/react";
-import theme from "@/app/theme";
+import theme from "../theme";
 import Map from "./map";
 import { Box, IconButton } from "@mui/material";
-import { useRouter } from "next/navigation";
 //import { useMediaQuery } from 'react-responsive';
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { useNavigate } from "react-router-dom";
 
 function PreguntasFrecuentes() {
   //const isMobile = window.innerWidth <= 768;
-  const router = useRouter();
+  const navigate = useNavigate();
   return (
     <ThemeProvider theme={theme}>
       <Box sx={{ height: "100%", backgroundColor: "terciario.contrastText" }}>
         <Accordion sx={{ padding: "2%", margin: 0 }}>
-          <IconButton onClick={() => router.back()}>
+          <IconButton onClick={() => navigate(-1)}>
             <ArrowBackIcon color="resaltado" />
           </IconButton>
           <AccordionSummary

@@ -1,6 +1,6 @@
 "use client"
 
-import BasicCardRegistro from "@/components/moleculas/card/CardRegistro";
+import BasicCardRegistro from "../components/moleculas/card/CardRegistro";
 import "./registroLogin.css"
 
 function Registro() {

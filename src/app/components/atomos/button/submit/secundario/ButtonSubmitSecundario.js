@@ -1,4 +1,4 @@
-import theme from "@/app/theme";
+import theme from "../../../../../theme";
 
 const { Button, ThemeProvider } = require("@mui/material");
 

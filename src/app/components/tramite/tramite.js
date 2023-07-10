@@ -1,20 +1,22 @@
 import { useState } from "react";
 import "./tramite.css";
-import ButtomSubmitSecundarioDesktop from "@/app/components/atomos/button/submit/secundarioDesktop/ButtomSubmitSecundarioDesktop";
+
 import { useMediaQuery } from "@mui/material";
-import breakpoints from "@/app/breakpoints";
+
 import CustomCard from "../moleculas/card/CustomCard";
-import { useRouter } from "next/navigation";
-import { tramiteService } from "@/services/tramite.service";
+import { tramiteService } from "../../../services/tramite.service";
+import ButtomSubmitSecundarioDesktop from "../atomos/button/submit/secundarioDesktop/ButtomSubmitSecundarioDesktop";
+import breakpoints from "../../breakpoints";
+import { useNavigate } from "react-router-dom";
 
 const TramiteComponent = () => {
   const [isClicked, setIsClicked] = useState(false);
   const esResolucionMobile = useMediaQuery(`(max-width: ${breakpoints.mobile})`)
-  const router = useRouter()
+  const navigation = useNavigate()
 
   const handleClick = async () => {
     const response = await tramiteService.iniciarTramite().then((response) => {
-      router.push("/stage1")
+      navigation("/stage1")
       setIsClicked(!isClicked);}).catch((e) => console.log(e));
   };
 

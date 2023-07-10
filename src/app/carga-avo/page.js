@@ -2,22 +2,22 @@
 
 import { useState } from "react";
 import { Box, TextField, ThemeProvider, IconButton } from "@mui/material";
-import theme from "@/app/theme";
+import theme from "../theme";
 import ButtonResaltado from "../components/atomos/button/submit/resaltado/ButtonResaltado";
 import { useMediaQuery } from "@mui/material";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
-import { useRouter } from "next/navigation";
-import { tramiteService } from "@/services/tramite.service";
+import { tramiteService } from "../../services/tramite.service";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
+import { useNavigate } from "react-router-dom";
 
 function CargaAVO() {
   const esMobile = useMediaQuery("(max-width: 576px)");
-  const router = useRouter();
+  const navigate = useNavigate();
   const [value, setValue] = useState('female');
 
   const handleChange = (event) => {
@@ -32,7 +32,7 @@ function CargaAVO() {
         fechaNacimiento: "25/10/1995",
         sexo: "MASCULINO",
       })
-      .then(() => router.push("/stage2"))
+      .then(() => navigate("/solicitante/stage2"))
       .catch((e) => console.log(e));
   };
   return (
@@ -45,7 +45,7 @@ function CargaAVO() {
           minHeight: "100%",
         }}
       >
-        <IconButton onClick={() => router.back()}>
+        <IconButton onClick={() => navigate(-1)}>
           <ArrowBackIcon color="resaltado" />
         </IconButton>
         <Box

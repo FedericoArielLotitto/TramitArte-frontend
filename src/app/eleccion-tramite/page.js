@@ -1,6 +1,6 @@
 "use client";
-import theme from "@/app/theme";
-import ButtonSubmit from "@/components/atomos/button/submit/default/ButtonSubmit";
+import theme from "../theme";
+import ButtonSubmit from "../components/atomos/button/submit/default/ButtonSubmit";
 import { Box, ThemeProvider, Typography } from "@mui/material";
 
 function EleccionTramite() {

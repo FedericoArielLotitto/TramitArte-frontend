@@ -1,18 +1,19 @@
-import theme from "@/app/theme";
-import MenuIcon from "@/app/components/atomos/icon/menu/default/MenuIcon";
-import UserIcon from "@/app/components/atomos/icon/user/default/UserIcon";
+import theme from "../../../theme"
+
 import { ThemeProvider } from "@emotion/react";
 import { AppBar, Box, Toolbar, IconButton, Menu, MenuItem } from "@mui/material";
 import { useState } from 'react';
 import MenuComponent from "../menu/menu";
 import ClearIcon from '@mui/icons-material/Clear';
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
-import { useRouter } from "next/navigation";
+import MenuIcon from "../../atomos/icon/menu/default/MenuIcon";
+import UserIcon from "../../atomos/icon/user/default/UserIcon";
+import {useNavigate } from "react-router-dom";
 
 function CustomAppBar({ cerrarSesion }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [menuAnchorEl, setMenuAnchorEl] = useState(null);
-  const router = useRouter();
+  const navigation = useNavigate();
 
   const menuItemStyle = {
     fontFamily: "Montserrat",
@@ -39,7 +40,7 @@ function CustomAppBar({ cerrarSesion }) {
 
   const handleChangePage = (path) =>{
     setMenuAnchorEl(null);
-    router.push(path)
+    navigation(path)
   }
 
   return (
@@ -77,7 +78,7 @@ function CustomAppBar({ cerrarSesion }) {
                 },
               }}
             >
-              <MenuItem style={menuItemStyle} onClick={() => router.push("/profile-user")}>Mi cuenta</MenuItem>
+              <MenuItem style={menuItemStyle} onClick={() => navigation("/profile-user")}>Mi cuenta</MenuItem>
               <hr color="#159895" style={{marginLeft:"10px", marginRight:"10px"}}></hr>
               <MenuItem style={menuItemStyle} onClick={() => handleChangePage("/user-dni")}>Mis documentos</MenuItem>
               <hr color="#159895" style={{marginLeft:"10px", marginRight:"10px"}}></hr>

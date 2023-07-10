@@ -6,9 +6,9 @@ import"./page.css"
 import BadgeIcon from '@mui/icons-material/Badge';
 import CakeIcon from '@mui/icons-material/Cake';
 import CloseIcon from '@mui/icons-material/Close';
-import { useRouter } from "next/navigation";
 import DoneIcon from '@mui/icons-material/Done';
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const infoIconStyle = {
     height:"2.4rem",
@@ -28,13 +28,13 @@ const buttonStyle = {
 }
 
 const UserProfileEdit = () => {
-    const router = useRouter();
+    const navigate = useNavigate();
 
     return(
         <div className="profile-container">
             <div className="profile">
                 <div className="close-container">
-                    <Button style={buttonStyle} onClick={() => router.back()}>
+                    <Button style={buttonStyle} onClick={() => navigate(-1)}>
                         <CloseIcon style={{width:"1.6rem", height:"1.6rem"}}/>
                     </Button>
                 </div>
@@ -57,7 +57,7 @@ const UserProfileEdit = () => {
                     </div>
                 </div>
                 <div className="edit-container">
-                    <Button style={buttonStyle} onClick={() => router.back()}>
+                    <Button style={buttonStyle} onClick={() => navigate(-1)}>
                         <DoneIcon style={{width:"1.6rem", height:"1.6rem"}}/>
                     </Button>
                 </div>

@@ -2,19 +2,18 @@
 
 import { ThemeProvider } from "@emotion/react";
 import { Box, useMediaQuery } from "@mui/material";
-import theme from "@/app/theme";
-import Logo from '@/app/components/atomos/logo/Logo'
-import ButtonTerciario from "@/app/components/atomos/button/submit/terciario/ButtonTerciario";
-import ButtonResaltado from "@/app/components/atomos/button/submit/resaltado/ButtonResaltado";
-import { useSearchParams } from "next/navigation";
-import ConfirmationModal from "@/app/components/moleculas/confirmationModal/ConfirmationModal";
+import theme from "../theme";
+import Logo from '../components/atomos/logo/Logo'
+import ButtonTerciario from "../components/atomos/button/submit/terciario/ButtonTerciario";
+import ButtonResaltado from "../components/atomos/button/submit/resaltado/ButtonResaltado";
+import ConfirmationModal from "../components/moleculas/confirmationModal/ConfirmationModal";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 function Rol() {
   const [esVisible, setEsVisible] = useState(false);
   const [rol, setRol] = useState("SOLICITANTE");
-  const router = useRouter();
+  const navigate = useNavigate();
   const esMobile = useMediaQuery("(max-width: 576px)");
   const searchParams = useSearchParams();
   console.log(searchParams.get("email"));
@@ -80,7 +79,7 @@ function Rol() {
                 apellido: "apellido"
               }),
             });
-            router.push(`/home/${rol.toLowerCase()}`);
+            navigate(`/home/${rol.toLowerCase()}`);
           }}
           texto={`¿Estás seguro de iniciar sesión como ${rol}?`}
         ></ConfirmationModal>

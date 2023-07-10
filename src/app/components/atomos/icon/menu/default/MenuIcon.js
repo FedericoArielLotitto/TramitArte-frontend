@@ -1,6 +1,6 @@
 import { ThemeProvider } from "@emotion/react";
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
-import theme from "@/app/theme";
+import theme from "../../../../../theme";
 
 const MenuIcon = () => (
   <ThemeProvider theme={theme}>

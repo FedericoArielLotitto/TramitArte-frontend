@@ -1,5 +1,5 @@
-import theme from "@/app/theme";
-import Botonera from "@/app/components/atomos/botonera/Botonera";
+import theme from "../../../theme";
+import Botonera from "../../atomos/botonera/Botonera";
 import { Box, ThemeProvider, Typography } from "@mui/material";
 
 function ConfirmationModal({esVisible, handleRechazar, handleConfirmar, texto}) {
