@@ -1,4 +1,3 @@
-import './App.css';
 import {
   Container,
   Stack,
@@ -13,6 +12,7 @@ import {
   createIcon,
   useColorModeValue,
 } from '@chakra-ui/react';
+import Navbar from '../components/Navbar';
 
 const PlayIcon = createIcon({
   displayName: 'PlayIcon',
@@ -39,9 +39,10 @@ export const Blob = (props) => {
   );
 };
 
-function App() {
+function Home() {
   return (
     <Container maxW={'7xl'}>
+     <Navbar></Navbar>
       <Stack
         align={'center'}
         spacing={{ base: 8, md: 10 }}
@@ -151,4 +152,4 @@ function App() {
   );
 }
 
-export default App;
+export default Home;
