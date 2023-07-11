@@ -1,11 +1,11 @@
-import { ChakraProvider } from "@chakra-ui/react";
+
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
-import theme from "../../../theme";
+
 
 const MenuIcon = () => (
-  <ChakraProvider theme={theme}>
-    <MenuOutlinedIcon color="info" />
-  </ChakraProvider>
+
+    <MenuOutlinedIcon sx={{color:"#F6F4FF"}} />
+
 );
 
 export default MenuIcon;

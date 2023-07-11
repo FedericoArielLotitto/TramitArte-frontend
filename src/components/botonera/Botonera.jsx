@@ -7,7 +7,7 @@ function Botonera({ handleRechazar, handleConfirmar }) {
       <IconButton onClick={handleRechazar} size='lg'>
         <CloseIcon color="error" boxSize={8} />
       </IconButton>
-      <IconButton onClick={handleConfirmar} colorScheme='primary' size='lg'>
+      <IconButton onClick={handleConfirmar} color='#57c5b6' size='lg'>
         <CheckIcon boxSize={8} />
       </IconButton>
     </Box>

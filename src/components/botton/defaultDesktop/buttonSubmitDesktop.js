@@ -1,5 +1,4 @@
-import { Button, ThemeProvider } from "@chakra-ui/react";
-import theme from "../../../theme";
+import { Button } from "@chakra-ui/react";
 
 const styles = {
     width: "12.5rem",
@@ -17,13 +16,9 @@ const styles = {
 const ButtonSubmitDesktop = ({ texto, event, type }) => (
     <>
         {type === "cancel" ? (
-        <ThemeProvider theme={theme}>
-            <Button sx={styles} style={{background: "#BBBBBB"}} variant="contained" color="primary" onClick={event}>{texto}</Button>
-        </ThemeProvider>
+            <Button sx={styles} style={{background: "#BBBBBB"}} onClick={event}>{texto}</Button>
         ) : (
-        <ThemeProvider theme={theme}>
-            <Button sx={styles} variant="contained" color="primary" onClick={event}>{texto}</Button>
-        </ThemeProvider>
+            <Button sx={styles} onClick={event}>{texto}</Button>
         )}
     </>
 );

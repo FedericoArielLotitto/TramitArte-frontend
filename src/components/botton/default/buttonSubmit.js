@@ -1,13 +1,9 @@
 import { Button } from "@chakra-ui/react";
-import { ThemeProvider } from "@chakra-ui/react";
-import theme from "../../../theme";
 
 const ButtonSubmit = ({ text, width, event }) => (
-  <ThemeProvider theme={theme}>
-    <Button borderRadius="45px" width={width} onClick={event} variant="primary">
+    <Button borderRadius="45px" width={width} onClick={event} color={"#57c5b6"}>
       {text}
     </Button>
-  </ThemeProvider>
 );
 
 export default ButtonSubmit;

@@ -1,6 +1,4 @@
 import { Button } from "@chakra-ui/react";
-import { ThemeProvider } from "@chakra-ui/react";
-import theme from "../../../theme";
 
 const customButtonStyle = { 
     color: "white",
@@ -9,13 +7,12 @@ const customButtonStyle = {
     lineHeight: "1.8rem",
     borderRadius: "2.8rem",
     width: "60%",
-    height: "5.6rem"
+    height: "5.6rem",
+    backgroundColor:"#692420"
 }
 
 const ButtonSubmitSecundarioDesktop = ({ text, event }) => (
-    <ThemeProvider theme={theme}>
-        <Button sx={customButtonStyle} variant="terciario" onClick={event}>{text}</Button>
-    </ThemeProvider>
+    <Button sx={customButtonStyle} onClick={event}>{text}</Button>
 )
 
 export default ButtonSubmitSecundarioDesktop;

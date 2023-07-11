@@ -1,30 +1,32 @@
 import { Box } from "@chakra-ui/react";
 import AccountBoxOutlinedIcon from "@mui/icons-material/AccountBoxOutlined";
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./header.css";
-import Logo from "../Logo/logo";
+//import Logo from "../logoAnimado/LogoAnimado";
 
 export const HeaderComponent = () => {
+  const navigate = useNavigate()
 
   return (
     <Box className="header">
       <Box className="logo">
-        <Logo width="60%" />
+        
       </Box>
       <Box className="header-button" style={{ display: "flex" }}>
         <Box className="other-button">
           <AccountBoxOutlinedIcon
             aria-label="Account"
+            onClick={() => navigate("/profile-user")}
           >
-            <Link to={"/profile-user"}></Link>
+            
           </AccountBoxOutlinedIcon>
         </Box>
         <Box className="other-button">
           <LogoutOutlinedIcon
             aria-label="Logout"
+            onClick={() => navigate("/api/auth/logout")}
           >
-            <Link to={"/api/auth/logout"}></Link>
           </LogoutOutlinedIcon>
         </Box>
       </Box>
