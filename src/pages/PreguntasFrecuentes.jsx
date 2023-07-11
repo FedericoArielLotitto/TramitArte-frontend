@@ -18,7 +18,6 @@ function PreguntasFrecuentes(){
         {/* <Navbar></Navbar> */}
         <Box width={{ base: '100%', sm: 'lg', lg: 'xl' }} margin={'auto'}>
             <Faq></Faq>
-
         </Box>
         </Flex>
         
