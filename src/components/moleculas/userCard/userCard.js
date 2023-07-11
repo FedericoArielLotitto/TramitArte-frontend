@@ -1,7 +1,8 @@
 import { Box } from "@chakra-ui/react";
 import { Avatar, useMediaQuery } from "@chakra-ui/react";
 import ButtonSubmitDesktop from "../../botton/defaultDesktop/buttonSubmitDesktop";
-import breakpoints from "../../../theme";
+import breakpoints from "../../../breackpoints";
+import "./userCard.css"
 
 const UserCardComponent = ({ users, onDelete }) => {
   const esResolucionMobile = useMediaQuery(`(max-width: ${breakpoints.mobile})`);

@@ -4,7 +4,6 @@ import MenuIcon from "../../icon/menu/MenuIcon";
 import UserIcon from "../../icon/user/UserIcon";
 import ClearIcon from '@mui/icons-material/Clear';
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
-import { useRouter } from "next/router";
 import MenuComponent from "../../menu/menu";
 import theme from "../../../theme";
 import { Link } from "react-router-dom";
@@ -12,7 +11,6 @@ import { Link } from "react-router-dom";
 function CustomAppBar({ cerrarSesion }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [menuAnchorEl, setMenuAnchorEl] = useState(null);
-  const router = useRouter();
 
   const menuItemStyle = {
     fontFamily: "Montserrat",
@@ -35,11 +33,6 @@ function CustomAppBar({ cerrarSesion }) {
 
   const handleMenuClose = () => {
     setMenuAnchorEl(null);
-  };
-
-  const handleChangePage = (path) => {
-    setMenuAnchorEl(null);
-    router.push(path);
   };
 
   return (
@@ -77,11 +70,11 @@ function CustomAppBar({ cerrarSesion }) {
                     <MenuItem sx={menuItemStyle}>
                         <Link to={"/user-dni"}>Mis Documentos</Link>
                     </MenuItem>
-                    <MenuItem onClick={() => handleChangePage("/avo")} sx={menuItemStyle}>
+                    <MenuItem sx={menuItemStyle}>
                         <Link to={"/avo"}>Documentos AVO</Link>
                     </MenuItem>
                     <MenuItem onClick={cerrarSesion} sx={menuItemStyle} justifyContent="space-between">
-                        <Link to={"/avo"}>Cerrar sesión</Link>
+                        Cerrar sesión
                         <LogoutOutlinedIcon
                         style={{ width: "33px", height: "33px" }}
                         ></LogoutOutlinedIcon>
