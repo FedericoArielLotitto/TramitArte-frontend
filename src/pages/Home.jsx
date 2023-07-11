@@ -12,6 +12,9 @@ import {
 } from '@chakra-ui/react';
 import Navbar from '../components/Navbar';
 import LogoAnimado from '../components/logoAnimado/LogoAnimado';
+import AboutUs from './AboutUs';
+import Testimonials from './Testimonials';
+import PreguntasFrecuentes from './PreguntasFrecuentes';
 
 const PlayIcon = createIcon({
   displayName: 'PlayIcon',
@@ -123,6 +126,9 @@ function Home() {
           </Box>
         </Flex>
       </Stack>
+      <AboutUs />
+      <Testimonials />
+      <PreguntasFrecuentes />
     </Container>
   );
 }

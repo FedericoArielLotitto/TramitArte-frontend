@@ -136,7 +136,6 @@ import Navbar from '../components/Navbar';
         direction={'column'}
         width={'full'}
         overflow={'hidden'}>
-        <Navbar></Navbar>
         <Box width={{ base: 'full', sm: 'lg', lg: 'xl' }} margin={'auto'}>
           <chakra.h3
             fontFamily={'Work Sans'}

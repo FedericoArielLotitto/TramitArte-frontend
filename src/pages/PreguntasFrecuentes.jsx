@@ -15,7 +15,7 @@ function PreguntasFrecuentes(){
         direction={'column'}
         width={'full'}
         overflow={'hidden'}>
-        <Navbar></Navbar>
+        {/* <Navbar></Navbar> */}
         <Box width={{ base: '100%', sm: 'lg', lg: 'xl' }} margin={'auto'}>
             <Faq></Faq>
 
