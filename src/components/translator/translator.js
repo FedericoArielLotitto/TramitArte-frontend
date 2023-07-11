@@ -28,7 +28,7 @@ const TranslatorComponent = ({ users, onDelete }) => {
         <Box className="card-container">
           <Box className="card-no-iniciado">
             <Box className="mensaje">
-              <Text>No hay solicitudes pendientes</Text>
+              <Text className="mensaje">No hay solicitudes pendientes</Text>
             </Box>
           </Box>
         </Box>

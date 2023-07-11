@@ -1,11 +1,8 @@
-import { ChakraProvider } from "@chakra-ui/react";
+
 import AccountBoxOutlinedIcon from '@mui/icons-material/AccountBoxOutlined';
-import theme from "../../../theme";
 
 const UserIcon = () => (
-  <ChakraProvider theme={theme}>
-    <AccountBoxOutlinedIcon color="info" />
-  </ChakraProvider>
+    <AccountBoxOutlinedIcon sx={{color:"#F6F4FF"}} />
 );
 
 export default UserIcon;

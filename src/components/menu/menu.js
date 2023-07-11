@@ -4,6 +4,8 @@ import breakpoints from "../../breackpoints";
 import "./menu.css"
 
 const MenuComponent = ({ isOpen }) => {
+  const [esMobile] = useMediaQuery(`(max-width: ${breakpoints.mobile})`)
+
   const menuTranslator = [
     {
       link: "Traducciones Realizadas",
@@ -35,7 +37,7 @@ const MenuComponent = ({ isOpen }) => {
 
   return (
     <>
-      {!useMediaQuery(`(max-width: ${breakpoints.mobile})`) || isOpen ? (
+      {!esMobile || isOpen ? (
         location.pathname.includes("traductor") ? (
           <Box className="menu">
             <Box className="items-container">

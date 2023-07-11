@@ -1,6 +1,5 @@
-import { Box, Text, ThemeProvider } from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/react";
 import Botonera from "../../botonera/Botonera";
-import theme from "../../../theme";
 
 function ConfirmationModal({ esVisible, handleRechazar, handleConfirmar, texto }) {
   const styles = {
@@ -15,17 +14,17 @@ function ConfirmationModal({ esVisible, handleRechazar, handleConfirmar, texto }
     width: "100%",
     height: "100%",
     overflow: "auto",
-    backgroundColor: "secondary.main"
+    backgroundColor: "#1A5F7A"
   };
   return (
-    <ThemeProvider theme={theme}>
+    <>
       <Box sx={styles}>
         <Box
           bg="rgba(255, 255, 255, 0.8)"
           borderRadius="30px"
           padding="2%"
         >
-          <Text variant="h6" textAlign="center">
+          <Text variant={"h6"} textAlign="center" color={"#1A5F7A"}>
             {texto}
           </Text>
           <Botonera
@@ -34,7 +33,7 @@ function ConfirmationModal({ esVisible, handleRechazar, handleConfirmar, texto }
           />
         </Box>
       </Box>
-    </ThemeProvider>
+    </>
   );
 }
 

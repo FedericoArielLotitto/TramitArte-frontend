@@ -1,16 +1,15 @@
-import { Box, IconButton, Menu, MenuItem, ThemeProvider, Toolbar } from "@chakra-ui/react";
+import { Box, Button, IconButton, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
 import { useState } from "react";
 import MenuIcon from "../../icon/menu/MenuIcon";
 import UserIcon from "../../icon/user/UserIcon";
 import ClearIcon from '@mui/icons-material/Clear';
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 import MenuComponent from "../../menu/menu";
-import theme from "../../../theme";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function CustomAppBar({ cerrarSesion }) {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [menuAnchorEl, setMenuAnchorEl] = useState(null);
+  const navigate = useNavigate()
 
   const menuItemStyle = {
     fontFamily: "Montserrat",
@@ -27,64 +26,35 @@ function CustomAppBar({ cerrarSesion }) {
     setMenuOpen(!menuOpen);
   };
 
-  const handleMenuOpen = (event) => {
-    setMenuAnchorEl(event.currentTarget);
-  };
-
-  const handleMenuClose = () => {
-    setMenuAnchorEl(null);
-  };
-
   return (
-    <ThemeProvider theme={theme}>
-        <Box sx={{ backgroundColor: "primary.dark" }}>
-            <Box sx={{ backgroundColor: "primary.dark" }} as="header">
-                <Toolbar>
-                <IconButton
-                    size="lg"
-                    color="white"
-                    aria-label="menu"
-                    sx={{ justifyContent: "flex-start", flex: 1 }}
-                    onClick={toggleMenu}
-                >
-                    {menuOpen ? <ClearIcon /> : <MenuIcon />}
-                </IconButton>
-                <IconButton
-                    size="lg"
-                    color="white"
-                    aria-label="user"
-                    sx={{ justifyContent: "flex-end" }}
-                    onClick={handleMenuOpen}
-                >
+        <Box sx={{ backgroundColor: "#159895" }}>
+            <Box sx={{ backgroundColor: "#159895" }} as="header" height={"3rem"} display={"flex"} justifyContent={"end"}>
+            <IconButton
+              size="large"
+              color="inherit"
+              aria-label="menu"
+              backgroundColor={"#159895"}
+              onClick={toggleMenu}
+            >
+              {menuOpen ? (<ClearIcon/>) : (<MenuIcon />)}
+            </IconButton>
+            <Menu>
+                <MenuButton as={Button} backgroundColor={"#159895"} display={"flex"} justifyContent={"center"} alignItems={"center"} height={"100%"}>
                     <UserIcon />
-                </IconButton>
-                <Menu
-                    colorScheme="blue"
-                    isOpen={Boolean(menuAnchorEl)}
-                    onClose={handleMenuClose}
-                    placement="bottom-end"
-                >
-                    <MenuItem sx={menuItemStyle}>
-                        <Link to={"/profile-user"}>Mi cuenta</Link>
-                    </MenuItem>
-                    <MenuItem sx={menuItemStyle}>
-                        <Link to={"/user-dni"}>Mis Documentos</Link>
-                    </MenuItem>
-                    <MenuItem sx={menuItemStyle}>
-                        <Link to={"/avo"}>Documentos AVO</Link>
-                    </MenuItem>
-                    <MenuItem onClick={cerrarSesion} sx={menuItemStyle} justifyContent="space-between">
+                </MenuButton>
+                <MenuList>
+                    <MenuItem style={menuItemStyle} onClick={() => navigate("/profile-user")}>Mi cuenta</MenuItem>
+                    <MenuItem style={menuItemStyle} onClick={() => navigate("/user-dni")}>Mis documentos</MenuItem>
+                    <MenuItem style={menuItemStyle} onClick={() => navigate("/avo")}>Documentos AVO</MenuItem>
+                    <MenuItem style={menuItemStyle} onClick={cerrarSesion}>
                         Cerrar sesión
-                        <LogoutOutlinedIcon
-                        style={{ width: "33px", height: "33px" }}
-                        ></LogoutOutlinedIcon>
-                    </MenuItem>
+                        <LogoutOutlinedIcon style={{ width: "33px", height: "33px" }}/>
+                        </MenuItem>
+                </MenuList>
                 </Menu>
-                </Toolbar>
             </Box>
             {menuOpen && <MenuComponent isOpen={menuOpen} />}
         </Box>
-    </ThemeProvider>
   );
 }
 

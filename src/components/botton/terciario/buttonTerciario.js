@@ -1,17 +1,15 @@
-import { Button, ThemeProvider } from "@chakra-ui/react";
-import theme from "../../../theme";
+import { Button} from "@chakra-ui/react";
 
 const ButtonTerciario = ({ texto, width, onClick }) => (
-  <ThemeProvider theme={theme}>
     <Button
       borderRadius="45px"
       width={width}
       onClick={onClick}
-      variant="secondary"
+      backgroundColor={"#1A5F7A"}
+      color={"#F6F4FF"}
     >
       {texto}
     </Button>
-  </ThemeProvider>
 );
 
 export default ButtonTerciario;

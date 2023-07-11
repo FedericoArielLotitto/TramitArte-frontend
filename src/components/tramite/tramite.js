@@ -3,19 +3,20 @@ import { Box, useMediaQuery } from "@chakra-ui/react";
 import ButtomSubmitSecundarioDesktop from "../botton/secundarioDesktop/buttonSubmitSecundarioDesktop";
 import breakpoints from "../../breackpoints";
 import CustomCard from "../cards/customCard";
-//import { useRouter } from "next/navigation";
-import { tramiteService } from "@/services/tramite.service";
+
+//import { tramiteService } from "@/services/tramite.service";
 import "./tramite.css"
+import { useNavigate } from "react-router";
 
 const TramiteComponent = () => {
   const [isClicked, setIsClicked] = useState(false);
   const esResolucionMobile = useMediaQuery(`(max-width: ${breakpoints.mobile})`);
-  //const router = useRouter();
+  const navigate = useNavigate();
 
   const handleClick = async () => {
     try {
-      await tramiteService.iniciarTramite();
-     // router.push("/stage1");
+      //await tramiteService.iniciarTramite();
+      navigate("/stage1");
       setIsClicked(!isClicked);
     } catch (error) {
       console.log(error);
@@ -23,7 +24,7 @@ const TramiteComponent = () => {
   };
 
   return (
-    <Box className="card-container">
+    <Box className="card-container" backgroundColor={"green"}>
       <Box>
         {esResolucionMobile ? (
           <CustomCard event={handleClick} />
