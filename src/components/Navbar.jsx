@@ -23,9 +23,11 @@ import {
   ChevronRightIcon,
 } from "@chakra-ui/icons";
 import logo from '../assets/logo.png';
+import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
   const { isOpen, onToggle } = useDisclosure();
+  const navigate=useNavigate()
 
   return (
     <Box>
@@ -88,7 +90,7 @@ export default function Navbar() {
             fontSize={"sm"}
             fontWeight={400}
             variant={"link"}
-            href={"#"}
+            onClick={()=>navigate("/login")}
           >
             Iniciar sesi&oacute;n
           </Button>
@@ -203,6 +205,7 @@ const DesktopSubNav = ({ label, href, subLabel }) => {
 };
 
 const MobileNav = () => {
+  const navigate=useNavigate()
   return (
     <Stack
       bg={useColorModeValue("white", "gray.800")}
@@ -210,7 +213,7 @@ const MobileNav = () => {
       display={{ md: "none" }}
     >
       {NAV_ITEMS.map((navItem) => (
-        <MobileNavItem key={navItem.label} {...navItem} />
+        <MobileNavItem key={navItem.label} onClick={()=>navigate(navItem.href)} {...navItem} />
       ))}
     </Stack>
   );
@@ -272,6 +275,7 @@ const MobileNavItem = ({ label, children, href }) => {
 const NAV_ITEMS = [
   {
     label: "¿Quiénes somos?",
+    href: "/quienes-somos"
     // children: [
     //   {
     //     label: "Explore Design Work",
@@ -287,6 +291,7 @@ const NAV_ITEMS = [
   },
   {
     label: "Preguntas Frecuentes",
+    href:'/preguntas-frecuentes'
     // children: [
     //   {
     //     label: "Job Board",
@@ -302,6 +307,7 @@ const NAV_ITEMS = [
   },
   {
     label: "Testimonios",
-    href: "#",
+    href:"/testimonials"
+    
   },
 ];
