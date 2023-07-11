@@ -59,8 +59,8 @@ export default function Navbar() {
             textAlign={useBreakpointValue({ base: "center", md: "left" })}
             fontFamily={"heading"}
             color={useColorModeValue("gray.800", "white")}
-          ></Text>
-          <Image
+          >Tramitarte</Text>
+          {/* <Image
             alt={"logo"}
             borderRadius="full"
             objectFit={"cover"}
@@ -70,7 +70,7 @@ export default function Navbar() {
             w={"2.8rem"}
             h={"2.8rem"}
             src={logo}
-          />
+          /> */}
 
           <Flex align='center' display={{ base: "none", md: "flex" }} ml={10}>
             <DesktopNav />

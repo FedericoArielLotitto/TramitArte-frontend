@@ -55,7 +55,7 @@ function Home() {
             <Text
               as={'span'}
               position={'relative'}
-              color='blue.900'
+              color={useColorModeValue('blue.900', 'blue.200')}
               _after={{
                 content: "''",
                 width: 'full',
@@ -63,7 +63,7 @@ function Home() {
                 position: 'absolute',
                 bottom: 1,
                 left: 0,
-                bg: 'teal.200',
+                bg: useColorModeValue('teal.300', 'teal.700'),
                 zIndex: -1,
               }}>
               Tramitá tu ciudadanía!
