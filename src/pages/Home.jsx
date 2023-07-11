@@ -40,7 +40,7 @@ export const Blob = (props) => {
 
 function Home() {
   return (
-    <Container maxW={'7xl'}>
+    <Container maxW={'full'}>
      <Navbar></Navbar>
       <Stack
         align={'center'}
@@ -55,6 +55,7 @@ function Home() {
             <Text
               as={'span'}
               position={'relative'}
+              color='blue.900'
               _after={{
                 content: "''",
                 width: 'full',
@@ -62,13 +63,13 @@ function Home() {
                 position: 'absolute',
                 bottom: 1,
                 left: 0,
-                bg: 'green.200',
+                bg: 'teal.200',
                 zIndex: -1,
               }}>
               Tramitá tu ciudadanía!
             </Text>
             <br />
-            <Text as={'span'} color={'green.400'}>
+            <Text as={'span'} color={'teal.400'}>
               Online
             </Text>
           </Heading>
@@ -85,8 +86,8 @@ function Home() {
               fontWeight={'normal'}
               px={6}
               colorScheme={'red'}
-              bg={'red.400'}
-              _hover={{ bg: 'red.500' }}>
+              bg={'teal.400'}
+              _hover={{ bg: 'green.500' }}>
               Iniciar mi tr&aacute;mite
             </Button>
             <Button
@@ -112,7 +113,7 @@ function Home() {
             top={'-20%'}
             left={0}
             zIndex={-1}
-            color={useColorModeValue('red.50', 'red.400')}
+            color={useColorModeValue('teal.50', 'green.400')}
           />
           <Box
             position={'relative'}

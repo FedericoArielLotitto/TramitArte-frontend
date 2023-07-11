@@ -37,7 +37,7 @@ export default function Navbar() {
         px={{ base: 4 }}
         borderBottom={1}
         borderStyle={"solid"}
-        borderColor={useColorModeValue("gray.200", "gray.900")}
+        borderColor={useColorModeValue("teal.200", "teal.900")}
         align={"center"}
       >
         <Flex
@@ -72,7 +72,7 @@ export default function Navbar() {
             src={logo}
           />
 
-          <Flex display={{ base: "none", md: "flex" }} ml={10}>
+          <Flex align='center' display={{ base: "none", md: "flex" }} ml={10}>
             <DesktopNav />
           </Flex>
         </Flex>
@@ -98,13 +98,13 @@ export default function Navbar() {
             fontSize={"sm"}
             fontWeight={600}
             color={"white"}
-            bg={"pink.400"}
+            bg={"teal.400"}
             href={"#"}
             _hover={{
-              bg: "pink.300",
+              bg: "green.300",
             }}
           >
-            Sign Up
+            Registrarme
           </Button>
         </Stack>
       </Flex>
@@ -117,7 +117,7 @@ export default function Navbar() {
 }
 
 const DesktopNav = () => {
-  const linkColor = useColorModeValue("gray.600", "gray.200");
+  const linkColor = useColorModeValue("blue.900", "blue.200");
   const linkHoverColor = useColorModeValue("gray.800", "white");
   const popoverContentBgColor = useColorModeValue("white", "gray.800");
 
@@ -233,7 +233,7 @@ const MobileNavItem = ({ label, children, href }) => {
       >
         <Text
           fontWeight={600}
-          color={useColorModeValue("gray.600", "gray.200")}
+          color={useColorModeValue("blue.900", "blue.200")}
         >
           {label}
         </Text>
