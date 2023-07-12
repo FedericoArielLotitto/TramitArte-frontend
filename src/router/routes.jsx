@@ -19,7 +19,7 @@ export const RouterApp = () => {
 
           <Route index element={<Home />} />
           <Route path="/testimonials" element={<Testimonials/>} /> 
-          <Route path="/preguntas-frecuentes" element={<PreguntasFrecuentes/>} />
+          {/* <Route path="/preguntas-frecuentes" element={<PreguntasFrecuentes/>} /> */}
           <Route path="/quienes-somos" element={<AboutUs/>} />
           {/* <Route index element={<TranslatorComponent stage={1}/>} /> */}
            {/* <Route path="/home" element={<Home />} />  */}
