@@ -3,7 +3,6 @@ import Home from '../pages/Home'
 import Login from '../pages/Login'
 
 import Testimonials from '../pages/Testimonials'
-import PreguntasFrecuentes from '../pages/PreguntasFrecuentes'
 import AboutUs from '../pages/AboutUs'
 
 
