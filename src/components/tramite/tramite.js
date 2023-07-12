@@ -10,7 +10,7 @@ import { useNavigate } from "react-router";
 
 const TramiteComponent = () => {
   const [isClicked, setIsClicked] = useState(false);
-  const esResolucionMobile = useMediaQuery(`(max-width: ${breakpoints.mobile})`);
+  const [esResolucionMobile] = useMediaQuery(`(max-width: ${breakpoints.mobile})`);
   const navigate = useNavigate();
 
   const handleClick = async () => {
@@ -24,7 +24,7 @@ const TramiteComponent = () => {
   };
 
   return (
-    <Box className="card-container" backgroundColor={"green"}>
+    <Box className="card-container">
       <Box>
         {esResolucionMobile ? (
           <CustomCard event={handleClick} />
