@@ -22,8 +22,8 @@ import {
   ChevronDownIcon,
   ChevronRightIcon,
 } from "@chakra-ui/icons";
-import logo from '../assets/logo.png';
 import { useNavigate } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 
 export default function Navbar() {
   const { isOpen, onToggle } = useDisclosure();
@@ -62,18 +62,6 @@ export default function Navbar() {
             fontFamily={"heading"}
             color={useColorModeValue("gray.800", "white")}
           >Tramitarte</Text>
-          {/* <Image
-            alt={"logo"}
-            borderRadius="full"
-            objectFit={"cover"}
-            boxSize='100px'
-            align={"center"}
-            maxH="5%"
-            w={"2.8rem"}
-            h={"2.8rem"}
-            src={logo}
-          /> */}
-
           <Flex align='center' display={{ base: "none", md: "flex" }} ml={10}>
             <DesktopNav />
           </Flex>
@@ -129,9 +117,9 @@ const DesktopNav = () => {
         <Box key={navItem.label}>
           <Popover trigger={"hover"} placement={"bottom-start"}>
             <PopoverTrigger>
-              <Link
+              <HashLink
                 p={2}
-                href={navItem.href ?? "#"}
+                to={navItem.href ?? "#"}
                 fontSize={"sm"}
                 fontWeight={500}
                 color={linkColor}
@@ -141,7 +129,7 @@ const DesktopNav = () => {
                 }}
               >
                 {navItem.label}
-              </Link>
+              </HashLink>
             </PopoverTrigger>
 
             {navItem.children && (
@@ -262,9 +250,9 @@ const MobileNavItem = ({ label, children, href }) => {
         >
           {children &&
             children.map((child) => (
-              <Link key={child.label} py={2} href={child.href}>
+              <HashLink key={child.label} py={2} href={child.href}>
                 {child.label}
-              </Link>
+              </HashLink>
             ))}
         </Stack>
       </Collapse>
@@ -275,7 +263,7 @@ const MobileNavItem = ({ label, children, href }) => {
 const NAV_ITEMS = [
   {
     label: "¿Quiénes somos?",
-    href: "/quienes-somos"
+    href: "#sobre-nosotros"
     // children: [
     //   {
     //     label: "Explore Design Work",
@@ -291,7 +279,7 @@ const NAV_ITEMS = [
   },
   {
     label: "Preguntas Frecuentes",
-    href:'/preguntas-frecuentes'
+    href:'#preguntas-frecuentes'
     // children: [
     //   {
     //     label: "Job Board",
@@ -307,7 +295,7 @@ const NAV_ITEMS = [
   },
   {
     label: "Testimonios",
-    href:"/testimonials"
+    href:"#testimonials"
     
   },
 ];

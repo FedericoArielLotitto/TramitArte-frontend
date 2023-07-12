@@ -1,6 +1,5 @@
 import {
   Container,
-  SimpleGrid,
   Image,
   Flex,
   Heading,
@@ -31,11 +30,7 @@ const Feature = ({ text, icon, iconBg }) => {
 
 function AboutUs() {
   return (
-    //  <Flex>
-
-    <Container maxW={"full"} py={12}>
-      {/* <SimpleGrid columns={{ md: 2 }} spacing={10}> */}
-      {/* <Flex> */}
+    <Container id="sobre-nosotros" maxW={"full"} py={12}>
         <Box>
           <Image
             rounded={"md"}
@@ -92,10 +87,7 @@ function AboutUs() {
             />
           </Stack>
         </Box>
-      {/* </Flex> */}
-      {/* </SimpleGrid> */}
     </Container>
-    // </Flex>
   );
 }
 export default AboutUs;

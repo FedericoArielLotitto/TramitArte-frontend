@@ -15,7 +15,7 @@ import LogoAnimado from "../components/logoAnimado/LogoAnimado";
 import AboutUs from "./AboutUs";
 import Testimonials from "./Testimonials";
 import Faq from "../components/Faq/Faq";
-import { Link } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 
 const PlayIcon = createIcon({
   displayName: "PlayIcon",
@@ -100,11 +100,11 @@ function Home() {
             >
               Iniciar mi tr&aacute;mite
             </Button>
-            <Link to="#preguntas-frecuentes">
+            <HashLink to="#preguntas-frecuentes" smooth>
               <Button rounded={"full"} size={"lg"} fontWeight={"normal"} px={6}>
                 ¿C&oacute;mo funciona?
               </Button>
-            </Link>
+            </HashLink>
           </Stack>
         </Stack>
         <Flex

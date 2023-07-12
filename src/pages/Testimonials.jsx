@@ -2,13 +2,10 @@ import {
     Avatar,
     Box,
     chakra,
-    Container,
     Flex,
-    Icon,
     SimpleGrid,
     useColorModeValue,
   } from '@chakra-ui/react';
-import Navbar from '../components/Navbar';
   
   const testimonials = [
     {
@@ -58,6 +55,7 @@ import Navbar from '../components/Navbar';
     const { name, role, content, avatar, index } = props;
     return (
       <Flex
+        id="testimonials"
         boxShadow={'lg'}
         maxW={'640px'}
         direction={{ base: 'column-reverse', md: 'row' }}
