@@ -86,7 +86,7 @@ const AvoComponent = () => {
   };
 
   return (
-    <Box className="container" backgroundColor={"green"} display={"flex"} justifyContent={"center"} alignItems={"center"} width={"100vw"}>
+    <Box className="container">
       <Box className="home-conteiner">
         <Box className="columns-container">
           {esResolucionMobile ? <></> : <MenuComponent array={menuUser} />}
