@@ -57,7 +57,7 @@ function Tramite() {
         <Button
           textTransform="uppercase"
           borderRadius="45px"
-          w="100%"
+          w={'100%'}
           color="white"
           bg="red.900"
         >

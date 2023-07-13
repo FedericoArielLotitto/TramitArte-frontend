@@ -6,7 +6,7 @@ function UserHome() {
   return (
     <Box minH='100%' bg='teal.200'>
       <UserNavbar />
-      <Flex bg='teal.200' justifyContent={'center'}>
+      <Flex bg='teal.200' p="2.4rem" justifyContent={'center'}>
         <Outlet />
       </Flex>
     </Box>
