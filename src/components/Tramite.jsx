@@ -5,7 +5,6 @@ import {
   CardBody,
   CardHeader,
   Heading,
-  Text,
   CardFooter,
   Button,
   IconButton,
@@ -15,24 +14,39 @@ import { Delete } from "@mui/icons-material";
 
 function Tramite() {
   return (
-    <Card bg='teal.100' align="center" p=".8rem">
+    <Card
+      borderRadius="45px"
+      bg="rgba(255, 255, 255, 0.8)"
+      align="center"
+      p=".8rem"
+    >
       <CardHeader>
-        <HStack spacing={'2%'}>
+        <HStack spacing={"2%"}>
           <Heading size="md">Código de trámite: X9889MW</Heading>
           <IconButton
             aria-label="Borrar trámite"
-            color="red.400"
-            icon={<Delete />}
+            color="red.500"
+            size="lg"
+            icon={<Delete fontSize="large"/>}
           ></IconButton>
         </HStack>
       </CardHeader>
       <CardBody align="center">
-        <CircularProgress size='300px' value={1} color="green.400" thickness='10%'>
+        <CircularProgress
+          capIsRound
+          trackColor="blue.100"
+          size="300px"
+          value={1}
+          color="blue.900"
+          thickness="10%"
+        >
           <CircularProgressLabel>1%</CircularProgressLabel>
         </CircularProgress>
       </CardBody>
-      <CardFooter>
-        <Button colorScheme="blue">View here</Button>
+      <CardFooter w="100%">
+        <Button borderRadius="45px" w="100%" color="white" bg="red.900">
+          Ver avance
+        </Button>
       </CardFooter>
     </Card>
   );
