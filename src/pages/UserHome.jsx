@@ -1,4 +1,4 @@
-import { Box } from "@chakra-ui/react";
+import { Box, Flex } from "@chakra-ui/react";
 import UserNavbar from "../components/UserNavbar";
 import { Outlet } from "react-router";
 
@@ -6,9 +6,9 @@ function UserHome() {
   return (
     <Box minH='100%' bg='teal.200'>
       <UserNavbar />
-      <Box bg='teal.200' p='2.4rem'>
+      <Flex bg='teal.200' justifyContent={'center'}>
         <Outlet />
-      </Box>
+      </Flex>
     </Box>
   );
 }
