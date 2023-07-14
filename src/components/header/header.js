@@ -1,3 +1,4 @@
+import { useAuth0 } from "@auth0/auth0-react";
 import { Box } from "@chakra-ui/react";
 import AccountBoxOutlinedIcon from "@mui/icons-material/AccountBoxOutlined";
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
@@ -7,7 +8,7 @@ import "./header.css";
 
 export const HeaderComponent = () => {
   const navigate = useNavigate()
-
+  const {logout}= useAuth0()
   return (
     <Box className="header">
       <Box className="logo">
@@ -25,7 +26,7 @@ export const HeaderComponent = () => {
         <Box className="other-button">
           <LogoutOutlinedIcon
             aria-label="Logout"
-            onClick={() => navigate("/api/auth/logout")}
+            onClick={() => logout()}
           >
           </LogoutOutlinedIcon>
         </Box>

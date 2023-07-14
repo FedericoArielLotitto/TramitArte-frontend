@@ -5,7 +5,7 @@ import "./menu.css"
 
 const MenuComponent = ({ isOpen }) => {
   const [esMobile] = useMediaQuery(`(max-width: ${breakpoints.mobile})`)
-
+  
   const menuTranslator = [
     {
       link: "Traducciones Realizadas",

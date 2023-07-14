@@ -24,11 +24,11 @@ import {
 } from "@chakra-ui/icons";
 import { useNavigate } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
+import { useAuth0 } from '@auth0/auth0-react';
 
 export default function Navbar() {
   const { isOpen, onToggle } = useDisclosure();
-  const navigate=useNavigate()
-
+  const {loginWithRedirect} = useAuth0()
   return (
     <Box>
       <Flex
@@ -78,7 +78,7 @@ export default function Navbar() {
             fontSize={"sm"}
             fontWeight={400}
             variant={"link"}
-            onClick={()=>navigate("/login")}
+            onClick={()=>loginWithRedirect()}
           >
             Iniciar sesi&oacute;n
           </Button>

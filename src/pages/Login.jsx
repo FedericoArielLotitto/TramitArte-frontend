@@ -10,11 +10,13 @@ import {
   useColorMode,
   useColorModeValue,
 } from '@chakra-ui/react';
+import { useAuth0 } from '@auth0/auth0-react';
 
 const Login = () => {
   const { toggleColorMode } = useColorMode();
   const formBackground = useColorModeValue('gray.100', 'gray.700');
-
+  const {loginWithRedirect} = useAuth0()
+  const{isAuthenticated} = useAuth0()
   return (
     <Flex h="100vh" alignItems="center" justifyContent="center">
       <Flex
@@ -37,7 +39,7 @@ const Login = () => {
           variant="filled"
           mb={6}
         />
-        <Button colorScheme="teal" mb={8}>
+        <Button colorScheme="teal" mb={8} onClick={()=>loginWithRedirect()}>
           Log In
         </Button>
         <FormControl display="flex" alignItems="center">
