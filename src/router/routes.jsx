@@ -8,6 +8,7 @@ import UserProfile from "../pages/UserProfile";
 import PreguntasFrecuentes from "../pages/PreguntasFrecuentes";
 import FamilySearch from "../pages/FamilySearch";
 import TraductoresRegistrados from "../pages/TraductoresRegistrados";
+import ModalConfirmacion from "../components/ModalConfirmacion";
 
 export const RouterApp = () => {
   return (
@@ -23,7 +24,8 @@ export const RouterApp = () => {
         <Route path="/preguntas-frecuentes" element={<PreguntasFrecuentes/>} />
         <Route path="/family-search" element={<FamilySearch />} />
         <Route path="/traductores" element={<TraductoresRegistrados />} />
-        <Route path="*" element={<div>404</div>} />
+        <Route paht="/network-error" element={<div>Error</div>} />
+        <Route path="*" element={<ModalConfirmacion />} />
         {/* <Route path="/testimonials" element={<Testimonials/>} />  */}
         {/* <Route path="/quienes-somos" element={<AboutUs/>} /> */}
         {/* <Route index element={<TranslatorComponent stage={1}/>} /> */}
