@@ -21,15 +21,15 @@ import { AccountCircle, Logout } from "@mui/icons-material";
 const Links = [
   {
     texto: "Traductores Registrados",
-    link: "/traductores"
+    link: "/traductores",
   },
   {
     texto: "Family Search",
-    link: "/family-search"
+    link: "/family-search",
   },
   {
     texto: "Preguntas Frecuentes",
-    link: "/preguntas-frecuentes"
+    link: "/preguntas-frecuentes",
   },
 ];
 
@@ -45,7 +45,7 @@ const NavLink = ({ texto, link }) => (
     }}
     href={link}
   >
-    { texto }
+    {texto}
   </Link>
 );
 
@@ -53,61 +53,72 @@ export default function UserNavbar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const bgColors = useColorModeValue("teal.300", "blue.900");
   const colors = useColorModeValue("white", "blue.900");
-  
-  return (
-    <Box color={colors} bg={bgColors} px={4}>
-      <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
-        <IconButton
-          bg={bgColors}
-          size={"md"}
-          icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
-          aria-label={"Open Menu"}
-          display={{ md: "none" }}
-          onClick={isOpen ? onClose : onOpen}
-          color={colors}
-        />
-        <HStack spacing={8} alignItems={"center"}>
-          <Box>Tramitarte</Box>
-          <HStack as={"nav"} spacing={4} display={{ base: "none", md: "flex" }}>
-            {Links.map(({ link, texto }) => (
-              <NavLink key={link} link={link} texto={texto} />
-            ))}
-          </HStack>
-        </HStack>
-        <Flex alignItems={"center"}>
-          <Menu>
-            <MenuButton
-              as={Button}
-              rounded={"full"}
-              variant={"link"}
-              cursor={"pointer"}
-              minW={0}
-            >
-              <Avatar
-                size={"sm"}
-                src={
-                  "https://images.unsplash.com/photo-1493666438817-866a91353ca9?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9"
-                }
-              />
-            </MenuButton>
-            <MenuList color={useColorModeValue('blue.900', 'white')}>
-              <MenuItem icon={<AccountCircle />}>Mi perfil</MenuItem>
-              <MenuDivider />
-              <MenuItem icon={<Logout />}>Cerrar sesi&oacute;n</MenuItem>
-            </MenuList>
-          </Menu>
-        </Flex>
-      </Flex>
 
-      {isOpen ? (
-        <Box pb={4} display={{ md: "none" }}>
-          <Stack as={"nav"} spacing={4}>
-            {Links.map(( { link, texto } ) => (
-              <NavLink key={texto} texto={texto} link={link} />
-            ))}
-          </Stack>
-        </Box>
-      ) : null}
-    </Box>
+  return (
+    <>
+      <Box color={colors} bg={bgColors} px={4}>
+        <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
+          <IconButton
+            bg={bgColors}
+            size={"md"}
+            icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
+            aria-label={"Open Menu"}
+            display={{ md: "none" }}
+            onClick={isOpen ? onClose : onOpen}
+            color={colors}
+          />
+          <HStack spacing={8} alignItems={"center"}>
+            <Box>Tramitarte</Box>
+            <HStack
+              as={"nav"}
+              spacing={4}
+              display={{ base: "none", md: "flex" }}
+            >
+              {Links.map(({ link, texto }) => (
+                <NavLink key={link} link={link} texto={texto} />
+              ))}
+            </HStack>
+          </HStack>
+          <Flex alignItems={"center"}>
+            <Menu>
+              <MenuButton
+                as={Button}
+                rounded={"full"}
+                variant={"link"}
+                cursor={"pointer"}
+                minW={0}
+              >
+                <Avatar
+                  size={"sm"}
+                  src={
+                    "https://images.unsplash.com/photo-1493666438817-866a91353ca9?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9"
+                  }
+                />
+              </MenuButton>
+              <MenuList color={useColorModeValue("blue.900", "white")}>
+                <MenuItem icon={<AccountCircle />}>Mi perfil</MenuItem>
+                <MenuDivider />
+                <MenuItem icon={<Logout />}>Cerrar sesi&oacute;n</MenuItem>
+              </MenuList>
+            </Menu>
+          </Flex>
+        </Flex>
+
+        {isOpen ? (
+          <Box pb={4} display={{ md: "none" }}>
+            <Stack as={"nav"} spacing={4}>
+              {Links.map(({ link, texto }) => (
+                <NavLink key={texto} texto={texto} link={link} />
+              ))}
+            </Stack>
+          </Box>
+        ) : null}
+      </Box>
+      <Box h={16} positon="fixed" bottom="0" bg="blue.900">
+        <HStack>
+
+        </HStack>
+      </Box>
+    </>
   );
 }
