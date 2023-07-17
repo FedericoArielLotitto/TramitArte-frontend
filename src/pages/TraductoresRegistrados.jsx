@@ -26,16 +26,16 @@ function TraductoresRegistrados() {
         "https://images.unsplash.com/photo-1612865547334-09cb8cb455da?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
     },
     {
-      nombre: "Leandro",
-      apellido: "Gómez",
-      precio: "9900",
+      nombre: "Aníbal",
+      apellido: "Troilo",
+      precio: "10500",
       fotoPerfil:
         "https://images.unsplash.com/photo-1612865547334-09cb8cb455da?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
     },
     {
-      nombre: "Leandro",
-      apellido: "Gómez",
-      precio: "9900",
+      nombre: "Solange",
+      apellido: "Estéban",
+      precio: "1200",
       fotoPerfil:
         "https://images.unsplash.com/photo-1612865547334-09cb8cb455da?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
     },
@@ -70,7 +70,7 @@ function TraductoresRegistrados() {
       >
         {traductores.map((traductor, index) => (
           <WrapItem
-            minW="100%"
+            w="sm"
             borderRadius="45px"
             bg="whiteAlpha.800"
             key={index}
@@ -83,7 +83,7 @@ function TraductoresRegistrados() {
                 boxSize="40%"
                 w="100%"
                 objectFit={"contain"}
-                src="https://images.unsplash.com/photo-1612865547334-09cb8cb455da?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+                src={traductor.fotoPerfil}
               />
             </Center>
             <Center h="100%" flexBasis="50%">
