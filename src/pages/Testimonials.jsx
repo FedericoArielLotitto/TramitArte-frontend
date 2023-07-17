@@ -66,7 +66,7 @@ import {
         position={'relative'}
         color={'gray.700'}
         bg={useColorModeValue('white', 'teal.400')}
-        _hover={{ bg: 'green.500' }}
+        _hover={{ bg: 'teal.100' }}
         _after={{
           content: '""',
           position: 'absolute',
@@ -97,16 +97,14 @@ import {
           textAlign={'left'}
           justifyContent={'space-between'}>
           <chakra.p
-            fontFamily={'Inter'}
             fontWeight={'medium'}
             fontSize={'15px'}
             pb={4}>
             {content}
           </chakra.p>
-          <chakra.p fontFamily={'Work Sans'} fontWeight={'bold'} fontSize={14}>
+          <chakra.p fontWeight={'bold'} fontSize={14}>
             {name}
             <chakra.span
-              fontFamily={'Inter'}
               fontWeight={'medium'}
               color={'gray.500'}>
               {' '}
@@ -136,7 +134,7 @@ import {
         overflow={'hidden'}>
         <Box width={{ base: 'full', sm: 'lg', lg: 'xl' }} margin={'auto'}>
           <chakra.h3
-            fontFamily={'Work Sans'}
+            
             fontWeight={'bold'}
             fontSize={20}
             textTransform={'uppercase'}
@@ -146,7 +144,6 @@ import {
           <chakra.h1
             py={5}
             fontSize={48}
-            fontFamily={'Work Sans'}
             fontWeight={'bold'}
             color={useColorModeValue('gray.700', 'gray.50')}>
             Te invitamos a conocernos...
@@ -154,7 +151,6 @@ import {
           <chakra.h2
             margin={'auto'}
             width={'70%'}
-            fontFamily={'Inter'}
             fontWeight={'medium'}
             color={useColorModeValue('gray.500', 'gray.400')}>
             En la actualidad ayudamos a más de {' '}
