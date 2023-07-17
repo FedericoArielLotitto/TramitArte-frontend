@@ -10,4 +10,6 @@ class TramiteService {
 
 }
 
-export default new TramiteService();
+const tramiteService = new TramiteService();
+
+export default tramiteService;

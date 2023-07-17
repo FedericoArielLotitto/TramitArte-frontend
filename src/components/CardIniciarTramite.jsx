@@ -11,7 +11,7 @@ import {
 } from "@chakra-ui/react";
 
 import ModalConfirmacion from "./ModalConfirmacion";
-import TramiteService from "../services/TramiteService";
+import tramiteService from "../services/TramiteService";
 import { useNavigate } from "react-router";
 import { useState, useCallback } from "react";
 import ModalIsLoading from "./ModalIsLoading";
@@ -23,7 +23,7 @@ function CardIniciarTramite() {
 
   const handleConfirmacion = useCallback(() => {
     setEstaCargando(true);
-    return TramiteService.guardarTramite()
+    return tramiteService.guardarTramite()
       .then((response) => {
         setEstaCargando(false);
         console.log(response);

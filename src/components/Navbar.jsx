@@ -24,9 +24,11 @@ import {
 } from "@chakra-ui/icons";
 import { useNavigate } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
+import { useAuth0 } from "@auth0/auth0-react";
 
 export default function Navbar() {
   const { isOpen, onToggle } = useDisclosure();
+  const { loginWithRedirect } = useAuth0();
   const navigate=useNavigate()
 
   return (
@@ -78,7 +80,7 @@ export default function Navbar() {
             fontSize={"sm"}
             fontWeight={400}
             variant={"link"}
-            onClick={()=>navigate("/login")}
+            onClick={()=>loginWithRedirect()}
           >
             Iniciar sesi&oacute;n
           </Button>
@@ -90,6 +92,7 @@ export default function Navbar() {
             color={"white"}
             bg={"teal.400"}
             href={"#"}
+            onClick={()=>loginWithRedirect()}
             _hover={{
               bg: "green.300",
             }}

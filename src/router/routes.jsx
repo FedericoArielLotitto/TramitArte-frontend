@@ -9,12 +9,14 @@ import PreguntasFrecuentes from "../pages/PreguntasFrecuentes";
 import FamilySearch from "../pages/FamilySearch";
 import TraductoresRegistrados from "../pages/TraductoresRegistrados";
 import ModalConfirmacion from "../components/ModalConfirmacion";
+import EleccionRol from "../pages/EleccionRol";
 
 export const RouterApp = () => {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/login" element={<Login />} />
+        <Route path="eleccion-rol" element={<EleccionRol />} />
         <Route index element={<Home />} />
         <Route path="/home/:rol/*" element={<UserHome />}>
           <Route path="tramite" element={<CardIniciarTramite />} />
