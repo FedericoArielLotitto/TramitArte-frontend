@@ -14,9 +14,15 @@ import {
   useDisclosure,
   useColorModeValue,
   Stack,
+  Tabs,
+  TabPanel,
+  TabPanels,
+  Tab,
+  TabList,
+  Icon,
 } from "@chakra-ui/react";
-import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
-import { AccountCircle, Logout } from "@mui/icons-material";
+import { HamburgerIcon, CloseIcon, QuestionIcon } from "@chakra-ui/icons";
+import { AccountCircle, Home, Logout } from "@mui/icons-material";
 import { useNavigate } from "react-router";
 
 const Links = [
@@ -98,9 +104,16 @@ export default function UserNavbar() {
                 />
               </MenuButton>
               <MenuList color={useColorModeValue("blue.900", "white")}>
-                <MenuItem onClick={() => navigate("/usuario")} icon={<AccountCircle />}>Mi perfil</MenuItem>
+                <MenuItem
+                  onClick={() => navigate("/usuario")}
+                  icon={<AccountCircle />}
+                >
+                  Mi perfil
+                </MenuItem>
                 <MenuDivider />
-                <MenuItem onClick={() => navigate("/logout")} icon={<Logout />}>Cerrar sesi&oacute;n</MenuItem>
+                <MenuItem onClick={() => navigate("/logout")} icon={<Logout />}>
+                  Cerrar sesi&oacute;n
+                </MenuItem>
               </MenuList>
             </Menu>
           </Flex>
@@ -116,11 +129,25 @@ export default function UserNavbar() {
           </Box>
         ) : null}
       </Box>
-      <Box h={16} positon="fixed" bottom="0" bg="blue.900">
-        <HStack>
 
-        </HStack>
-      </Box>
+      <Tabs
+        border="none"
+        bg="teal.300"
+        p="2%"
+        h={16}
+        w="100%"
+        position="absolute"
+        bottom={0}
+      >
+        <TabList border="none" justifyContent="space-evenly">
+          <Tab onClick={() => navigate("/home/solicitante/tramite")}>
+            <Icon color="white" as={Home} boxSize={8} />
+          </Tab>
+          <Tab onClick={() => navigate("/preguntas-frecuentes")}>
+            <QuestionIcon color="white" bg="teal.300" boxSize={8} />
+          </Tab>
+        </TabList>
+      </Tabs>
     </>
   );
 }
