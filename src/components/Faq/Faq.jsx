@@ -10,7 +10,7 @@ import { ChevronDownIcon } from "@chakra-ui/icons";
 
 export default function Faq() {
   return (
-    <Accordion id="preguntas-frecuentes" allowMultiple w="100%" maxW="100%">
+    <Accordion py="2%" id="preguntas-frecuentes" allowMultiple w="100%" maxW="100%">
       <AccordionItem>
         <AccordionButton
           display="flex"

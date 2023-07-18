@@ -16,6 +16,7 @@ import AboutUs from "./AboutUs";
 import Testimonials from "./Testimonials";
 import Faq from "../components/Faq/Faq";
 import { HashLink } from "react-router-hash-link";
+import HomeFooter from "../components/HomeFooter";
 
 const PlayIcon = createIcon({
   displayName: "PlayIcon",
@@ -136,6 +137,7 @@ function Home() {
         </Heading>
       </Flex>
       <Faq></Faq>
+      <HomeFooter />
     </Container>
   );
 }
