@@ -17,6 +17,7 @@ import {
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import { AccountCircle, Logout } from "@mui/icons-material";
+import { useNavigate } from "react-router";
 
 const Links = [
   {
@@ -50,6 +51,7 @@ const NavLink = ({ texto, link }) => (
 );
 
 export default function UserNavbar() {
+  const navigate = useNavigate();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const bgColors = useColorModeValue("teal.300", "blue.900");
   const colors = useColorModeValue("white", "blue.900");
@@ -96,7 +98,7 @@ export default function UserNavbar() {
                 />
               </MenuButton>
               <MenuList color={useColorModeValue("blue.900", "white")}>
-                <MenuItem icon={<AccountCircle />}>Mi perfil</MenuItem>
+                <MenuItem onClick={() => navigate("/usuario")} icon={<AccountCircle />}>Mi perfil</MenuItem>
                 <MenuDivider />
                 <MenuItem icon={<Logout />}>Cerrar sesi&oacute;n</MenuItem>
               </MenuList>
