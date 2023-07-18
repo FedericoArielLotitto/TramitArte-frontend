@@ -1,14 +1,16 @@
 import {
   Container,
+  SimpleGrid,
   Image,
   Flex,
   Heading,
   Text,
   Stack,
   StackDivider,
+  Icon,
   useColorModeValue,
-  Box,
 } from "@chakra-ui/react";
+import { CurrencyBitcoin, Search, Timeline } from "@mui/icons-material";
 
 const Feature = ({ text, icon, iconBg }) => {
   return (
@@ -28,18 +30,21 @@ const Feature = ({ text, icon, iconBg }) => {
   );
 };
 
-function AboutUs() {
+export default function AboutUs() {
   return (
     <Container id="sobre-nosotros" maxW={"full"} py={12}>
-        <Box>
+      <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
+        <Flex p="3.6rem">
           <Image
             rounded={"md"}
             alt={"feature image"}
-            src={"https://www.beetrack.com/hubfs/Soluciones%20digitales.jpg"}
+            src={
+              "https://images.unsplash.com/photo-1554200876-56c2f25224fa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+            }
             objectFit={"cover"}
           />
-        </Box>
-        <Box>
+        </Flex>
+        <Stack spacing={4}>
           <Text
             textTransform={"uppercase"}
             color={"blue.400"}
@@ -50,9 +55,9 @@ function AboutUs() {
             alignSelf={"flex-start"}
             rounded={"md"}
           >
-            Nuestra Historia
+            Our Story
           </Text>
-          <Heading>De estudiantes a creadores digitales.</Heading>
+          <Heading>A digital Product design agency</Heading>
           <Text color={"gray.500"} fontSize={"lg"}>
             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
             nonumy eirmod tempor invidunt ut labore
@@ -66,28 +71,25 @@ function AboutUs() {
             }
           >
             <Feature
+              icon={<Icon as={Timeline} color={"yellow.500"} w={5} h={5} />}
               iconBg={useColorModeValue("yellow.100", "yellow.900")}
-              text={"Federico"}
+              text={"Business Planning"}
             />
             <Feature
+              icon={
+                <Icon as={CurrencyBitcoin} color={"green.500"} w={5} h={5} />
+              }
               iconBg={useColorModeValue("green.100", "green.900")}
-              text={"Ezequiel"}
+              text={"Financial Planning"}
             />
             <Feature
+              icon={<Icon as={Search} color={"purple.500"} w={5} h={5} />}
               iconBg={useColorModeValue("purple.100", "purple.900")}
-              text={"Dario"}
-            />
-            <Feature
-              iconBg={useColorModeValue("blue.100", "purple.900")}
-              text={"Mateo"}
-            />
-            <Feature
-              iconBg={useColorModeValue("red.100", "purple.900")}
-              text={"Leandro"}
+              text={"Market Analysis"}
             />
           </Stack>
-        </Box>
+        </Stack>
+      </SimpleGrid>
     </Container>
   );
 }
-export default AboutUs;

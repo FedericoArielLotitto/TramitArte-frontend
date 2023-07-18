@@ -44,7 +44,7 @@ export const Blob = (props) => {
 
 function Home() {
   return (
-    <Container maxW={"full"}>
+    <Container maxW={"5x1"}>
       <Navbar></Navbar>
       <Stack
         align={"center"}
@@ -101,7 +101,7 @@ function Home() {
               Iniciar mi tr&aacute;mite
             </Button>
             <HashLink to="#preguntas-frecuentes" smooth>
-              <Button rounded={"full"} size={"lg"} fontWeight={"normal"} px={6}>
+              <Button w="100%" rounded={"full"} size={"lg"} fontWeight={"normal"} px={6}>
                 ¿C&oacute;mo funciona?
               </Button>
             </HashLink>
