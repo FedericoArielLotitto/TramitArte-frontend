@@ -1,4 +1,4 @@
-import { Box, Center, Button, Wrap, WrapItem } from "@chakra-ui/react";
+import { Box, Center, Button } from "@chakra-ui/react";
 import LogoAnimado from "../components/logoAnimado/LogoAnimado";
 import { useNavigate } from "react-router";
 
