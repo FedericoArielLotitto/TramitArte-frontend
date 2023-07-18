@@ -131,15 +131,15 @@ export default function UserNavbar() {
       </Box>
 
       <Tabs
+        borderRadius="20px"
         border="none"
-        bg="teal.300"
         p="2%"
         h={16}
         w="100%"
         position="absolute"
         bottom={0}
       >
-        <TabList border="none" justifyContent="space-evenly">
+        <TabList bg="teal.300" borderRadius="20px" border="none" justifyContent="space-evenly">
           <Tab onClick={() => navigate("/home/solicitante/tramite")}>
             <Icon color="white" as={Home} boxSize={8} />
           </Tab>
