@@ -100,7 +100,7 @@ export default function UserNavbar() {
               <MenuList color={useColorModeValue("blue.900", "white")}>
                 <MenuItem onClick={() => navigate("/usuario")} icon={<AccountCircle />}>Mi perfil</MenuItem>
                 <MenuDivider />
-                <MenuItem icon={<Logout />}>Cerrar sesi&oacute;n</MenuItem>
+                <MenuItem onClick={() => navigate("/logout")} icon={<Logout />}>Cerrar sesi&oacute;n</MenuItem>
               </MenuList>
             </Menu>
           </Flex>
