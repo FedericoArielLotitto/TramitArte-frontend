@@ -14,7 +14,7 @@ import Navbar from "../components/Navbar";
 import LogoAnimado from "../components/logoAnimado/LogoAnimado";
 import AboutUs from "./AboutUs";
 import Testimonials from "./Testimonials";
-import Faq from "../components/Faq/Faq";
+import Faq from "../components/Faq";
 import { HashLink } from "react-router-hash-link";
 import HomeFooter from "../components/HomeFooter";
 

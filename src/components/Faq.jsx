@@ -10,7 +10,7 @@ import {
 import { ExternalLinkIcon } from "@chakra-ui/icons";
 
 import { ChevronDownIcon } from "@chakra-ui/icons";
-import Map from "../Map";
+import Map from "./Map";
 
 export default function Faq() {
   return (

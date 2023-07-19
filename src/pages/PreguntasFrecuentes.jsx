@@ -1,5 +1,5 @@
 import { ArrowBack } from "@mui/icons-material";
-import Faq from "../components/Faq/Faq";
+import Faq from "../components/Faq";
 import { Box, Center, Flex, IconButton } from "@chakra-ui/react";
 import { useNavigate } from "react-router";
 function PreguntasFrecuentes() {
