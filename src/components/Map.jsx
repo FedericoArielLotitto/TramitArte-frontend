@@ -33,9 +33,7 @@ function Map() {
         `).openPopup();
         // <a href=${consulado.url} target="_blank">Página 🔗</a>
     });
-    // const marker1 = L.marker([-34.6989, -64.7597], {
-    //   icon: myIcon,
-    // }).addTo(map).bindPopup("Dirección: Reconquista 752")
+    
 
     function buscarLocalizacion(e) {
       L.marker(e.latlng).addTo(map);
