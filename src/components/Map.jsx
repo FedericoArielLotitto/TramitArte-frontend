@@ -7,7 +7,7 @@ import consulados from "../data/consulados";
 function Map() {
   useEffect(() => {
     const centroDelPais = [-34.6989, -65.0379677];
-    const map = L.map("map").setView(centroDelPais, 2.5);
+    const map = L.map("map").setView(centroDelPais, 5);
 
     L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
       attribution:
