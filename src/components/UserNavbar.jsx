@@ -15,8 +15,6 @@ import {
   useColorModeValue,
   Stack,
   Tabs,
-  TabPanel,
-  TabPanels,
   Tab,
   TabList,
   Icon,
