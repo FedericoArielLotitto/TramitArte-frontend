@@ -65,7 +65,7 @@ function CardIniciarTramite() {
         onClose={onClose}
       />
       <ModalIsLoading
-        mensaje={"Esperanos mientras iniciamos tu tr&aacute;mite ;)"}
+        mensaje={"Esperanos mientras iniciamos tu trámite ;)"}
         isOpen={estaCargando}
       />
     </Flex>
