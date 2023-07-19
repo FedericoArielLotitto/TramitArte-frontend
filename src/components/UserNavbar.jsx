@@ -22,9 +22,10 @@ import {
   TagLabel,
   Icon,
 } from "@chakra-ui/react";
-import { HamburgerIcon, CloseIcon, QuestionIcon } from "@chakra-ui/icons";
+import { HamburgerIcon, CloseIcon, QuestionIcon, EmailIcon } from "@chakra-ui/icons";
 import {
   AccountCircle,
+  Email,
   Home,
   Logout,
   NotificationAdd,
@@ -95,10 +96,10 @@ export default function UserNavbar() {
               ))}
             </HStack>
           </HStack>
-          <Flex alignItems={"center"}>
-            <Tag mr=".2rem" borderRadius="45px" size={"md"} key={"md"} variant="subtle" colorScheme="teal">
-              <TagLeftIcon boxSize="8" as={Notifications} />
-              <TagLabel>{3}</TagLabel>
+          <Flex justifyContent="space-between" gap=".8rem" alignItems={"center"}>
+            <Tag borderRadius="45px" size={"sm"} key={"md"} variant="solid" bg="teal.300">
+              <TagLeftIcon boxSize="8" as={Email} />
+              <TagLabel ml={'-.4rem'}>{3}</TagLabel>
             </Tag>
             <Menu>
               <MenuButton
