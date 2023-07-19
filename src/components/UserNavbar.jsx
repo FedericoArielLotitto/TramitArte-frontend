@@ -17,10 +17,20 @@ import {
   Tabs,
   Tab,
   TabList,
+  Tag,
+  TagLeftIcon,
+  TagLabel,
   Icon,
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon, QuestionIcon } from "@chakra-ui/icons";
-import { AccountCircle, Home, Logout } from "@mui/icons-material";
+import {
+  AccountCircle,
+  Home,
+  Logout,
+  NotificationAdd,
+  NotificationImportant,
+  Notifications,
+} from "@mui/icons-material";
 import { useNavigate } from "react-router";
 
 const Links = [
@@ -86,6 +96,10 @@ export default function UserNavbar() {
             </HStack>
           </HStack>
           <Flex alignItems={"center"}>
+            <Tag mr=".2rem" borderRadius="45px" size={"md"} key={"md"} variant="subtle" colorScheme="teal">
+              <TagLeftIcon boxSize="8" as={Notifications} />
+              <TagLabel>{3}</TagLabel>
+            </Tag>
             <Menu>
               <MenuButton
                 as={Button}
@@ -137,7 +151,12 @@ export default function UserNavbar() {
         position="absolute"
         bottom={0}
       >
-        <TabList bg="teal.300" borderRadius="20px" border="none" justifyContent="space-evenly">
+        <TabList
+          bg="teal.300"
+          borderRadius="20px"
+          border="none"
+          justifyContent="space-evenly"
+        >
           <Tab onClick={() => navigate("/home/solicitante/tramite")}>
             <Icon color="white" as={Home} boxSize={8} />
           </Tab>
