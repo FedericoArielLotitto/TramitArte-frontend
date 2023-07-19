@@ -51,7 +51,7 @@ function Home() {
         align={"center"}
         spacing={{ base: 8, md: 10 }}
         py={{ base: 20, md: 28 }}
-        px={{md: 28}}
+        px={{ md: 28 }}
         direction={{ base: "column", md: "row" }}
       >
         <Stack flex={1} spacing={{ base: 5, md: 10 }}>
@@ -103,7 +103,13 @@ function Home() {
               Iniciar mi tr&aacute;mite
             </Button>
             <HashLink to="#preguntas-frecuentes" smooth>
-              <Button w="100%" rounded={"full"} size={"lg"} fontWeight={"normal"} px={6}>
+              <Button
+                w="100%"
+                rounded={"full"}
+                size={"lg"}
+                fontWeight={"normal"}
+                px={6}
+              >
                 ¿C&oacute;mo funciona?
               </Button>
             </HashLink>
@@ -137,7 +143,9 @@ function Home() {
           ¿C&oacute;mo podemos ayudarte?
         </Heading>
       </Flex>
-      <Faq></Faq>
+      <Box py="2%">
+        <Faq></Faq>
+      </Box>
       <HomeFooter />
     </Container>
   );

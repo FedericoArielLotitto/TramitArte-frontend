@@ -15,7 +15,7 @@ import Map from "../Map";
 export default function Faq() {
   return (
     <Accordion
-      py="2%"
+      bg="white"
       id="preguntas-frecuentes"
       allowMultiple
       w="100%"
