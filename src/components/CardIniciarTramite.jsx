@@ -60,6 +60,8 @@ function CardIniciarTramite() {
         </CardFooter>
       </Card>
       <ModalConfirmacion
+        pregunta={'¿Estás seguro de iniciar el trámite?'}
+        datoAConfirmar={'Podés darlo de baja en cualquier momento luego de iniciado.'}
         isOpen={isOpen}
         handleConfirmacion={handleConfirmacion}
         onClose={onClose}

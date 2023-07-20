@@ -13,16 +13,18 @@ export default function ModalConfirmacion({
   isOpen,
   handleConfirmacion,
   onClose,
+  pregunta,
+  datoAConfirmar,
 }) {
   return (
     <Modal size="xs" isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
       <ModalContent>
         <ModalHeader>
-          ¿Est&aacute;s seguro de iniciar el tr&aacute;mite?
+          {pregunta}
         </ModalHeader>
         <ModalBody>
-          Pod&eacute;s darlo de baja en cualquier momento luego de iniciado.
+          {datoAConfirmar}
         </ModalBody>
         <ModalFooter justifyContent="space-evenly">
           <IconButton

@@ -12,28 +12,46 @@ import {
   IconButton,
   Input,
   InputGroup,
-  InputLeftElement,
   InputRightElement,
   Text,
-  Icon,
   Radio,
-  Wrap,
-  WrapItem,
   RadioGroup,
+  Button,
+  useDisclosure,
+  Stack,
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router";
-import { ArrowBack, CalendarMonth } from "@mui/icons-material";
+import { ArrowBack } from "@mui/icons-material";
 import { CalendarIcon } from "@chakra-ui/icons";
-import { useState } from "react";
+import { useState, useCallback } from "react";
+
+import ModalConfirmacion from "../components/ModalConfirmacion";
+import ModalIsLoading from "../components/ModalIsLoading";
+import tramiteService from "../services/TramiteService";
 
 function SolicitudAVO() {
   const navigate = useNavigate();
   const handleBack = () => navigate(-1);
   const [isChecked, setIsChecked] = useState(true);
+  const [estaCargando, setEstaCargando] = useState(false);
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   const handleOnChangeSexRadioButton = () => {
     setIsChecked(!isChecked);
-  }
+  };
+
+  const handleConfirmacion = useCallback(() => {
+    setEstaCargando(true);
+    return tramiteService
+      .cargarAVO()
+      .then((response) => {
+        setEstaCargando(false);
+        console.log(response);
+        navigate("/home/solicitante/tramite/etapa/2");
+        return response;
+      })
+      .catch((error) => navigate("/network-error"));
+  }, []);
 
   return (
     <Box minH="100%" bg="blue.50">
@@ -68,9 +86,9 @@ function SolicitudAVO() {
         >
           <Box p="1rem">
             <Center
-              w="sm"
+              w="100%"
               borderRadius="15px"
-              p=".4rem"
+              p=".8rem"
               bg="teal.600"
               color="white"
               fontWeight={"700"}
@@ -84,7 +102,7 @@ function SolicitudAVO() {
             </Text>
           </Center>
 
-          <Accordion allowMultiple>
+          <Accordion w="100%" allowMultiple>
             <AccordionItem>
               <AccordionButton bg="teal.600" color="white" borderRadius="45px">
                 <Box
@@ -146,7 +164,7 @@ function SolicitudAVO() {
                   </FormControl>
                   <FormControl py="2%" color="blue.900" id="sexo-avo">
                     <FormLabel>Sexo biol&oacute;gico</FormLabel>
-                    <RadioGroup textAlign="center">
+                    <RadioGroup>
                       <Radio
                         isChecked={isChecked}
                         onChange={handleOnChangeSexRadioButton}
@@ -155,9 +173,8 @@ function SolicitudAVO() {
                         p=".4rem"
                         borderRadius="25px"
                         border="1px solid rgba(26, 54, 93, 1)"
-                        type="text"
-                        >
-                        Femenino
+                      >
+                        <Text fontSize="xl">Femenino</Text>
                       </Radio>
                       <Radio
                         isChecked={!isChecked}
@@ -169,29 +186,45 @@ function SolicitudAVO() {
                         border="1px solid rgba(26, 54, 93, 1)"
                         type="text"
                       >
-                        Masculino
+                        <Text fontSize="xl">Masculino</Text>
                       </Radio>
                     </RadioGroup>
                   </FormControl>
-                  <Box p=".5rem">
-                    <Center
+                  <Center p=".5rem">
+                    <Button
                       borderRadius="45px"
+                      w="sm"
                       p=".4rem"
                       fontSize="xl"
                       bg="teal.600"
                       color="white"
                       fontWeight={"700"}
                       boxShadow={"0px 0px 8px 4px rgba(0, 43, 91, 0.2)"}
+                      onClick={onOpen}
+                      _hover={{
+                        bg: "teal.500",
+                      }}
                     >
                       {"CARGAR AVO"}
-                    </Center>
-                  </Box>
+                    </Button>
+                  </Center>
                 </Box>
               </AccordionPanel>
             </AccordionItem>
           </Accordion>
         </Box>
       </Center>
+      <ModalConfirmacion
+        pregunta={"¿Estás seguro de cargar estos datos de tu AVO?"}
+        datoAConfirmar={'En cualquier caso, podés modificarlos desde tu perfil ;)'}
+        isOpen={isOpen}
+        onClose={onClose}
+        handleConfirmacion={() => handleConfirmacion()}
+      />
+      <ModalIsLoading
+        mensaje={"Esperanos mientras guardamos los datos de tu AVO... ;)"}
+        isOpen={estaCargando}
+      />
     </Box>
   );
 }
