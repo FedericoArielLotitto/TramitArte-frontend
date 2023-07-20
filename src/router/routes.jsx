@@ -11,6 +11,7 @@ import TraductoresRegistrados from "../pages/TraductoresRegistrados";
 import ModalConfirmacion from "../components/ModalConfirmacion";
 import EleccionRol from "../pages/EleccionRol";
 import SolicitudAVO from "../pages/SolicitudAVO";
+import PedidosTraduccion from "../components/PedidosTraduccion";
 
 export const RouterApp = () => {
   return (
@@ -19,9 +20,12 @@ export const RouterApp = () => {
         <Route path="/login" element={<Login />} />
         <Route path="eleccion-rol" element={<EleccionRol />} />
         <Route index element={<Home />} />
-        <Route path="/home/:rol/*" element={<UserHome />}>
-          <Route path="tramite" element={<CardIniciarTramite />} />
+        <Route path="/home/solicitante/*" element={<UserHome />}>
+          <Route index element={<CardIniciarTramite />} />
           <Route path="tramite/etapa/:paso" element={<Tramite />} />
+        </Route>
+        <Route path="/home/traductor/*" element={<UserHome />}>
+          <Route index element={<PedidosTraduccion />} />
         </Route>
         <Route path="/usuario" element={<UserProfile />} />
         <Route path="/preguntas-frecuentes" element={<PreguntasFrecuentes/>} />

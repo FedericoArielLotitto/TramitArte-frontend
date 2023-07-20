@@ -1,5 +1,12 @@
 import {
   Box,
+  Drawer,
+  DrawerBody,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton,
+  DrawerHeader,
+  DrawerFooter,
   Flex,
   Avatar,
   HStack,
@@ -22,22 +29,18 @@ import {
   TagLabel,
   Icon,
 } from "@chakra-ui/react";
-import {
-  HamburgerIcon,
-  CloseIcon,
-  QuestionIcon,
-  EmailIcon,
-} from "@chakra-ui/icons";
+import { HamburgerIcon, CloseIcon, QuestionIcon } from "@chakra-ui/icons";
 import {
   AccountCircle,
+  Assignment,
+  AssignmentInd,
+  ConnectWithoutContact,
   Email,
   Home,
   Logout,
-  NotificationAdd,
-  NotificationImportant,
-  Notifications,
 } from "@mui/icons-material";
-import { useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router";
+import { useRef } from "react";
 
 const Links = [
   {
@@ -47,6 +50,49 @@ const Links = [
   {
     texto: "Family Search",
     link: "/family-search",
+  },
+];
+
+const itemsMenuSolicitante = [
+  {
+    hipervinculo: "/home/solicitante",
+    texto: 'Inicio',
+    icono: <Icon color="white" as={Home} boxSize={8} />,
+  },
+  {
+    hipervinculo: "/traductores",
+    texto: 'Traductores Registrados',
+    icono: (
+      <Icon
+        color="white"
+        as={ConnectWithoutContact}
+        bg="teal.300"
+        boxSize={8}
+      />
+    ),
+  },
+  {
+    hipervinculo: "/preguntas-frecuentes",
+    texto: 'Preguntas Frecuentes',
+    icono: <QuestionIcon color="white" bg="teal.300" boxSize={8} />,
+  },
+];
+
+const itemsMenuTraductor = [
+  {
+    hipervinculo: "/home/traductor",
+    texto: 'Inicio',
+    icono: <Icon color="white" as={Home} boxSize={8} />,
+  },
+  {
+    hipervinculo: "/pedidos-pendientes",
+    texto: 'Solicitudes pendientes',
+    icono: <Icon color="white" as={Assignment} bg="teal.300" boxSize={8} />,
+  },
+  {
+    hipervinculo: "/solicitantes",
+    texto: 'Solicitantes de traducción',
+    icono: <Icon color="white" as={AssignmentInd} boxSize={8} />,
   },
 ];
 
@@ -68,40 +114,28 @@ const NavLink = ({ texto, link }) => (
 
 export default function UserNavbar() {
   const navigate = useNavigate();
+  const location = useLocation();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const bgColors = useColorModeValue("teal.300", "blue.900");
   const colors = useColorModeValue("white", "blue.900");
+  const btnRef = useRef();
 
   return (
     <>
       <Box color={colors} bg={bgColors} px={4}>
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
           <IconButton
+            ref={btnRef}
             bg={bgColors}
             size={"md"}
-            icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
+            icon={<HamburgerIcon />}
             aria-label={"Open Menu"}
-            display={{ md: "none" }}
+            display={{ base: "none", md: "flex" }}
             onClick={isOpen ? onClose : onOpen}
             color={colors}
           />
           <HStack color="white" spacing={8} alignItems={"center"}>
             <Box>Tramitarte</Box>
-            <HStack
-              as={"nav"}
-              spacing={4}
-              display={{ base: "none", md: "flex" }}
-            >
-              {Links.map(({ link, texto }) => (
-                <NavLink key={link} link={link} texto={texto} />
-              ))}
-              <NavLink
-                display={{ base: "none", md: "flex" }}
-                key={"/preguntas-frecuentes"}
-                link={"/preguntas-frecuentes"}
-                texto={"Preguntas Frecuentes"}
-              />
-            </HStack>
           </HStack>
           <Flex
             justifyContent="space-between"
@@ -150,13 +184,33 @@ export default function UserNavbar() {
         </Flex>
 
         {isOpen ? (
-          <Box pb={4} display={{ md: "none" }}>
-            <Stack as={"nav"} spacing={4}>
-              {Links.map(({ link, texto }) => (
-                <NavLink key={texto} texto={texto} link={link} />
-              ))}
-            </Stack>
-          </Box>
+          <Drawer
+            isOpen={isOpen}
+            placement="left"
+            onClose={onClose}
+            finalFocusRef={btnRef}
+          >
+            <DrawerOverlay />
+            <DrawerContent bg="teal.400">
+              <DrawerCloseButton color="white" />
+              <DrawerBody>
+                <Box py={12}>
+                  <Stack as={"nav"} spacing={4}>
+                    {location.pathname.includes('solicitante') && itemsMenuSolicitante.map((item, index) => (
+                      <Box py={4} borderBottom="1px solid" borderColor="white" key={index}>
+                        <NavLink texto={item.texto} link={item.hipervinculo} />
+                      </Box>
+                    ))}
+                    {location.pathname.includes('traductor') && itemsMenuTraductor.map((item, index) => (
+                      <Box py={4} borderBottom="1px solid" borderColor="white" key={index}>
+                        <NavLink texto={item.texto} link={item.hipervinculo} />
+                      </Box>
+                    ))}
+                  </Stack>
+                </Box>
+              </DrawerBody>
+            </DrawerContent>
+          </Drawer>
         ) : null}
       </Box>
 
@@ -176,12 +230,19 @@ export default function UserNavbar() {
           border="none"
           justifyContent="space-evenly"
         >
-          <Tab onClick={() => navigate("/home/solicitante/tramite")}>
-            <Icon color="white" as={Home} boxSize={8} />
-          </Tab>
-          <Tab onClick={() => navigate("/preguntas-frecuentes")}>
-            <QuestionIcon color="white" bg="teal.300" boxSize={8} />
-          </Tab>
+          {location.pathname.includes("solicitante") &&
+            itemsMenuSolicitante.map((item, index) => (
+              <Tab key={index} onClick={() => navigate(item.hipervinculo)}>
+                {item.icono}
+              </Tab>
+            ))}
+
+          {location.pathname.includes("traductor") &&
+            itemsMenuTraductor.map((item, index) => (
+              <Tab key={index} onClick={() => navigate(item.hipervinculo)}>
+                {item.icono}
+              </Tab>
+            ))}
         </TabList>
       </Tabs>
     </>
