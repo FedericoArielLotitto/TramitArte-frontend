@@ -22,7 +22,12 @@ import {
   TagLabel,
   Icon,
 } from "@chakra-ui/react";
-import { HamburgerIcon, CloseIcon, QuestionIcon, EmailIcon } from "@chakra-ui/icons";
+import {
+  HamburgerIcon,
+  CloseIcon,
+  QuestionIcon,
+  EmailIcon,
+} from "@chakra-ui/icons";
 import {
   AccountCircle,
   Email,
@@ -43,10 +48,6 @@ const Links = [
     texto: "Family Search",
     link: "/family-search",
   },
-  {
-    texto: "Preguntas Frecuentes",
-    link: "/preguntas-frecuentes",
-  },
 ];
 
 const NavLink = ({ texto, link }) => (
@@ -54,7 +55,7 @@ const NavLink = ({ texto, link }) => (
     px={2}
     py={1}
     rounded={"md"}
-    color={useColorModeValue("blue.900", "teal.200")}
+    color={useColorModeValue("white", "teal.200")}
     _hover={{
       textDecoration: "underline",
       bg: useColorModeValue("gray.200", "gray.700"),
@@ -84,7 +85,7 @@ export default function UserNavbar() {
             onClick={isOpen ? onClose : onOpen}
             color={colors}
           />
-          <HStack spacing={8} alignItems={"center"}>
+          <HStack color="white" spacing={8} alignItems={"center"}>
             <Box>Tramitarte</Box>
             <HStack
               as={"nav"}
@@ -94,12 +95,28 @@ export default function UserNavbar() {
               {Links.map(({ link, texto }) => (
                 <NavLink key={link} link={link} texto={texto} />
               ))}
+              <NavLink
+                display={{ base: "none", md: "flex" }}
+                key={"/preguntas-frecuentes"}
+                link={"/preguntas-frecuentes"}
+                texto={"Preguntas Frecuentes"}
+              />
             </HStack>
           </HStack>
-          <Flex justifyContent="space-between" gap=".8rem" alignItems={"center"}>
-            <Tag borderRadius="45px" size={"sm"} key={"md"} variant="solid" bg="teal.300">
+          <Flex
+            justifyContent="space-between"
+            gap=".8rem"
+            alignItems={"center"}
+          >
+            <Tag
+              borderRadius="45px"
+              size={"sm"}
+              key={"md"}
+              variant="solid"
+              bg="teal.300"
+            >
               <TagLeftIcon boxSize="8" as={Email} />
-              <TagLabel ml={'-.4rem'}>{3}</TagLabel>
+              <TagLabel ml={"-.4rem"}>{3}</TagLabel>
             </Tag>
             <Menu>
               <MenuButton
@@ -151,6 +168,7 @@ export default function UserNavbar() {
         w="100%"
         position="absolute"
         bottom={0}
+        display={{ md: "none" }}
       >
         <TabList
           bg="teal.300"

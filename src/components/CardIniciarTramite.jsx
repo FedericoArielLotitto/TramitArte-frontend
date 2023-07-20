@@ -39,7 +39,7 @@ function CardIniciarTramite() {
         borderRadius="45px"
         bg="rgba(255, 255, 255, 0.8)"
         align="center"
-        p=".8rem"
+        p="1.6rem"
       >
         <CardHeader>
           <Heading size="md">{"Aún no iniciaste tu trámite"}</Heading>
