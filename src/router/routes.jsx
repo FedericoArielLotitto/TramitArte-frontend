@@ -31,9 +31,14 @@ export const RouterApp = () => {
         <Route path="/preguntas-frecuentes" element={<PreguntasFrecuentes/>} />
         <Route path="/family-search" element={<FamilySearch />} />
         <Route path="/traductores" element={<TraductoresRegistrados />} />
-        <Route path="/network-error" element={<div>Error</div>} />
+        <Route path="/solicitantes" element={<div>solicitantes</div>} />
+        <Route path="/pedidos-pendientes" element={<PedidosTraduccion />} />
         <Route path="/solicitud-avo" element={<SolicitudAVO />} />
+        
+        <Route path="/network-error" element={<div>Error</div>} />
+        
         <Route path="*" element={<ModalConfirmacion />} />
+        
         {/* <Route path="/testimonials" element={<Testimonials/>} />  */}
         {/* <Route path="/quienes-somos" element={<AboutUs/>} /> */}
         {/* <Route index element={<TranslatorComponent stage={1}/>} /> */}

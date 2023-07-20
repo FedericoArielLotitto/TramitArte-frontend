@@ -5,8 +5,6 @@ import {
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
-  DrawerHeader,
-  DrawerFooter,
   Flex,
   Avatar,
   HStack,
@@ -36,32 +34,18 @@ import {
   AssignmentInd,
   ConnectWithoutContact,
   Email,
+  FamilyRestroom,
+  FolderCopy,
   Home,
   Logout,
 } from "@mui/icons-material";
 import { useLocation, useNavigate } from "react-router";
 import { useRef } from "react";
 
-const Links = [
-  {
-    texto: "Traductores Registrados",
-    link: "/traductores",
-  },
-  {
-    texto: "Family Search",
-    link: "/family-search",
-  },
-];
-
 const itemsMenuSolicitante = [
   {
-    hipervinculo: "/home/solicitante",
-    texto: 'Inicio',
-    icono: <Icon color="white" as={Home} boxSize={8} />,
-  },
-  {
     hipervinculo: "/traductores",
-    texto: 'Traductores Registrados',
+    texto: "Traductores Registrados",
     icono: (
       <Icon
         color="white"
@@ -73,25 +57,40 @@ const itemsMenuSolicitante = [
   },
   {
     hipervinculo: "/preguntas-frecuentes",
-    texto: 'Preguntas Frecuentes',
+    texto: "Preguntas Frecuentes",
     icono: <QuestionIcon color="white" bg="teal.300" boxSize={8} />,
+  },
+  {
+    hipervinculo: "/home/solicitante",
+    texto: "Inicio",
+    icono: <Icon color="white" as={Home} boxSize={8} />,
+  },
+  {
+    hipervinculo: "/documentacion",
+    texto: "Certificados",
+    icono: <Icon color="white" as={FolderCopy} bg="teal.300" boxSize={8} />,
+  },
+  {
+    hipervinculo: "/solicitud-avo",
+    texto: "Mi AVO",
+    icono: <Icon color="white" as={FamilyRestroom} bg="teal.300" boxSize={8} />,
   },
 ];
 
 const itemsMenuTraductor = [
   {
     hipervinculo: "/home/traductor",
-    texto: 'Inicio',
+    texto: "Inicio",
     icono: <Icon color="white" as={Home} boxSize={8} />,
   },
   {
     hipervinculo: "/pedidos-pendientes",
-    texto: 'Solicitudes pendientes',
+    texto: "Solicitudes pendientes",
     icono: <Icon color="white" as={Assignment} bg="teal.300" boxSize={8} />,
   },
   {
     hipervinculo: "/solicitantes",
-    texto: 'Solicitantes de traducción',
+    texto: "Solicitantes de traducción",
     icono: <Icon color="white" as={AssignmentInd} boxSize={8} />,
   },
 ];
@@ -196,16 +195,34 @@ export default function UserNavbar() {
               <DrawerBody>
                 <Box py={12}>
                   <Stack as={"nav"} spacing={4}>
-                    {location.pathname.includes('solicitante') && itemsMenuSolicitante.map((item, index) => (
-                      <Box py={4} borderBottom="1px solid" borderColor="white" key={index}>
-                        <NavLink texto={item.texto} link={item.hipervinculo} />
-                      </Box>
-                    ))}
-                    {location.pathname.includes('traductor') && itemsMenuTraductor.map((item, index) => (
-                      <Box py={4} borderBottom="1px solid" borderColor="white" key={index}>
-                        <NavLink texto={item.texto} link={item.hipervinculo} />
-                      </Box>
-                    ))}
+                    {location.pathname.includes("solicitante") &&
+                      itemsMenuSolicitante.map((item, index) => (
+                        <Box
+                          py={4}
+                          borderBottom="1px solid"
+                          borderColor="white"
+                          key={index}
+                        >
+                          <NavLink
+                            texto={item.texto}
+                            link={item.hipervinculo}
+                          />
+                        </Box>
+                      ))}
+                    {location.pathname.includes("traductor") &&
+                      itemsMenuTraductor.map((item, index) => (
+                        <Box
+                          py={4}
+                          borderBottom="1px solid"
+                          borderColor="white"
+                          key={index}
+                        >
+                          <NavLink
+                            texto={item.texto}
+                            link={item.hipervinculo}
+                          />
+                        </Box>
+                      ))}
                   </Stack>
                 </Box>
               </DrawerBody>
@@ -223,6 +240,7 @@ export default function UserNavbar() {
         position="absolute"
         bottom={0}
         display={{ md: "none" }}
+        variant="unstyled"
       >
         <TabList
           bg="teal.300"

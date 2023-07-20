@@ -3,7 +3,6 @@ import {
   AccordionButton,
   AccordionPanel,
   AccordionItem,
-  AccordionIcon,
   Box,
   Center,
   Flex,
@@ -18,11 +17,10 @@ import {
   RadioGroup,
   Button,
   useDisclosure,
-  Stack,
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router";
 import { ArrowBack } from "@mui/icons-material";
-import { CalendarIcon } from "@chakra-ui/icons";
+import { CalendarIcon, ChevronDownIcon } from "@chakra-ui/icons";
 import { useState, useCallback } from "react";
 
 import ModalConfirmacion from "../components/ModalConfirmacion";
@@ -78,7 +76,7 @@ function SolicitudAVO() {
           {"X9889MW"}
         </Center>
       </Center>
-      <Center p="1.8rem">
+      <Center p=".8rem">
         <Box
           borderTopRadius="20px"
           borderBottomRadius="30px"
@@ -86,7 +84,6 @@ function SolicitudAVO() {
         >
           <Box p="1rem">
             <Center
-              w="100%"
               borderRadius="15px"
               p=".8rem"
               bg="teal.600"
@@ -96,127 +93,131 @@ function SolicitudAVO() {
               {"BÚSQUEDA AVO"}
             </Center>
           </Box>
-          <Center w="sm">
+          <Center>
             <Text p=".8rem">
               Completá los datos de tu antepasado italiano que emigró
             </Text>
           </Center>
-
-          <Accordion w="100%" allowMultiple>
-            <AccordionItem>
-              <AccordionButton bg="teal.600" color="white" borderRadius="45px">
-                <Box
-                  p=".4rem"
-                  fontWeight={"700"}
-                  as="span"
-                  flex="1"
-                  textAlign="center"
+            <Accordion allowToggle w="100%" maxW="100%">
+              <AccordionItem borderRadius="45px">
+                <AccordionButton
+                  display="flex"
+                  alignItems="center"
+                  bg="teal.700"
+                  color="white"
+                  justifyContent="space-between"
+                  // p={4}
+                  w="full"
+                  _hover={{ bg: "teal.700" }}
+                  _expanded={{}}
+                  borderRadius="45px"
                 >
-                  COMPLETAR SOLICITUD
-                </Box>
-                <AccordionIcon />
-              </AccordionButton>
-              <AccordionPanel pb={2}>
-                <Box>
-                  <FormControl py="2%" color="blue.900" id="nombre-avo">
-                    <FormLabel>Nombre</FormLabel>
-                    <Input
-                      h={12}
-                      borderRadius="25px"
-                      border="1px solid rgba(26, 54, 93, 1)"
-                      type="text"
-                      placeholder="Nombre..."
-                    />
-                  </FormControl>
-                  <FormControl py="2%" color="blue.900" id="apellido-avo">
-                    <FormLabel>Apellido</FormLabel>
-                    <Input
-                      h={12}
-                      borderRadius="25px"
-                      border="1px solid rgba(26, 54, 93, 1)"
-                      type="text"
-                      placeholder="Apellido..."
-                    />
-                  </FormControl>
-                  <FormControl
-                    py="2%"
-                    color="blue.900"
-                    id="fecha-nacimiento-avo"
-                  >
-                    <FormLabel>Fecha</FormLabel>
-                    <InputGroup>
+                  <Text fontWeight={"700"}>COMPLETAR SOLICITUD</Text>
+                  <ChevronDownIcon />
+                </AccordionButton>
+                <AccordionPanel borderRadius="45px" pb={4}>
+                  <Box>
+                    <FormControl py="2%" color="blue.900" id="nombre-avo">
+                      <FormLabel>Nombre</FormLabel>
                       <Input
                         h={12}
                         borderRadius="25px"
                         border="1px solid rgba(26, 54, 93, 1)"
                         type="text"
-                        placeholder="Fecha de nacimiento..."
+                        placeholder="Nombre..."
                       />
-                      <InputRightElement>
-                        <CalendarIcon
-                          color="blue.800"
-                          boxSize={10}
-                          pt=".6rem"
-                          pr=".8rem"
-                        />
-                      </InputRightElement>
-                    </InputGroup>
-                  </FormControl>
-                  <FormControl py="2%" color="blue.900" id="sexo-avo">
-                    <FormLabel>Sexo biol&oacute;gico</FormLabel>
-                    <RadioGroup>
-                      <Radio
-                        isChecked={isChecked}
-                        onChange={handleOnChangeSexRadioButton}
+                    </FormControl>
+                    <FormControl py="2%" color="blue.900" id="apellido-avo">
+                      <FormLabel>Apellido</FormLabel>
+                      <Input
                         h={12}
-                        w="sm"
-                        p=".4rem"
-                        borderRadius="25px"
-                        border="1px solid rgba(26, 54, 93, 1)"
-                      >
-                        <Text fontSize="xl">Femenino</Text>
-                      </Radio>
-                      <Radio
-                        isChecked={!isChecked}
-                        onChange={handleOnChangeSexRadioButton}
-                        h={12}
-                        w="sm"
-                        p=".4rem"
                         borderRadius="25px"
                         border="1px solid rgba(26, 54, 93, 1)"
                         type="text"
-                      >
-                        <Text fontSize="xl">Masculino</Text>
-                      </Radio>
-                    </RadioGroup>
-                  </FormControl>
-                  <Center p=".5rem">
-                    <Button
-                      borderRadius="45px"
-                      w="sm"
-                      p=".4rem"
-                      fontSize="xl"
-                      bg="teal.600"
-                      color="white"
-                      fontWeight={"700"}
-                      boxShadow={"0px 0px 8px 4px rgba(0, 43, 91, 0.2)"}
-                      onClick={onOpen}
-                      _hover={{
-                        bg: "teal.500",
-                      }}
+                        placeholder="Apellido..."
+                      />
+                    </FormControl>
+                    <FormControl
+                      py="2%"
+                      color="blue.900"
+                      id="fecha-nacimiento-avo"
                     >
-                      {"CARGAR AVO"}
-                    </Button>
-                  </Center>
-                </Box>
-              </AccordionPanel>
-            </AccordionItem>
-          </Accordion>
+                      <FormLabel>Fecha</FormLabel>
+                      <InputGroup>
+                        <Input
+                          h={12}
+                          borderRadius="25px"
+                          border="1px solid rgba(26, 54, 93, 1)"
+                          type="text"
+                          placeholder="Fecha de nacimiento..."
+                        />
+                        <InputRightElement>
+                          <CalendarIcon
+                            color="blue.800"
+                            boxSize={10}
+                            pt=".6rem"
+                            pr=".8rem"
+                          />
+                        </InputRightElement>
+                      </InputGroup>
+                    </FormControl>
+                    <FormControl py="2%" color="blue.900" id="sexo-avo">
+                      <FormLabel>Sexo biol&oacute;gico</FormLabel>
+                      <RadioGroup>
+                        <Radio
+                          isChecked={isChecked}
+                          onChange={handleOnChangeSexRadioButton}
+                          h={12}
+                          w="sm"
+                          p=".4rem"
+                          borderRadius="25px"
+                          border="1px solid rgba(26, 54, 93, 1)"
+                        >
+                          <Text fontSize="xl">Femenino</Text>
+                        </Radio>
+                        <Radio
+                          isChecked={!isChecked}
+                          onChange={handleOnChangeSexRadioButton}
+                          h={12}
+                          w="sm"
+                          p=".4rem"
+                          borderRadius="25px"
+                          border="1px solid rgba(26, 54, 93, 1)"
+                          type="text"
+                        >
+                          <Text fontSize="xl">Masculino</Text>
+                        </Radio>
+                      </RadioGroup>
+                    </FormControl>
+                    <Center>
+                      <Button
+                        borderRadius="45px"
+                        w="full"
+                        p=".4rem"
+                        fontSize="xl"
+                        bg="teal.600"
+                        color="white"
+                        fontWeight={"700"}
+                        boxShadow={"0px 0px 8px 4px rgba(0, 43, 91, 0.2)"}
+                        onClick={onOpen}
+                        _hover={{
+                          bg: "teal.500",
+                        }}
+                      >
+                        {"CARGAR AVO"}
+                      </Button>
+                    </Center>
+                  </Box>
+                </AccordionPanel>
+              </AccordionItem>
+            </Accordion>
         </Box>
       </Center>
       <ModalConfirmacion
         pregunta={"¿Estás seguro de cargar estos datos de tu AVO?"}
-        datoAConfirmar={'En cualquier caso, podés modificarlos desde tu perfil ;)'}
+        datoAConfirmar={
+          "En cualquier caso, podés modificarlos desde tu perfil ;)"
+        }
         isOpen={isOpen}
         onClose={onClose}
         handleConfirmacion={() => handleConfirmacion()}
