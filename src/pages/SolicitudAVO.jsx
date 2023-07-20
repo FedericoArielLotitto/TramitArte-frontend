@@ -165,7 +165,6 @@ function SolicitudAVO() {
                   <Checkbox
                     colorScheme="teal"
                     color="blue.900"
-                    size="lg"
                     p=".4rem"
                     isChecked={isChecked}
                     onChange={() => handleOnChangeSexRadioButton()}
@@ -175,7 +174,6 @@ function SolicitudAVO() {
                   <Checkbox
                     colorScheme="teal"
                     color="blue.900"
-                    size="lg"
                     p=".4rem"
                     isChecked={!isChecked}
                     onChange={() => handleOnChangeSexRadioButton()}
@@ -186,7 +184,7 @@ function SolicitudAVO() {
                 <Center>
                   <Button
                     borderRadius="45px"
-                    w="sm"
+                    w='full'
                     p=".4rem"
                     fontSize="xl"
                     bg="teal.600"
