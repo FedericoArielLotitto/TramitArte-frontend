@@ -13,11 +13,13 @@ import {
   InputGroup,
   InputRightElement,
   Text,
-  Radio,
-  RadioGroup,
   Button,
   Checkbox,
   useDisclosure,
+  FormErrorMessage,
+  Select,
+  HStack,
+  FormHelperText,
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router";
 import { ArrowBack } from "@mui/icons-material";
@@ -29,14 +31,49 @@ import ModalIsLoading from "../components/ModalIsLoading";
 import tramiteService from "../services/TramiteService";
 
 function SolicitudAVO() {
+  const dias = [...Array(31).keys()].map((i) => i + 1);
+  const meses = [...Array(12).keys()].map((i) => i + 1);
+  const anios = [...Array(new Date().getFullYear()).keys()]
+    .map((i) => i + 1000)
+    .filter((i) => i < 2023 - 18);
+
   const navigate = useNavigate();
   const handleBack = () => navigate(-1);
   const [isChecked, setIsChecked] = useState(true);
   const [estaCargando, setEstaCargando] = useState(false);
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [nombreAVO, setNombreAVO] = useState("");
+  const [apellidoAVO, setApellidoAVO] = useState("");
+  const [fechaNacimiento, setFechaNacimiento] = useState({
+    dia: '1',
+    mes: '10',
+    anio: '1995',
+  });
+
+  const handleOnChangeNombreAVO = (e) => {
+    setNombreAVO(e.target.value);
+  };
+
+  const handleOnChangeApellidoAVO = (e) => {
+    setApellidoAVO(e.target.value);
+  };
+
+  const handleOnChangeFechaNacimientoAVO = (fechaNacimientoNueva) => {
+    setFechaNacimiento(fechaNacimientoNueva)
+  };
 
   const handleOnChangeSexRadioButton = () => {
     setIsChecked(!isChecked);
+  };
+
+  const handleOnClickSubmitAVO = () => {
+    if (esValidoTextTypeInput()) {
+      onOpen();
+    }
+  };
+
+  const esValidoTextTypeInput = () => {
+    return nombreAVO.match(/[a-zA-Z]\w+/g);
   };
 
   const handleConfirmacion = useCallback(() => {
@@ -96,7 +133,7 @@ function SolicitudAVO() {
             </Center>
           </Box>
           <Center>
-            <Text p=".8rem">
+            <Text textAlign="center" p=".8rem">
               Completá los datos de tu antepasado italiano que emigró
             </Text>
           </Center>
@@ -120,7 +157,13 @@ function SolicitudAVO() {
                 </AccordionButton>
               </h2>
               <AccordionPanel>
-                <FormControl py="2%" color="blue.900" id="nombre-avo">
+                <FormControl
+                  isInvalid={!esValidoTextTypeInput()}
+                  isRequired
+                  py="2%"
+                  color="blue.900"
+                  id="nombre-avo"
+                >
                   <FormLabel>Nombre</FormLabel>
                   <Input
                     h={12}
@@ -128,39 +171,123 @@ function SolicitudAVO() {
                     border="1px solid rgba(26, 54, 93, 1)"
                     type="text"
                     placeholder="Nombre..."
+                    value={nombreAVO}
+                    onChange={(e) => handleOnChangeNombreAVO(e)}
                   />
+                  {!esValidoTextTypeInput() && (
+                    <FormErrorMessage>
+                      Solo se permiten letras.
+                    </FormErrorMessage>
+                  )}
                 </FormControl>
-                <FormControl py="2%" color="blue.900" id="apellido-avo">
+                <FormControl
+                  isInvalid={!esValidoTextTypeInput()}
+                  isRequired
+                  py="2%"
+                  color="blue.900"
+                  id="apellido-avo"
+                >
                   <FormLabel>Apellido</FormLabel>
                   <Input
+                    onChange={(e) => handleOnChangeApellidoAVO(e)}
+                    value={apellidoAVO}
                     h={12}
                     borderRadius="25px"
                     border="1px solid rgba(26, 54, 93, 1)"
                     type="text"
                     placeholder="Apellido..."
                   />
+                  {!esValidoTextTypeInput() && (
+                    <FormErrorMessage>Solo se permiten letras</FormErrorMessage>
+                  )}
                 </FormControl>
-                <FormControl py="2%" color="blue.900" id="fecha-nacimiento-avo">
+                <FormControl
+                  isRequired
+                  py="2%"
+                  color="blue.900"
+                  id="fecha-nacimiento-avo"
+                >
                   <FormLabel>Fecha</FormLabel>
-                  <InputGroup>
-                    <Input
-                      h={12}
-                      borderRadius="25px"
-                      border="1px solid rgba(26, 54, 93, 1)"
-                      type="text"
-                      placeholder="Fecha de nacimiento..."
-                    />
-                    <InputRightElement>
-                      <CalendarIcon
-                        color="blue.800"
-                        boxSize={10}
-                        pt=".6rem"
-                        pr=".8rem"
-                      />
-                    </InputRightElement>
+                  <InputGroup
+                    borderRadius="25px"
+                    border="1px solid rgba(26, 54, 93, 1)"
+                    alignItems="center"
+                    p="2.5"
+                  >
+                    <HStack spacing={1} pl="2rem">
+                      <Select
+                        value={fechaNacimiento.dia}
+                        textAlign="center"
+                        variant="unstyled"
+                        icon={""}
+                        size="md"
+                        onChange={(e) => {
+                          handleOnChangeFechaNacimientoAVO({
+                            anio: fechaNacimiento.anio,
+                            mes: fechaNacimiento.mes,
+                            dia: e.target.value,
+                          });
+                        }}
+                      >
+                        {dias.map((anio) => (
+                          <option key={anio} value={anio}>
+                            {anio}
+                          </option>
+                        ))}
+                      </Select>
+                      <Select
+                        value={fechaNacimiento.mes}
+                        textAlign="center"
+                        variant="unstyled"
+                        icon={""}
+                        size="md"
+                        onChange={(e) =>
+                          handleOnChangeFechaNacimientoAVO({
+                            anio: fechaNacimiento.anio,
+                            mes: e.target.value,
+                            dia: fechaNacimiento.dia,
+                          })
+                        }
+                      >
+                        {meses.map((mes, index) => (
+                          <option key={index} value={mes}>
+                            {mes}
+                          </option>
+                        ))}
+                      </Select>
+                      <Select
+                        value={fechaNacimiento.anio}
+                        textAlign="center"
+                        variant="unstyled"
+                        icon={""}
+                        size="auto"
+                        onChange={(e) =>
+                          handleOnChangeFechaNacimientoAVO({
+                            anio: e.target.value,
+                            mes: fechaNacimiento.mes,
+                            dia: fechaNacimiento.dia,
+                          })
+                        }
+                      >
+                        {anios.map((anio) => (
+                          <option key={anio} value={anio}>{anio}</option>
+                        ))}
+                      </Select>
+                      <InputRightElement>
+                        <CalendarIcon
+                          color="blue.800"
+                          boxSize={10}
+                          pt=".2rem"
+                          pr=".8rem"
+                        />
+                      </InputRightElement>
+                    </HStack>
                   </InputGroup>
+                  <FormHelperText color="blue.600">
+                    La fecha de nacimiento de tu AVO
+                  </FormHelperText>
                 </FormControl>
-                <FormControl py="2%" color="blue.900" id="sexo-avo">
+                <FormControl isRequired py="2%" color="blue.900" id="sexo-avo">
                   <FormLabel>Sexo biol&oacute;gico</FormLabel>
                   <Checkbox
                     colorScheme="teal"
@@ -181,17 +308,17 @@ function SolicitudAVO() {
                     Masculino
                   </Checkbox>
                 </FormControl>
-                <Center>
+                <Center py="4">
                   <Button
                     borderRadius="45px"
-                    w='full'
+                    w="full"
                     p=".4rem"
                     fontSize="xl"
                     bg="teal.600"
                     color="white"
                     fontWeight={"700"}
                     boxShadow={"0px 0px 8px 4px rgba(0, 43, 91, 0.2)"}
-                    onClick={onOpen}
+                    onClick={() => handleOnClickSubmitAVO()}
                     _hover={{
                       bg: "teal.500",
                     }}

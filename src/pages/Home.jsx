@@ -17,6 +17,7 @@ import Testimonials from "./Testimonials";
 import Faq from "../components/Faq";
 import { HashLink } from "react-router-hash-link";
 import HomeFooter from "../components/HomeFooter";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const PlayIcon = createIcon({
   displayName: "PlayIcon",
@@ -44,6 +45,7 @@ export const Blob = (props) => {
 };
 
 function Home() {
+  const { loginWithRedirect } = useAuth0();
   return (
     <Container maxW={"5x1"}>
       <Navbar></Navbar>
@@ -92,6 +94,7 @@ function Home() {
             direction={{ base: "column", sm: "row" }}
           >
             <Button
+              onClick={()=>loginWithRedirect()}
               rounded={"full"}
               size={"lg"}
               fontWeight={"normal"}

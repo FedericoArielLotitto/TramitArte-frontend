@@ -13,6 +13,7 @@ import {
 } from "@chakra-ui/react";
 import { Delete } from "@mui/icons-material";
 import banderaItailiana from '../assets/baneraItaliana.png';
+import { useNavigate } from "react-router";
 
 const BanderaItaliana = ({ height }) => (
   <Box zIndex={-1} position="" left={0} bottom={1} h={height}>
@@ -23,6 +24,7 @@ const BanderaItaliana = ({ height }) => (
 );
 
 function Tramite() {
+  const navigate = useNavigate();
   return (
     <Card 
       borderRadius="45px"
@@ -55,6 +57,7 @@ function Tramite() {
       </CardBody>
       <CardFooter w="100%">
         <Button
+          onClick={() => navigate("/solicitud-avo")}
           textTransform="uppercase"
           borderRadius="45px"
           w={'100%'}

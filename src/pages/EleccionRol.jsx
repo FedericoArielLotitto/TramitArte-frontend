@@ -1,9 +1,47 @@
-import { Box, Center, Button } from "@chakra-ui/react";
+import { Box, Center, Button, useDisclosure } from "@chakra-ui/react";
 import LogoAnimado from "../components/logoAnimado/LogoAnimado";
+import ModalConfirmacion from "../components/ModalConfirmacion";
+import ModalIsLoading from "../components/ModalIsLoading";
 import { useNavigate } from "react-router";
+import { useState, useCallback } from "react";
+import usuarioService from "../services/UsuarioService";
 
 function EleccionRol() {
   const navigate = useNavigate();
+  const [rol, setRol] = useState('');
+  const [estaCargando, setEstaCargando] = useState(false);
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const handleClick = (e) => {
+    console.log(e.target.innerText);
+    setRol(e.target.innerText);
+    onOpen();
+  };
+  
+
+  const handleConfirmacion = useCallback((rolElegido) => {
+    setEstaCargando(true);
+    console.log(rolElegido);
+    let usuario = {
+      username: "prueba",
+      nombre: "NombrePrueba",
+      apellido: "ApellidoPrueba",
+      rol: rolElegido,
+      precio: 2200,
+      correoElectronico: 'a@a.com',
+      fechaDeNacimiento: '1995-10-25',
+      nesecitaTraduccion: true
+    };
+    return usuarioService
+    .guardarUsuario(usuario)
+      .then((response) => {
+        setEstaCargando(false);
+        console.log(response);
+        navigate(`/home/${rolElegido.toLowerCase()}`);
+        return response;
+      })
+      .catch((error) => navigate("/network-error"));
+  }, []);
 
   return (
     <Box minH="100%" bg="teal.200">
@@ -18,7 +56,7 @@ function EleccionRol() {
       >
         <Box w="sm">
           <Button
-            onClick={() => navigate(`/home/solicitante`)}
+            onClick={(e) => handleClick(e)}
             borderRadius="45px"
             color="white"
             w="100%"
@@ -29,7 +67,7 @@ function EleccionRol() {
         </Box>
         <Box w="sm">
           <Button
-            onClick={() => navigate(`/home/traductor`)}
+            onClick={(e) => handleClick(e)}
             borderRadius="45px"
             color="white"
             w="100%"
@@ -44,6 +82,17 @@ function EleccionRol() {
           <LogoAnimado />
         </Box>
       </Center>
+      <ModalConfirmacion
+        pregunta={`¿Estás seguro de registrarte como ${rol}?`}
+        datoAConfirmar={''}
+        isOpen={isOpen}
+        handleConfirmacion={() => handleConfirmacion(rol)}
+        onClose={onClose}
+      />
+      <ModalIsLoading
+        mensaje={"Esperanos mientras guardamos tus datos... ;)"}
+        isOpen={estaCargando}
+      />
     </Box>
   );
 }
