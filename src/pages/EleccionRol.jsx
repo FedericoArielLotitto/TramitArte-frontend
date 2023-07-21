@@ -37,7 +37,9 @@ function EleccionRol() {
       .then((response) => {
         setEstaCargando(false);
         console.log(response);
-        navigate(`/home/${rolElegido.toLowerCase()}`);
+        let { data } = response;
+        let usuarioPersistido = data;
+        navigate(`/home/${rolElegido.toLowerCase()}/${usuarioPersistido.id}`, { replace: true });
         return response;
       })
       .catch((error) => navigate("/network-error"));

@@ -214,7 +214,7 @@ function SolicitudAVO() {
                     alignItems="center"
                     p="2.5"
                   >
-                    <HStack spacing={1} pl="2rem">
+                    <Flex justify="space-evenly" w="80%" pl="1rem">
                       <Select
                         value={fechaNacimiento.dia}
                         textAlign="center"
@@ -281,7 +281,7 @@ function SolicitudAVO() {
                           pr=".8rem"
                         />
                       </InputRightElement>
-                    </HStack>
+                    </Flex>
                   </InputGroup>
                   <FormHelperText color="blue.600">
                     La fecha de nacimiento de tu AVO

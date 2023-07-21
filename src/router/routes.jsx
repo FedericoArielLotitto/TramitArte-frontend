@@ -20,11 +20,11 @@ export const RouterApp = () => {
         <Route path="/login" element={<Login />} />
         <Route path="eleccion-rol" element={<EleccionRol />} />
         <Route index element={<Home />} />
-        <Route path="/home/solicitante/*" element={<UserHome />}>
+        <Route path="/home/solicitante/:id/*" element={<UserHome />}>
           <Route index element={<CardIniciarTramite />} />
           <Route path="tramite/etapa/:paso" element={<Tramite />} />
         </Route>
-        <Route path="/home/traductor/*" element={<UserHome />}>
+        <Route path="/home/traductor/:id/*" element={<UserHome />}>
           <Route index element={<PedidosTraduccion />} />
         </Route>
         <Route path="/usuario" element={<UserProfile />} />

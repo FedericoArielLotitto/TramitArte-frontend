@@ -27,7 +27,7 @@ function CardIniciarTramite() {
       .then((response) => {
         setEstaCargando(false);
         console.log(response);
-        navigate("/home/solicitante/tramite/etapa/1");
+        navigate("/home/solicitante/6/tramite/etapa/1");
         return response;
       })
       .catch((error) => navigate("/network-error"));

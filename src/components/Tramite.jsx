@@ -30,7 +30,6 @@ function Tramite() {
       borderRadius="45px"
       bg="rgba(255, 255, 255, 0.8)"
       align="center"
-      p=".8rem"
     >
       <CardHeader >
         <HStack spacing="2%">
