@@ -3,7 +3,6 @@ import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Tramite from '../components/Tramite';
 import UserHome from "../pages/UserHome";
-import CardIniciarTramite from "../components/CardIniciarTramite";
 import UserProfile from "../pages/UserProfile";
 import PreguntasFrecuentes from "../pages/PreguntasFrecuentes";
 import FamilySearch from "../pages/FamilySearch";
@@ -21,8 +20,8 @@ export const RouterApp = () => {
         <Route path="eleccion-rol" element={<EleccionRol />} />
         <Route index element={<Home />} />
         <Route path="/home/solicitante/:id/*" element={<UserHome />}>
-          <Route index element={<CardIniciarTramite />} />
-          <Route path="tramite/etapa/:paso" element={<Tramite />} />
+          <Route index element={<Tramite />} />
+          {/* <Route path="tramite/etapa/:paso" element={} /> */}
         </Route>
         <Route path="/home/traductor/:id/*" element={<UserHome />}>
           <Route index element={<PedidosTraduccion />} />
@@ -38,11 +37,6 @@ export const RouterApp = () => {
         <Route path="/network-error" element={<div>Error</div>} />
         
         <Route path="*" element={<ModalConfirmacion />} />
-        
-        {/* <Route path="/testimonials" element={<Testimonials/>} />  */}
-        {/* <Route path="/quienes-somos" element={<AboutUs/>} /> */}
-        {/* <Route index element={<TranslatorComponent stage={1}/>} /> */}
-        {/* <Route path="/home" element={<Home />} />  */}
       </Routes>
     </BrowserRouter>
   );
