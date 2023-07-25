@@ -42,7 +42,7 @@ function CardIniciarTramite() {
         p="1.6rem"
       >
         <CardHeader>
-          <Heading size="md">{"Aún no iniciaste tu trámite"}</Heading>
+          <Heading textAlign="center" size="md">{"Aún no iniciaste tu trámite"}</Heading>
         </CardHeader>
         <CardBody align="center">
           <Text>{"¡Inicialo acá y conseguí tu ciudadanía!"}</Text>
