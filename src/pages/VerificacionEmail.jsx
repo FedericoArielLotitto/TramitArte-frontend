@@ -9,23 +9,23 @@ import {
   useColorModeValue,
 
 } from '@chakra-ui/react';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from "react-router";
 
 export default function VerifyEmailForm() {
-    const {user}=useAuth0()
+    const { user, isLoading, isAuthenticated }= useAuth0()
+    // const [userP, setUserP] = useState(null)
     const navigate = useNavigate();
     const { loginWithRedirect } = useAuth0()
     console.log(JSON.stringify(user))
-    const navegar=()=>{
-        user?.email_verified && navigate("/eleccion-rol")
+    const navegar = () =>{
+        console.log(isLoading)
+        !isLoading && navigate("/eleccion-rol")
     }
 
-    useEffect(()=>{
-        navegar()
-    },[])
+    useEffect(() => navegar(), [user])
 
-  return (
+  return ( 
     <Flex
       minH={'100vh'}
       align={'center'}

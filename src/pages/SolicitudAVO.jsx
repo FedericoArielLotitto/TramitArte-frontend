@@ -83,7 +83,7 @@ function SolicitudAVO() {
       .then((response) => {
         setEstaCargando(false);
         console.log(response);
-        navigate("/home/solicitante/tramite/etapa/2");
+        navigate("/home/solicitante/tramite");
         return response;
       })
       .catch((error) => navigate("/network-error"));

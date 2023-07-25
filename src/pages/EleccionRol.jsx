@@ -5,10 +5,12 @@ import ModalIsLoading from "../components/ModalIsLoading";
 import { useNavigate } from "react-router";
 import { useState, useCallback } from "react";
 import usuarioService from "../services/UsuarioService";
+import { useAuth0 } from "@auth0/auth0-react";
 
 function EleccionRol() {
   const navigate = useNavigate();
   const [rol, setRol] = useState('');
+  const { isAuthenticated } = useAuth0();
   const [estaCargando, setEstaCargando] = useState(false);
   const { isOpen, onOpen, onClose } = useDisclosure();
 

@@ -18,6 +18,10 @@ class TramiteService {
         return tramitePersistido;
     }
 
+    async eliminar(idTramite) {
+        await axios.delete(`${this.urlBackend}/tramite/${idTramite}`)
+    }
+
 }
 
 const tramiteService = new TramiteService();

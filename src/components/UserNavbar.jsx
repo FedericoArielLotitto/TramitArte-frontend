@@ -41,6 +41,7 @@ import {
 } from "@mui/icons-material";
 import { useLocation, useNavigate } from "react-router";
 import { useRef } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const itemsMenuSolicitante = [
   {
@@ -112,6 +113,7 @@ const NavLink = ({ texto, link }) => (
 );
 
 export default function UserNavbar() {
+  const { logout } = useAuth0();
   const navigate = useNavigate();
   const location = useLocation();
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -174,7 +176,7 @@ export default function UserNavbar() {
                   Mi perfil
                 </MenuItem>
                 <MenuDivider />
-                <MenuItem onClick={() => navigate("/logout")} icon={<Logout />}>
+                <MenuItem onClick={() => { logout(); navigate("/")}} icon={<Logout />}>
                   Cerrar sesi&oacute;n
                 </MenuItem>
               </MenuList>
