@@ -3,8 +3,8 @@ import axios from "axios";
 class TramiteService {
     urlBackend = 'http://localhost:8585/api';
 
-    async guardarTramite() {
-        let tramite = await axios.post(`${this.urlBackend}/tramite`)
+    async guardarTramite(idUsuario) {
+        let tramite = await axios.post(`${this.urlBackend}/tramite/${idUsuario}`)
         return tramite;
     }
 

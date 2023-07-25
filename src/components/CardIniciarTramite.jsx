@@ -12,22 +12,23 @@ import {
 
 import ModalConfirmacion from "./ModalConfirmacion";
 import tramiteService from "../services/TramiteService";
-import { useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { useState, useCallback } from "react";
 import ModalIsLoading from "./ModalIsLoading";
 
 function CardIniciarTramite() {
   const navigate = useNavigate();
+  const { idUsuario } = useParams();
   const [estaCargando, setEstaCargando] = useState(false);
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const handleConfirmacion = useCallback(() => {
     setEstaCargando(true);
-    return tramiteService.guardarTramite()
+    return tramiteService.guardarTramite(idUsuario)
       .then((response) => {
         setEstaCargando(false);
         console.log(response);
-        navigate("/home/solicitante/6");
+        navigate(`/home/solicitante/${idUsuario}`);
         return response;
       })
       .catch((error) => navigate("/network-error"));

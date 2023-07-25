@@ -15,7 +15,7 @@ import {
 
 import { Delete } from "@mui/icons-material";
 import banderaItailiana from "../assets/baneraItaliana.png";
-import { useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import tramiteService from "../services/TramiteService";
 import { useState, useCallback } from "react";
 import ModalConfirmacion from "./ModalConfirmacion";
@@ -41,8 +41,9 @@ const BanderaItaliana = ({ height }) => (
   </Box>
 );
 
-function Etapa() {
+function Etapa({ tramite }) {
   const navigate = useNavigate();
+  const { idUsuario } = useParams();
   const [estaCargando, setEstaCargando] = useState(false);
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -52,7 +53,7 @@ function Etapa() {
       .eliminar(1)
       .then((response) => {
         setEstaCargando(false);
-        navigate("/home/solicitante/6");
+        navigate(`/home/solicitante/${idUsuario}`);
         return response;
       })
       .catch((error) => navigate("/network-error"));
@@ -62,7 +63,7 @@ function Etapa() {
     <Card borderRadius="45px" bg="rgba(255, 255, 255, 0.8)" align="center">
       <CardHeader>
         <HStack spacing="2%">
-          <Heading size="md">Código de trámite: X9889MW</Heading>
+          <Heading size="md">{tramite.codigo}</Heading>
           <IconButton
             aria-label="Borrar trámite"
             color="red.500"
@@ -93,9 +94,11 @@ function Etapa() {
           color="white"
           bg="red.900"
         >
-          Cargar AVO
+          { tramite.etapa.descripcion }
         </Button>
       </CardFooter>
+
+
       <ModalConfirmacion
         isOpen={isOpen}
         handleConfirmacion={() => handleConfirmacion()}

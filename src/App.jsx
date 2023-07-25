@@ -1,7 +1,7 @@
 import { ChakraProvider } from '@chakra-ui/react'
 import { RouterApp } from './router/routes'
 import { extendTheme } from "@chakra-ui/react"
-import { useColorModeValue } from '@chakra-ui/react'
+import { createContext } from 'react'
 
 const theme = extendTheme({
   styles: {
@@ -13,6 +13,8 @@ const theme = extendTheme({
     },
   }
 })
+
+const TramiteContext = createContext(null)
 
 
 function App() {

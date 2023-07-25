@@ -22,7 +22,7 @@ export const RouterApp = () => {
         <Route path="eleccion-rol" element={<EleccionRol />} />
         
         <Route index element={<Home />} />
-        <Route path="/home/solicitante/:id/*" element={<UserHome />}>
+        <Route path="/home/solicitante/:idUsuario" element={<UserHome />}>
           <Route index element={<Tramite />} />
           {/* <Route path="tramite/etapa/:paso" element={} /> */}
         </Route>

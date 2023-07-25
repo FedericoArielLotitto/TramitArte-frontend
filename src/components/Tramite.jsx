@@ -2,8 +2,8 @@ import { Skeleton, SkeletonCircle, SkeletonText, Box } from "@chakra-ui/react";
 
 import { Delete } from "@mui/icons-material";
 import banderaItailiana from "../assets/baneraItaliana.png";
-import { useNavigate } from "react-router";
-import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router";
+import { useEffect, useState, createContext } from "react";
 import Etapa from "./Etapa";
 import tramiteService from "../services/TramiteService";
 import CardIniciarTramite from "./CardIniciarTramite";
@@ -31,12 +31,13 @@ const BanderaItaliana = ({ height }) => (
 
 function Tramite() {
   const navigate = useNavigate();
+  const { idUsuario } = useParams();
   const [estaCargando, setEstaCargando] = useState(true);
   const [tramite, setTramite] = useState();
 
   useEffect(() => {
     tramiteService
-      .buscarPorUsuario(6)
+      .buscarPorUsuario(idUsuario)
       .then((response) => {
         setEstaCargando(false);
         let tramitePersistido = response.data;
@@ -44,12 +45,13 @@ function Tramite() {
       })
       .catch((error) => navigate("/network-error"));
   });
+
   return (
     <>
       {estaCargando ? (
         <EsqueletoIsLoading estaCargando={estaCargando}/>
       ) : tramite ? (
-        <Etapa tramite={tramite} />
+        <Etapa tramite={tramite}/>
       ) : (
         <CardIniciarTramite></CardIniciarTramite>
       )}
