@@ -1,3 +1,4 @@
+import { useAuth0 } from "@auth0/auth0-react";
 import { CalendarIcon } from "@chakra-ui/icons";
 import {
   Box,
@@ -19,6 +20,7 @@ function UserProfile() {
   const handleBack = () => navigate(-1);
 
   const handleEdit = () => console.log("acá");
+  const {user}=useAuth0()
 
   return (
     <Box minH="100%" h="100%" p="3%" bg="blue.800">
@@ -45,11 +47,11 @@ function UserProfile() {
             <Avatar
               size="2xl"
               name="Segun Adebayo"
-              src="https://bit.ly/sage-adebayo"
+              src={user.picture}
             />
             <Center>
               <Heading color="blue.900" as="h1" size="xl">
-                Username
+                {user.nickname}
               </Heading>
             </Center>
           </Flex>
@@ -58,13 +60,13 @@ function UserProfile() {
               <Box justifyContent="center" marginRight="2.4rem">
                 <AccountCircle size="lg" />
               </Box>
-              <Heading size="md">Nombre Apellido</Heading>
+              <Heading size="md">{user.name}  </Heading>
             </WrapItem>
             <WrapItem p="2.4rem" w="sm">
               <Box justifyContent="center" marginRight="2.4rem">
                 <CalendarIcon />
               </Box>
-              <Heading size="md">Fecha de Nacimiento</Heading>
+              <Heading size="md">{user.birthdate}</Heading>
             </WrapItem>
           </Wrap>
           

@@ -12,6 +12,8 @@ import ModalConfirmacion from "../components/ModalConfirmacion";
 import EleccionRol from "../pages/EleccionRol";
 import SolicitudAVO from "../pages/SolicitudAVO";
 import PedidosTraduccion from "../components/PedidosTraduccion";
+import VerifyEmailForm from "../pages/VerificacionEmail";
+
 
 export const RouterApp = () => {
   return (
@@ -19,6 +21,7 @@ export const RouterApp = () => {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="eleccion-rol" element={<EleccionRol />} />
+        
         <Route index element={<Home />} />
         <Route path="/home/solicitante/:id/*" element={<UserHome />}>
           <Route index element={<CardIniciarTramite />} />
@@ -34,9 +37,8 @@ export const RouterApp = () => {
         <Route path="/solicitantes" element={<div>solicitantes</div>} />
         <Route path="/pedidos-pendientes" element={<PedidosTraduccion />} />
         <Route path="/solicitud-avo" element={<SolicitudAVO />} />
-        
         <Route path="/network-error" element={<div>Error</div>} />
-        
+        <Route path="verificacion" element={<VerifyEmailForm/>}/>
         <Route path="*" element={<ModalConfirmacion />} />
         
         {/* <Route path="/testimonials" element={<Testimonials/>} />  */}
