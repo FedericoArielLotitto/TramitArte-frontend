@@ -6,6 +6,8 @@ import { useNavigate } from "react-router";
 import { useEffect, useState } from "react";
 import Etapa from "./Etapa";
 import tramiteService from "../services/TramiteService";
+import CardIniciarTramite from "./CardIniciarTramite";
+import EsqueletoIsLoading from "./EsqueletoIsLoading";
 
 const BanderaItaliana = ({ height }) => (
   <Box zIndex={-1} position="" left={0} bottom={1} h={height}>
@@ -33,34 +35,24 @@ function Tramite() {
   const [tramite, setTramite] = useState();
 
   useEffect(() => {
-    tramiteService.buscarPorUsuario(6).then(
-      response => {
+    tramiteService
+      .buscarPorUsuario(6)
+      .then((response) => {
         setEstaCargando(false);
         let tramitePersistido = response.data;
         setTramite(tramitePersistido);
-      }
-    ).catch( error => navigate("/network-error") );
+      })
+      .catch((error) => navigate("/network-error"));
   });
   return (
     <>
-      { estaCargando ? <Box w="full" h="100%" padding="6" boxShadow="lg" bg="teal.200">
-      <SkeletonCircle
-        isLoaded={!estaCargando}
-        startColor="teal.100"
-        endColor="teal.300"
-        size="10"
-      />
-      <SkeletonText
-        isLoaded={!estaCargando}
-        startColor="teal.100"
-        endColor="teal.300"
-        mt="6"
-        noOfLines={4}
-        spacing="6"
-        skeletonHeight="3"
-      />
-      </Box> :
-      <Etapa tramite={tramite} /> }
+      {estaCargando ? (
+        <EsqueletoIsLoading estaCargando={estaCargando}/>
+      ) : tramite ? (
+        <Etapa tramite={tramite} />
+      ) : (
+        <CardIniciarTramite></CardIniciarTramite>
+      )}
     </>
   );
 }
