@@ -18,10 +18,9 @@ import {
   useDisclosure,
   FormErrorMessage,
   Select,
-  HStack,
   FormHelperText,
 } from "@chakra-ui/react";
-import { useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { ArrowBack } from "@mui/icons-material";
 import { CalendarIcon, ChevronDownIcon } from "@chakra-ui/icons";
 import { useState, useCallback } from "react";
@@ -38,17 +37,19 @@ function SolicitudAVO() {
     .filter((i) => i < 2023 - 18);
 
   const navigate = useNavigate();
+  const { idUsuario } = useParams();
   const handleBack = () => navigate(-1);
-  const [isChecked, setIsChecked] = useState(true);
+  const [isChecked, setIsChecked] = useState(false);
   const [estaCargando, setEstaCargando] = useState(false);
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [nombreAVO, setNombreAVO] = useState("");
-  const [apellidoAVO, setApellidoAVO] = useState("");
+  let [nombreAVO, setNombreAVO] = useState("Nombre...");
+  let [apellidoAVO, setApellidoAVO] = useState("Apellido...");
   const [fechaNacimiento, setFechaNacimiento] = useState({
-    dia: '1',
-    mes: '10',
-    anio: '1995',
+    dia: "1",
+    mes: "10",
+    anio: "1995",
   });
+  const [sexoAVO, setSexoAVO] = useState("FEMENINO");
 
   const handleOnChangeNombreAVO = (e) => {
     setNombreAVO(e.target.value);
@@ -59,35 +60,52 @@ function SolicitudAVO() {
   };
 
   const handleOnChangeFechaNacimientoAVO = (fechaNacimientoNueva) => {
-    setFechaNacimiento(fechaNacimientoNueva)
+    setFechaNacimiento(fechaNacimientoNueva);
   };
 
-  const handleOnChangeSexRadioButton = () => {
+  const handleOnChangeSexRadioButton = (e) => {
+    setSexoAVO(e.target.name);
     setIsChecked(!isChecked);
   };
 
   const handleOnClickSubmitAVO = () => {
-    if (esValidoTextTypeInput()) {
+    if (esValidoApellido() && esValidoNombre()) {
       onOpen();
     }
   };
 
-  const esValidoTextTypeInput = () => {
-    return nombreAVO.match(/[a-zA-Z]\w+/g);
+  const esValidoApellido = () => {
+    return apellidoAVO.match(/[a-zA-Z]\w+/g)
   };
 
-  const handleConfirmacion = useCallback(() => {
+  const esValidoNombre = () => {
+    return nombreAVO.match(/[a-zA-Z]\w+/g)
+  }
+
+  const handleConfirmacion = () => {
     setEstaCargando(true);
     return tramiteService
-      .cargarAVO()
+      .cargarAVO({
+        nombre: nombreAVO,
+        apellido: apellidoAVO,
+        fechaNacimiento: `${
+          fechaNacimiento.dia < 10
+            ? "0" + fechaNacimiento.dia
+            : fechaNacimiento.dia
+        }/${
+          fechaNacimiento.mes < 10
+            ? "0" + fechaNacimiento.mes
+            : fechaNacimiento.mes
+        }/${fechaNacimiento.anio}`,
+        sexo: sexoAVO,
+      }, 1)
       .then((response) => {
         setEstaCargando(false);
-        console.log(response);
-        navigate("/home/solicitante/tramite");
+        navigate(`/home/solicitante/${idUsuario}`);
         return response;
       })
-      .catch((error) => navigate("/network-error"));
-  }, []);
+      .catch((error) => navigate("/network-error"));}
+
 
   return (
     <Box minH="100%" bg="blue.50">
@@ -146,7 +164,6 @@ function SolicitudAVO() {
                   bg="teal.700"
                   color="white"
                   justifyContent="space-between"
-                  // p={4}
                   w="full"
                   _hover={{ bg: "teal.700" }}
                   _expanded={{ display: "flex" }}
@@ -158,7 +175,7 @@ function SolicitudAVO() {
               </h2>
               <AccordionPanel>
                 <FormControl
-                  isInvalid={!esValidoTextTypeInput()}
+                  isInvalid={!esValidoNombre()}
                   isRequired
                   py="2%"
                   color="blue.900"
@@ -172,16 +189,16 @@ function SolicitudAVO() {
                     type="text"
                     placeholder="Nombre..."
                     value={nombreAVO}
-                    onChange={(e) => handleOnChangeNombreAVO(e)}
+                    onInput={handleOnChangeNombreAVO}
                   />
-                  {!esValidoTextTypeInput() && (
+                  {!esValidoNombre() && (
                     <FormErrorMessage>
                       Solo se permiten letras.
                     </FormErrorMessage>
                   )}
                 </FormControl>
                 <FormControl
-                  isInvalid={!esValidoTextTypeInput()}
+                  isInvalid={!esValidoApellido()}
                   isRequired
                   py="2%"
                   color="blue.900"
@@ -189,15 +206,16 @@ function SolicitudAVO() {
                 >
                   <FormLabel>Apellido</FormLabel>
                   <Input
-                    onChange={(e) => handleOnChangeApellidoAVO(e)}
                     value={apellidoAVO}
+                    onInput={handleOnChangeApellidoAVO}
+                    onChange={handleOnChangeApellidoAVO}
                     h={12}
                     borderRadius="25px"
                     border="1px solid rgba(26, 54, 93, 1)"
                     type="text"
                     placeholder="Apellido..."
                   />
-                  {!esValidoTextTypeInput() && (
+                  {!esValidoApellido() && (
                     <FormErrorMessage>Solo se permiten letras</FormErrorMessage>
                   )}
                 </FormControl>
@@ -270,7 +288,9 @@ function SolicitudAVO() {
                         }
                       >
                         {anios.map((anio) => (
-                          <option key={anio} value={anio}>{anio}</option>
+                          <option key={anio} value={anio}>
+                            {anio}
+                          </option>
                         ))}
                       </Select>
                       <InputRightElement>
@@ -294,7 +314,8 @@ function SolicitudAVO() {
                     color="blue.900"
                     p=".4rem"
                     isChecked={isChecked}
-                    onChange={() => handleOnChangeSexRadioButton()}
+                    onChange={(e) => handleOnChangeSexRadioButton(e)}
+                    name={"FEMENINO"}
                   >
                     Femenino
                   </Checkbox>
@@ -302,8 +323,9 @@ function SolicitudAVO() {
                     colorScheme="teal"
                     color="blue.900"
                     p=".4rem"
+                    name={"MASCULINO"}
                     isChecked={!isChecked}
-                    onChange={() => handleOnChangeSexRadioButton()}
+                    onChange={(e) => handleOnChangeSexRadioButton(e)}
                   >
                     Masculino
                   </Checkbox>

@@ -50,7 +50,7 @@ function Etapa({ tramite }) {
   const handleConfirmacion = useCallback(() => {
     setEstaCargando(true);
     return tramiteService
-      .eliminar(1)
+      .eliminar(tramite.id)
       .then((response) => {
         setEstaCargando(false);
         navigate(`/home/solicitante/${idUsuario}`);
@@ -58,6 +58,45 @@ function Etapa({ tramite }) {
       })
       .catch((error) => navigate("/network-error"));
   }, []);
+
+  function elegirRuta(descripcionEtapa) {
+    let basePath = `/home/solicitante/${idUsuario}`;
+    let completePath;
+    switch (descripcionEtapa.toUpperCase()) {
+      case "CARGAR AVO":
+        completePath = `${basePath}/solicitud-avo`;
+        break;
+      case "CARGAR DOCUMENTACION DE USUARIO":
+        completePath = `${basePath}/documentacion`;
+        break;
+      case "CARGAR DOCUMENTACIÓN ÁRBOL":
+        completePath = `${basePath}/documentacion-ascendentes`;
+        break;
+      case "CARGAR DOCUMENTACIÓN TRADUCIDA":
+        completePath = `${basePath}/documentacion-traducida`;
+        break;
+    }
+    return completePath;
+  }
+
+  function calcularPorcentaje(descripcionEtapa) {
+    let porcentaje;
+    switch (descripcionEtapa.toUpperCase()) {
+      case "CARGAR AVO":
+        porcentaje = "1";
+        break;
+      case "CARGAR DOCUMENTACION DE USUARIO":
+        porcentaje = "20";
+        break;
+      case "CARGAR DOCUMENTACIÓN ÁRBOL":
+        porcentaje = "55";
+        break;
+      case "CARGAR DOCUMENTACIÓN TRADUCIDA":
+        porcentaje = "90";
+        break;
+    }
+    return porcentaje;
+  }
 
   return (
     <Card borderRadius="45px" bg="rgba(255, 255, 255, 0.8)" align="center">
@@ -82,22 +121,26 @@ function Etapa({ tramite }) {
           color="blue.900"
           thickness="10%"
         >
-          <CircularProgressLabel>1%</CircularProgressLabel>
+          <CircularProgressLabel>
+            {calcularPorcentaje(tramite.etapa.descripcion)}%
+          </CircularProgressLabel>
         </CircularProgress>
       </CardBody>
       <CardFooter w="100%">
         <Button
-          onClick={() => navigate("/solicitud-avo")}
+          onClick={() => {
+            console.log(tramite.etapa.descripcion);
+            navigate(elegirRuta(tramite.etapa.descripcion))}
+          }
           textTransform="uppercase"
           borderRadius="45px"
           w={"100%"}
           color="white"
           bg="red.900"
         >
-          { tramite.etapa.descripcion }
+          {tramite.etapa.descripcion}
         </Button>
       </CardFooter>
-
 
       <ModalConfirmacion
         isOpen={isOpen}

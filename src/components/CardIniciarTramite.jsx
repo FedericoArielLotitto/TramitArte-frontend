@@ -28,7 +28,8 @@ function CardIniciarTramite() {
       .then((response) => {
         setEstaCargando(false);
         console.log(response);
-        navigate(`/home/solicitante/${idUsuario}`);
+        onClose();
+        navigate(`/home/solicitante/${idUsuario}`, { replace: true });
         return response;
       })
       .catch((error) => navigate("/network-error"));

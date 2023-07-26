@@ -53,7 +53,7 @@ function EleccionRol() {
         gap="2.4rem"
         flexWrap="wrap"
         justifyContent="space-around"
-        aliggItems="center"
+        alignItems="center"
         spacing="3.6rem"
         bg="teal.200"
         p="2.4rem"

@@ -8,8 +8,8 @@ class TramiteService {
         return tramite;
     }
 
-    async cargarAVO(avo) {
-        let avoPersistido = await axios.post(`${this.urlBackend}/carga-avo`, avo)
+    async cargarAVO(avo, idTramite) {
+        let avoPersistido = await axios.post(`${this.urlBackend}/carga-avo/${idTramite}`, avo)
         return avoPersistido;
     }
 

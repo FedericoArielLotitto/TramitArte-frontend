@@ -8,6 +8,7 @@ import Etapa from "./Etapa";
 import tramiteService from "../services/TramiteService";
 import CardIniciarTramite from "./CardIniciarTramite";
 import EsqueletoIsLoading from "./EsqueletoIsLoading";
+import EtapaView from "../dominio/EtapaView";
 
 const BanderaItaliana = ({ height }) => (
   <Box zIndex={-1} position="" left={0} bottom={1} h={height}>
@@ -41,17 +42,20 @@ function Tramite() {
       .then((response) => {
         setEstaCargando(false);
         let tramitePersistido = response.data;
-        setTramite(tramitePersistido);
+        console.log(tramitePersistido);
+        setTramite(
+          tramitePersistido
+        );
       })
       .catch((error) => navigate("/network-error"));
-  });
+  }, []);
 
   return (
     <>
       {estaCargando ? (
-        <EsqueletoIsLoading estaCargando={estaCargando}/>
+        <EsqueletoIsLoading estaCargando={estaCargando} />
       ) : tramite ? (
-        <Etapa tramite={tramite}/>
+        <Etapa tramite={tramite} />
       ) : (
         <CardIniciarTramite></CardIniciarTramite>
       )}
