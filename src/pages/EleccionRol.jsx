@@ -10,7 +10,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 function EleccionRol() {
   const navigate = useNavigate();
   const [rol, setRol] = useState('');
-  const { isAuthenticated } = useAuth0();
+  const { user,isAuthenticated } = useAuth0();
   const [estaCargando, setEstaCargando] = useState(false);
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -25,20 +25,19 @@ function EleccionRol() {
     setEstaCargando(true);
     console.log(rolElegido);
     let usuario = {
-      username: "prueba",
-      nombre: "NombrePrueba",
-      apellido: "ApellidoPrueba",
+      username: user.nickname || "Sin username",
+      nombre: user.name || "Sin nombre",
+      apellido: user.family_name || "Sin apellido",
       rol: rolElegido,
-      precio: 2200,
-      correoElectronico: 'a@a.com',
-      fechaDeNacimiento: '1995-10-25',
+      precio:0,
+      correoElectronico: user.email ,
+      fechaDeNacimiento: user.birthdate ||  new Date(),
       nesecitaTraduccion: true
     };
     return usuarioService
     .guardarUsuario(usuario)
       .then((response) => {
         setEstaCargando(false);
-        console.log(response);
         let { data } = response;
         let usuarioPersistido = data;
         navigate(`/home/${rolElegido.toLowerCase()}/${usuarioPersistido.id}`, { replace: true });
