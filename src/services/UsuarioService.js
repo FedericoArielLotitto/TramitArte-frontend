@@ -9,6 +9,11 @@ class UsuarioService {
         console.log(usuarioNuevo)
         return usuarioNuevo;
     }
+
+    async traerRol(mail) {
+        let usuario= await axios.get(`${this.urlBackend}/usuario`, mail)
+        return usuario;
+    }
 }
 
 const usuarioService = new UsuarioService();

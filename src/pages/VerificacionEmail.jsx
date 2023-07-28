@@ -11,6 +11,7 @@ import {
 } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import { useNavigate } from "react-router";
+import usuarioService from "../services/UsuarioService";
 
 export default function VerifyEmailForm() {
     const { user, isLoading, isAuthenticated }= useAuth0()
@@ -23,7 +24,13 @@ export default function VerifyEmailForm() {
         !isLoading && navigate("/eleccion-rol")
     }
 
-    useEffect(() => navegar(), [user])
+    useEffect(() => {
+      !isLoading && usuarioService
+      .traerRol(user.email)
+        .then((response) => {
+          let usuario = response
+         usuario? navigate(`/home/${usuario.rolElegido.toLowerCase()}/${usuario.id}`, { replace: true }):navegar()
+    })}, [user])
 
   return ( 
     <Flex
