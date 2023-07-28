@@ -10,9 +10,12 @@ class UsuarioService {
         return usuarioNuevo;
     }
 
-    async traerRol(mail) {
-        let usuario= await axios.get(`${this.urlBackend}/usuario`, mail)
-        return usuario;
+    async traerUsuarioXMail(mail) {
+        let body= {"correoElectronico" : mail}
+        console.log(body)
+        let usuario= await axios?.get(`${this.urlBackend}/usuario`, body)
+        console.log(usuario)
+        return usuario
     }
 }
 

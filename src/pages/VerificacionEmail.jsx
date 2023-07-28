@@ -1,5 +1,5 @@
 
-import { useAuth0, User } from '@auth0/auth0-react';
+import { useAuth0 } from '@auth0/auth0-react';
 import { Center, Heading } from '@chakra-ui/react';
 import {
   Button,
@@ -9,28 +9,35 @@ import {
   useColorModeValue,
 
 } from '@chakra-ui/react';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useNavigate } from "react-router";
 import usuarioService from "../services/UsuarioService";
 
 export default function VerifyEmailForm() {
     const { user, isLoading, isAuthenticated }= useAuth0()
+    const {loginWithRedirect} = useAuth0()
     // const [userP, setUserP] = useState(null)
     const navigate = useNavigate();
-    const { loginWithRedirect } = useAuth0()
     console.log(JSON.stringify(user))
+
+    const navegarToHome = ()=>{
+      !isLoading  && usuarioService
+      .traerUsuarioXMail(user.email)
+        .then((response) => {
+          let {data} = response
+          let usuario = data
+         usuario? navigate(`/home/${usuario.rol.toLowerCase()}/${usuario.id}`, { replace: true }):navigate("/eleccion-rol")
+          })}
+
     const navegar = () =>{
         console.log(isLoading)
-        !isLoading && navigate("/eleccion-rol")
+        !isLoading && navegarToHome()
+        
     }
 
     useEffect(() => {
-      !isLoading && usuarioService
-      .traerRol(user.email)
-        .then((response) => {
-          let usuario = response
-         usuario? navigate(`/home/${usuario.rolElegido.toLowerCase()}/${usuario.id}`, { replace: true }):navegar()
-    })}, [user])
+     navegar()
+    }, [user])
 
   return ( 
     <Flex
