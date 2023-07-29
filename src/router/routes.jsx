@@ -26,6 +26,8 @@ export const RouterApp = () => {
           <Route index element={<Tramite />} />
           {/* <Route path="tramite/etapa/:paso" element={} /> */}
         </Route>
+        <Route path="/home/solicitante/:idUsuario/solicitud-avo" element={<SolicitudAVO />} />
+        <Route path="/home/solicitante/:idUsuario/documentacion" element={<SolicitudAVO />} />
         <Route path="/home/traductor/:idUsuario/*" element={<UserHome />}>
           <Route index element={<PedidosTraduccion />} />
         </Route>
@@ -35,7 +37,6 @@ export const RouterApp = () => {
         <Route path="/traductores" element={<TraductoresRegistrados />} />
         <Route path="/solicitantes" element={<div>solicitantes</div>} />
         <Route path="/pedidos-pendientes" element={<PedidosTraduccion />} />
-        <Route path="/home/solicitante/:idUsuario/solicitud-avo" element={<SolicitudAVO />} />
         <Route path="/network-error" element={<div>Error</div>} />
         <Route path="verificacion" element={<VerifyEmailForm/>}/>
         <Route path="*" element={<ModalConfirmacion />} />

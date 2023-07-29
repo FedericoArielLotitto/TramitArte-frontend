@@ -29,6 +29,7 @@ function CardIniciarTramite() {
         setEstaCargando(false);
         console.log(response);
         onClose();
+        navigate(0);
         navigate(`/home/solicitante/${idUsuario}`, { replace: true });
         return response;
       })
