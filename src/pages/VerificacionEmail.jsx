@@ -79,7 +79,7 @@ export default function VerifyEmailForm() {
             }}
             onClick={loginWithRedirect}
           >
-            ya lo verifiqué!
+            Ya lo verifiqué ;)
           </Button>
         </Stack>
       </Stack>
