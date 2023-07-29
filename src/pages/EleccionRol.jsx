@@ -9,8 +9,8 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 function EleccionRol() {
   const navigate = useNavigate();
-  const [rol, setRol] = useState('');
-  const { user,isAuthenticated } = useAuth0();
+  const [rol, setRol] = useState("");
+  const { user, isAuthenticated } = useAuth0();
   const [estaCargando, setEstaCargando] = useState(false);
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -19,7 +19,6 @@ function EleccionRol() {
     setRol(e.target.innerText);
     onOpen();
   };
-  
 
   const handleConfirmacion = useCallback((rolElegido) => {
     setEstaCargando(true);
@@ -29,18 +28,20 @@ function EleccionRol() {
       nombre: user.name || "Sin nombre",
       apellido: user.family_name || "Sin apellido",
       rol: rolElegido,
-      precio:0,
-      correoElectronico: user.email ,
-      fechaDeNacimiento: user.birthdate ||  new Date(),
-      nesecitaTraduccion: true
+      precio: 0,
+      correoElectronico: user.email,
+      fechaDeNacimiento: user.birthdate || new Date(),
+      nesecitaTraduccion: true,
     };
     return usuarioService
-    .guardarUsuario(usuario)
+      .guardarUsuario(usuario)
       .then((response) => {
         setEstaCargando(false);
         let { data } = response;
         let usuarioPersistido = data;
-        navigate(`/home/${rolElegido.toLowerCase()}/${usuarioPersistido.id}`, { replace: true });
+        navigate(`/home/${rolElegido.toLowerCase()}/${usuarioPersistido.id}`, {
+          replace: true,
+        });
         return response;
       })
       .catch((error) => navigate("/network-error"));
@@ -87,7 +88,7 @@ function EleccionRol() {
       </Center>
       <ModalConfirmacion
         pregunta={`¿Estás seguro de registrarte como ${rol}?`}
-        datoAConfirmar={''}
+        datoAConfirmar={""}
         isOpen={isOpen}
         handleConfirmacion={() => handleConfirmacion(rol)}
         onClose={onClose}

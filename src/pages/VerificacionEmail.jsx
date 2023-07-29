@@ -67,7 +67,7 @@ export default function VerifyEmailForm() {
           fontSize={{ base: "sm", sm: "md" }}
           color={useColorModeValue("gray.800", "gray.400")}
         >
-          Te enviamos la verificacion a tu email! acepta para poder continuar
+          Te enviamos la verificacion a tu email! Aceptá para poder continuar ;)
         </Center>
         <FormControl></FormControl>
         <Stack spacing={6}>
