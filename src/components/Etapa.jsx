@@ -11,6 +11,7 @@ import {
   HStack,
   Box,
   useDisclosure,
+  Text,
 } from "@chakra-ui/react";
 
 import { Delete } from "@mui/icons-material";
@@ -53,7 +54,7 @@ function Etapa({ tramite }) {
       .eliminar(tramite.id)
       .then((response) => {
         setEstaCargando(false);
-        navigate(`/home/solicitante/${idUsuario}`);
+        navigate(`/home/solicitante/${idUsuario}`, { replace: true });
         return response;
       })
       .catch((error) => navigate("/network-error"));
@@ -130,13 +131,14 @@ function Etapa({ tramite }) {
         <Button
           onClick={() => {
             console.log(tramite.etapa.descripcion);
-            navigate(elegirRuta(tramite.etapa.descripcion))}
-          }
+            navigate(elegirRuta(tramite.etapa.descripcion));
+          }}
           textTransform="uppercase"
           borderRadius="45px"
           w={"100%"}
           color="white"
           bg="red.900"
+          whiteSpace={'normal'}
         >
           {tramite.etapa.descripcion}
         </Button>
