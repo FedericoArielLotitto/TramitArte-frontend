@@ -118,7 +118,7 @@ function Etapa({ tramite }) {
           capIsRound
           trackColor="blue.100"
           size="300px"
-          value={1}
+          value={calcularPorcentaje(tramite.etapa.descripcion)}
           color="blue.900"
           thickness="10%"
         >

@@ -39,62 +39,9 @@ import {
   Home,
   Logout,
 } from "@mui/icons-material";
-import { useLocation, useNavigate } from "react-router";
+import { useLocation, useNavigate, useParams } from "react-router";
 import { useRef } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-
-const itemsMenuSolicitante = [
-  {
-    hipervinculo: "/traductores",
-    texto: "Traductores Registrados",
-    icono: (
-      <Icon
-        color="white"
-        as={ConnectWithoutContact}
-        bg="teal.300"
-        boxSize={8}
-      />
-    ),
-  },
-  {
-    hipervinculo: "/preguntas-frecuentes",
-    texto: "Preguntas Frecuentes",
-    icono: <QuestionIcon color="white" bg="teal.300" boxSize={8} />,
-  },
-  {
-    hipervinculo: "/home/solicitante",
-    texto: "Inicio",
-    icono: <Icon color="white" as={Home} boxSize={8} />,
-  },
-  {
-    hipervinculo: "/documentacion",
-    texto: "Certificados",
-    icono: <Icon color="white" as={FolderCopy} bg="teal.300" boxSize={8} />,
-  },
-  {
-    hipervinculo: "/solicitud-avo",
-    texto: "Mi AVO",
-    icono: <Icon color="white" as={FamilyRestroom} bg="teal.300" boxSize={8} />,
-  },
-];
-
-const itemsMenuTraductor = [
-  {
-    hipervinculo: "/home/traductor",
-    texto: "Inicio",
-    icono: <Icon color="white" as={Home} boxSize={8} />,
-  },
-  {
-    hipervinculo: "/pedidos-pendientes",
-    texto: "Solicitudes pendientes",
-    icono: <Icon color="white" as={Assignment} bg="teal.300" boxSize={8} />,
-  },
-  {
-    hipervinculo: "/solicitantes",
-    texto: "Solicitantes de traducción",
-    icono: <Icon color="white" as={AssignmentInd} boxSize={8} />,
-  },
-];
 
 const NavLink = ({ texto, link }) => (
   <Link
@@ -113,13 +60,69 @@ const NavLink = ({ texto, link }) => (
 );
 
 export default function UserNavbar() {
-  const { logout } = useAuth0();
+  const { logout, user } = useAuth0();
   const navigate = useNavigate();
   const location = useLocation();
+  const { idUsuario } = useParams();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const bgColors = useColorModeValue("teal.300", "blue.900");
   const colors = useColorModeValue("white", "blue.900");
   const btnRef = useRef();
+
+  const itemsMenuSolicitante = [
+    {
+      hipervinculo: "/traductores",
+      texto: "Traductores Registrados",
+      icono: (
+        <Icon
+          color="white"
+          as={ConnectWithoutContact}
+          bg="teal.300"
+          boxSize={8}
+        />
+      ),
+    },
+    {
+      hipervinculo: "/preguntas-frecuentes",
+      texto: "Preguntas Frecuentes",
+      icono: <QuestionIcon color="white" bg="teal.300" boxSize={8} />,
+    },
+    {
+      hipervinculo: `/home/solicitante/${idUsuario}`,
+      texto: "Inicio",
+      icono: <Icon color="white" as={Home} boxSize={8} />,
+    },
+    {
+      hipervinculo: "/documentacion",
+      texto: "Certificados",
+      icono: <Icon color="white" as={FolderCopy} bg="teal.300" boxSize={8} />,
+    },
+    {
+      hipervinculo: "/solicitud-avo",
+      texto: "Mi AVO",
+      icono: (
+        <Icon color="white" as={FamilyRestroom} bg="teal.300" boxSize={8} />
+      ),
+    },
+  ];
+
+  const itemsMenuTraductor = [
+    {
+      hipervinculo: `/home/traductor/${idUsuario}`,
+      texto: "Inicio",
+      icono: <Icon color="white" as={Home} boxSize={8} />,
+    },
+    {
+      hipervinculo: "/pedidos-pendientes",
+      texto: "Solicitudes pendientes",
+      icono: <Icon color="white" as={Assignment} bg="teal.300" boxSize={8} />,
+    },
+    {
+      hipervinculo: "/solicitantes",
+      texto: "Solicitantes de traducción",
+      icono: <Icon color="white" as={AssignmentInd} boxSize={8} />,
+    },
+  ];
 
   return (
     <>
@@ -161,12 +164,7 @@ export default function UserNavbar() {
                 cursor={"pointer"}
                 minW={0}
               >
-                <Avatar
-                  size={"sm"}
-                  src={
-                    "https://images.unsplash.com/photo-1493666438817-866a91353ca9?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9"
-                  }
-                />
+                <Avatar size={"sm"} src={user.picture} />
               </MenuButton>
               <MenuList color={useColorModeValue("blue.900", "white")}>
                 <MenuItem
@@ -176,7 +174,13 @@ export default function UserNavbar() {
                   Mi perfil
                 </MenuItem>
                 <MenuDivider />
-                <MenuItem onClick={() => { logout(); navigate("/")}} icon={<Logout />}>
+                <MenuItem
+                  onClick={() => {
+                    logout();
+                    navigate("/");
+                  }}
+                  icon={<Logout />}
+                >
                   Cerrar sesi&oacute;n
                 </MenuItem>
               </MenuList>

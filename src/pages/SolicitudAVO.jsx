@@ -23,7 +23,7 @@ import {
 import { useNavigate, useParams } from "react-router";
 import { ArrowBack } from "@mui/icons-material";
 import { CalendarIcon, ChevronDownIcon } from "@chakra-ui/icons";
-import { useState, useCallback } from "react";
+import { useState } from "react";
 
 import ModalConfirmacion from "../components/ModalConfirmacion";
 import ModalIsLoading from "../components/ModalIsLoading";
@@ -75,37 +75,40 @@ function SolicitudAVO() {
   };
 
   const esValidoApellido = () => {
-    return apellidoAVO.match(/[a-zA-Z]\w+/g)
+    return apellidoAVO.match(/[a-zA-Z]\w+/g);
   };
 
   const esValidoNombre = () => {
-    return nombreAVO.match(/[a-zA-Z]\w+/g)
-  }
+    return nombreAVO.match(/[a-zA-Z]\w+/g);
+  };
 
   const handleConfirmacion = () => {
     setEstaCargando(true);
     return tramiteService
-      .cargarAVO({
-        nombre: nombreAVO,
-        apellido: apellidoAVO,
-        fechaNacimiento: `${
-          fechaNacimiento.dia < 10
-            ? "0" + fechaNacimiento.dia
-            : fechaNacimiento.dia
-        }/${
-          fechaNacimiento.mes < 10
-            ? "0" + fechaNacimiento.mes
-            : fechaNacimiento.mes
-        }/${fechaNacimiento.anio}`,
-        sexo: sexoAVO,
-      }, 1)
+      .cargarAVO(
+        {
+          nombre: nombreAVO,
+          apellido: apellidoAVO,
+          fechaNacimiento: `${
+            fechaNacimiento.dia < 10
+              ? "0" + fechaNacimiento.dia
+              : fechaNacimiento.dia
+          }/${
+            fechaNacimiento.mes < 10
+              ? "0" + fechaNacimiento.mes
+              : fechaNacimiento.mes
+          }/${fechaNacimiento.anio}`,
+          sexo: sexoAVO,
+        },
+        1
+      )
       .then((response) => {
         setEstaCargando(false);
         navigate(`/home/solicitante/${idUsuario}`);
         return response;
       })
-      .catch((error) => navigate("/network-error"));}
-
+      .catch((error) => navigate("/network-error"));
+  };
 
   return (
     <Box minH="100%" bg="blue.50">

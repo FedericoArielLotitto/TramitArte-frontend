@@ -12,6 +12,7 @@ import EleccionRol from "../pages/EleccionRol";
 import SolicitudAVO from "../pages/SolicitudAVO";
 import PedidosTraduccion from "../components/PedidosTraduccion";
 import VerifyEmailForm from "../pages/VerificacionEmail";
+import Documentacion from "../pages/Documentacion";
 
 
 export const RouterApp = () => {
@@ -27,7 +28,7 @@ export const RouterApp = () => {
           {/* <Route path="tramite/etapa/:paso" element={} /> */}
         </Route>
         <Route path="/home/solicitante/:idUsuario/solicitud-avo" element={<SolicitudAVO />} />
-        <Route path="/home/solicitante/:idUsuario/documentacion" element={<SolicitudAVO />} />
+        <Route path="/home/solicitante/:idUsuario/documentacion" element={<Documentacion />} />
         <Route path="/home/traductor/:idUsuario/*" element={<UserHome />}>
           <Route index element={<PedidosTraduccion />} />
         </Route>
