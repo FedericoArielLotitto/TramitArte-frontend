@@ -25,7 +25,6 @@ export const RouterApp = ({ setTramiteContext }) => {
         <Route index element={<Home />} />
         <Route path="/home/solicitante/:idUsuario" element={<UserHome />}>
           <Route index element={<Tramite setTramiteContext={setTramiteContext}/>} />
-          {/* <Route path="tramite/etapa/:paso" element={} /> */}
         </Route>
         <Route path="/home/solicitante/:idUsuario/documentacion" element={<Documentacion />} />
         <Route path="/home/solicitante/:idUsuario/solicitud-avo" element={<SolicitudAVO />} />

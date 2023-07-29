@@ -1,4 +1,4 @@
-import { Box, Center, Flex, IconButton } from "@chakra-ui/react";
+import { Box, Center, Text, Flex, IconButton } from "@chakra-ui/react";
 import { ArrowBack } from "@mui/icons-material";
 import { useContext } from "react";
 import { useNavigate } from "react-router";
@@ -35,6 +35,17 @@ function Documentacion() {
         >
           {tramiteContext.codigo}
         </Center>
+      </Center>
+      <Center flexWrap="wrap" p="1.4rem">
+        <Flex textAlign="center" justifyContent="center" w={"sm"}>
+          <Text as={'h2'} fontSize={'3xl'}>{"Documentación Personal"}</Text>
+        </Flex>
+        <Flex textAlign="center" justifyContent="center" w={"sm"}>
+          <Text as={'h2'} fontSize={'3xl'}>{"Documentación AVO"}</Text>
+        </Flex>
+        <Flex textAlign="center" justifyContent="center" w={"sm"}>
+          <Text as={'h2'} fontSize={'3xl'}>{"Documentación Ascendentes"}</Text>
+        </Flex>
       </Center>
     </Box>
   );

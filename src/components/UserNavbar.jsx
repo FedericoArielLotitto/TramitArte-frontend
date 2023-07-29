@@ -124,6 +124,8 @@ export default function UserNavbar() {
     },
   ];
 
+  const notificaciones = ["Notificación 1", "Notificación 2"];
+
   return (
     <>
       <Box color={colors} bg={bgColors} px={4}>
@@ -146,16 +148,38 @@ export default function UserNavbar() {
             gap=".8rem"
             alignItems={"center"}
           >
-            <Tag
-              borderRadius="45px"
-              size={"sm"}
-              key={"md"}
-              variant="solid"
-              bg="teal.300"
-            >
-              <TagLeftIcon boxSize="8" as={Email} />
-              <TagLabel ml={"-.4rem"}>{3}</TagLabel>
-            </Tag>
+            <Menu>
+              <MenuButton
+                as={Button}
+                rounded={"full"}
+                variant={"link"}
+                cursor={"pointer"}
+                minW={0}
+              >
+                <Tag
+                  borderRadius="45px"
+                  size={"sm"}
+                  key={"md"}
+                  variant="solid"
+                  bg="teal.300"
+                >
+                  <TagLeftIcon boxSize="8" as={Email} />
+                  <TagLabel ml={"-.4rem"}>{notificaciones.length}</TagLabel>
+                </Tag>
+              </MenuButton>
+              <MenuList color={useColorModeValue("blue.900", "white")}>
+                {notificaciones.map((notificacion, index) => (
+                  <>
+                    <MenuItem
+                      key={index}
+                      _hover={{ bg: 'useColorModeValue("blue.900", "white")' }}
+                    >
+                      {notificacion}
+                    </MenuItem>
+                  </>
+                ))}
+              </MenuList>
+            </Menu>
             <Menu>
               <MenuButton
                 as={Button}
