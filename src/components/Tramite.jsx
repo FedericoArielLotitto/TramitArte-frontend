@@ -30,7 +30,7 @@ const BanderaItaliana = ({ height }) => (
   </Box>
 );
 
-function Tramite() {
+function Tramite({ setTramiteContext }) {
   const navigate = useNavigate();
   const { idUsuario } = useParams();
   const [estaCargando, setEstaCargando] = useState(true);
@@ -43,9 +43,8 @@ function Tramite() {
         setEstaCargando(false);
         let tramitePersistido = response.data;
         console.log(tramitePersistido);
-        setTramite(
-          tramitePersistido
-        );
+        setTramite(tramitePersistido);
+        setTramiteContext(tramitePersistido);
       })
       .catch((error) => navigate("/network-error"));
   }, []);

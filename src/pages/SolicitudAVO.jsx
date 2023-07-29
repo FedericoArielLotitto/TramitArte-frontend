@@ -23,11 +23,12 @@ import {
 import { useNavigate, useParams } from "react-router";
 import { ArrowBack } from "@mui/icons-material";
 import { CalendarIcon, ChevronDownIcon } from "@chakra-ui/icons";
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 import ModalConfirmacion from "../components/ModalConfirmacion";
 import ModalIsLoading from "../components/ModalIsLoading";
 import tramiteService from "../services/TramiteService";
+import { TramiteContext } from "../App";
 
 function SolicitudAVO() {
   const dias = [...Array(31).keys()].map((i) => i + 1);
@@ -38,6 +39,7 @@ function SolicitudAVO() {
 
   const navigate = useNavigate();
   const { idUsuario } = useParams();
+  const tramiteContext = useContext(TramiteContext);
   const handleBack = () => navigate(-1);
   const [isChecked, setIsChecked] = useState(false);
   const [estaCargando, setEstaCargando] = useState(false);
@@ -131,8 +133,9 @@ function SolicitudAVO() {
           bg="blue.900"
           color="white"
           fontWeight={"700"}
+          overflowWrap={'break-word'}
         >
-          {"X9889MW"}
+          {tramiteContext.codigo}
         </Center>
       </Center>
       <Center p=".8rem">

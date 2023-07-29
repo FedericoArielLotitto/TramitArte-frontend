@@ -15,7 +15,7 @@ import VerifyEmailForm from "../pages/VerificacionEmail";
 import Documentacion from "../pages/Documentacion";
 
 
-export const RouterApp = () => {
+export const RouterApp = ({ setTramiteContext }) => {
   return (
     <BrowserRouter>
       <Routes>
@@ -24,11 +24,11 @@ export const RouterApp = () => {
         
         <Route index element={<Home />} />
         <Route path="/home/solicitante/:idUsuario" element={<UserHome />}>
-          <Route index element={<Tramite />} />
+          <Route index element={<Tramite setTramiteContext={setTramiteContext}/>} />
           {/* <Route path="tramite/etapa/:paso" element={} /> */}
         </Route>
-        <Route path="/home/solicitante/:idUsuario/solicitud-avo" element={<SolicitudAVO />} />
         <Route path="/home/solicitante/:idUsuario/documentacion" element={<Documentacion />} />
+        <Route path="/home/solicitante/:idUsuario/solicitud-avo" element={<SolicitudAVO />} />
         <Route path="/home/traductor/:idUsuario/*" element={<UserHome />}>
           <Route index element={<PedidosTraduccion />} />
         </Route>

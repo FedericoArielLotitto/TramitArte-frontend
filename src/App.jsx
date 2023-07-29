@@ -1,23 +1,18 @@
 import { ChakraProvider } from "@chakra-ui/react";
 import { RouterApp } from "./router/routes";
-import { extendTheme } from "@chakra-ui/react";
+import { createContext, useState } from "react";
 
-const theme = extendTheme({
-  styles: {
-    global: {
-      // styles for the `body`
-      body: {
-        bg: "",
-      },
-    },
-  },
-});
+export const TramiteContext = createContext();
 
 function App() {
+  const [tramite, setTramite] = useState(null);
+
   return (
-    <ChakraProvider>
-        <RouterApp />
-    </ChakraProvider>
+    <TramiteContext.Provider value={tramite}>
+      <ChakraProvider>
+        <RouterApp setTramiteContext={setTramite}/>
+      </ChakraProvider>
+    </TramiteContext.Provider>
   );
 }
 
