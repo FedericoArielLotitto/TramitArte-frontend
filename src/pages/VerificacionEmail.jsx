@@ -1,83 +1,85 @@
-
-import { useAuth0 } from '@auth0/auth0-react';
-import { Center, Heading } from '@chakra-ui/react';
+import { useAuth0 } from "@auth0/auth0-react";
+import { Center, Heading } from "@chakra-ui/react";
 import {
   Button,
   FormControl,
   Flex,
   Stack,
   useColorModeValue,
-
-} from '@chakra-ui/react';
-import { useEffect } from 'react';
+} from "@chakra-ui/react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router";
 import usuarioService from "../services/UsuarioService";
 
 export default function VerifyEmailForm() {
-    const { user, isLoading, isAuthenticated }= useAuth0()
-    const {loginWithRedirect} = useAuth0()
-    // const [userP, setUserP] = useState(null)
-    const navigate = useNavigate();
-    console.log(JSON.stringify(user))
+  const { user, isLoading, isAuthenticated } = useAuth0();
+  const { loginWithRedirect } = useAuth0();
+  // const [userP, setUserP] = useState(null)
+  const navigate = useNavigate();
+  console.log(JSON.stringify(user));
 
-    const navegarToHome = ()=>{
-      !isLoading  && usuarioService
-      .traerUsuarioXMail(user.email)
+  const navegarToHome = () => {
+    !isLoading &&
+      usuarioService
+        .traerUsuarioXMail(user.email)
         .then((response) => {
-          let {data} = response
-          let usuario = data
-         usuario? navigate(`/home/${usuario.rol.toLowerCase()}/${usuario.id}`, { replace: true }):navigate("/eleccion-rol")
-          })}
+          let { data } = response;
+          let usuario = data;
+          navigate(`/home/${usuario.rol.toLowerCase()}/${usuario.id}`, {
+            replace: true,
+          });
+        })
+        .catch((error) => navigate("/eleccion-rol", { replace: true }));
+  };
 
-    const navegar = () =>{
-        console.log(isLoading)
-        !isLoading && navegarToHome()
-        
-    }
+  const navegar = () => {
+    console.log(isLoading);
+    !isLoading && navegarToHome();
+  };
 
-    useEffect(() => {
-     navegar()
-    }, [user])
+  useEffect(() => {
+    navegar();
+  }, [user]);
 
-  return ( 
+  return (
     <Flex
-      minH={'100vh'}
-      align={'center'}
-      justify={'center'}
-      bg={useColorModeValue('gray.50', 'gray.800')}>
+      minH={"100vh"}
+      align={"center"}
+      justify={"center"}
+      bg={useColorModeValue("gray.50", "gray.800")}
+    >
       <Stack
         spacing={4}
-        w={'full'}
-        maxW={'sm'}
-        bg={useColorModeValue('white', 'gray.700')}
-        rounded={'xl'}
-        boxShadow={'lg'}
+        w={"full"}
+        maxW={"sm"}
+        bg={useColorModeValue("white", "gray.700")}
+        rounded={"xl"}
+        boxShadow={"lg"}
         p={6}
-        my={10}>
+        my={10}
+      >
         <Center>
-          <Heading lineHeight={1.1} fontSize={{ base: '2xl', md: '3xl' }}>
+          <Heading lineHeight={1.1} fontSize={{ base: "2xl", md: "3xl" }}>
             Verifica tu Email
           </Heading>
         </Center>
         <Center
-          fontSize={{ base: 'sm', sm: 'md' }}
-          color={useColorModeValue('gray.800', 'gray.400')}>
-         Te enviamos la verificacion a tu email! acepta para poder continuar
+          fontSize={{ base: "sm", sm: "md" }}
+          color={useColorModeValue("gray.800", "gray.400")}
+        >
+          Te enviamos la verificacion a tu email! acepta para poder continuar
         </Center>
-               <FormControl>
-         
-        </FormControl>
+        <FormControl></FormControl>
         <Stack spacing={6}>
           <Button
-            bg={'blue.400'}
-            color={'white'}
+            bg={"blue.400"}
+            color={"white"}
             _hover={{
-              bg: 'blue.500',
+              bg: "blue.500",
             }}
             onClick={loginWithRedirect}
-            >
+          >
             ya lo verifiqué!
-            
           </Button>
         </Stack>
       </Stack>

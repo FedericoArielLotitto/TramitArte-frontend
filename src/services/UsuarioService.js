@@ -13,7 +13,7 @@ class UsuarioService {
     async traerUsuarioXMail(mail) {
         let body= {"correoElectronico" : mail}
         console.log(body)
-        let usuario= await axios?.get(`${this.urlBackend}/usuario`, body)
+        let usuario= await axios?.get(`${this.urlBackend}/usuario`, { params: body })
         console.log(usuario)
         return usuario
     }
