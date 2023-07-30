@@ -7,14 +7,14 @@ import {
   Stack,
   useColorModeValue,
 } from "@chakra-ui/react";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router";
 import usuarioService from "../services/UsuarioService";
+import { UsuarioLogueadoContext } from "../App";
 
-export default function VerifyEmailForm() {
+export default function VerifyEmailForm({ setUsuarioLogueadoContext }) {
   const { user, isLoading, isAuthenticated } = useAuth0();
   const { loginWithRedirect } = useAuth0();
-  // const [userP, setUserP] = useState(null)
   const navigate = useNavigate();
   console.log(JSON.stringify(user));
 
@@ -25,6 +25,7 @@ export default function VerifyEmailForm() {
         .then((response) => {
           let { data } = response;
           let usuario = data;
+          setUsuarioLogueadoContext(usuario);
           navigate(`/home/${usuario.rol.toLowerCase()}/${usuario.id}`, {
             replace: true,
           });

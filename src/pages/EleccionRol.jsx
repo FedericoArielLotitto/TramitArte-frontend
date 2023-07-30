@@ -7,7 +7,7 @@ import { useState, useCallback } from "react";
 import usuarioService from "../services/UsuarioService";
 import { useAuth0 } from "@auth0/auth0-react";
 
-function EleccionRol() {
+function EleccionRol({ setUsuarioLogueadoContext }) {
   const navigate = useNavigate();
   const [rol, setRol] = useState("");
   const { user, isAuthenticated } = useAuth0();
@@ -32,6 +32,7 @@ function EleccionRol() {
       correoElectronico: user.email,
       fechaDeNacimiento: user.birthdate || new Date(),
       nesecitaTraduccion: true,
+      fotoPerfil: user.picture,
     };
     return usuarioService
       .guardarUsuario(usuario)
@@ -39,6 +40,8 @@ function EleccionRol() {
         setEstaCargando(false);
         let { data } = response;
         let usuarioPersistido = data;
+        setUsuarioLogueadoContext(usuarioPersistido);
+        window.localStorage.setItem('usuarioLogueado', JSON.stringify(usuarioPersistido));
         navigate(`/home/${rolElegido.toLowerCase()}/${usuarioPersistido.id}`, {
           replace: true,
         });

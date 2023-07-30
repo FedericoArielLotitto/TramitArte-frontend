@@ -47,7 +47,7 @@ function UserProfile() {
             <Avatar
               size="2xl"
               name="Segun Adebayo"
-              src={user.picture}
+              src={user ? user.picture : JSON.parse(window.localStorage.getItem('usuarioLogueado').fotoPerfil)}
             />
             <Center>
               <Heading color="blue.900" as="h1" size="xl">
@@ -60,13 +60,13 @@ function UserProfile() {
               <Box justifyContent="center" marginRight="2.4rem">
                 <AccountCircle size="lg" />
               </Box>
-              <Heading size="md">{user.name}  </Heading>
+              <Heading size="md">{user ? user.name : JSON.parse(window.localStorage.getItem('usuarioLogueado').username)}  </Heading>
             </WrapItem>
             <WrapItem p="2.4rem" w="sm">
               <Box justifyContent="center" marginRight="2.4rem">
                 <CalendarIcon />
               </Box>
-              <Heading size="md">{user.birthdate}</Heading>
+              <Heading size="md">{user ? user.birthdate : JSON.parse(window.localStorage.getItem('usuarioLogueado').fechaDeNacimiento)}</Heading>
             </WrapItem>
           </Wrap>
           

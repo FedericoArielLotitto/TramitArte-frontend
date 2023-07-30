@@ -59,7 +59,7 @@ const NavLink = ({ texto, link }) => (
   </Link>
 );
 
-export default function UserNavbar() {
+export default function UserNavbar({ usuarioLogueado }) {
   const { logout, user } = useAuth0();
   const navigate = useNavigate();
   const location = useLocation();
@@ -70,6 +70,11 @@ export default function UserNavbar() {
   const btnRef = useRef();
 
   const itemsMenuSolicitante = [
+    {
+      hipervinculo: `/home/solicitante/${idUsuario}`,
+      texto: "Inicio",
+      icono: <Icon color="white" as={Home} boxSize={8} />,
+    },
     {
       hipervinculo: "/traductores",
       texto: "Traductores Registrados",
@@ -86,11 +91,6 @@ export default function UserNavbar() {
       hipervinculo: "/preguntas-frecuentes",
       texto: "Preguntas Frecuentes",
       icono: <QuestionIcon color="white" bg="teal.300" boxSize={8} />,
-    },
-    {
-      hipervinculo: `/home/solicitante/${idUsuario}`,
-      texto: "Inicio",
-      icono: <Icon color="white" as={Home} boxSize={8} />,
     },
     {
       hipervinculo: "/documentacion",
@@ -163,8 +163,10 @@ export default function UserNavbar() {
                   variant="solid"
                   bg="teal.300"
                 >
-                  <TagLeftIcon boxSize="8" as={Email} />
-                  <TagLabel ml={"-.4rem"}>{notificaciones.length}</TagLabel>
+                  <TagLeftIcon key={"fal"} boxSize="8" as={Email} />
+                  <TagLabel key={"rem"} ml={"-.4rem"}>
+                    {notificaciones.length}
+                  </TagLabel>
                 </Tag>
               </MenuButton>
               <MenuList color={useColorModeValue("blue.900", "white")}>
@@ -188,7 +190,12 @@ export default function UserNavbar() {
                 cursor={"pointer"}
                 minW={0}
               >
-                <Avatar size={"sm"} src={user.picture} />
+                <Avatar
+                  size={"sm"}
+                  src={
+                    user ? user.picture : JSON.parse(window.localStorage.getItem('usuarioLogueado')).fotoPerfil
+                  }
+                />
               </MenuButton>
               <MenuList color={useColorModeValue("blue.900", "white")}>
                 <MenuItem
@@ -236,6 +243,7 @@ export default function UserNavbar() {
                           <NavLink
                             texto={item.texto}
                             link={item.hipervinculo}
+                            
                           />
                         </Box>
                       ))}

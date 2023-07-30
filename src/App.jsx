@@ -3,16 +3,20 @@ import { RouterApp } from "./router/routes";
 import { createContext, useState } from "react";
 
 export const TramiteContext = createContext();
+export const UsuarioLogueadoContext = createContext();
 
 function App() {
   const [tramite, setTramite] = useState(null);
+  const [usuarioLogueado, setUsuarioLogueado] = useState(null);
 
   return (
-    <TramiteContext.Provider value={tramite}>
-      <ChakraProvider>
-        <RouterApp setTramiteContext={setTramite}/>
-      </ChakraProvider>
-    </TramiteContext.Provider>
+    <UsuarioLogueadoContext.Provider value={usuarioLogueado}>
+      <TramiteContext.Provider value={tramite}>
+        <ChakraProvider>
+          <RouterApp setTramiteContext={setTramite} setUsuarioLogueadoContext={setUsuarioLogueado} />
+        </ChakraProvider>
+      </TramiteContext.Provider>
+    </UsuarioLogueadoContext.Provider>
   );
 }
 
