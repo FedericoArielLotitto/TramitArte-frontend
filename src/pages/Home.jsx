@@ -18,6 +18,7 @@ import Faq from "../components/Faq";
 import { HashLink } from "react-router-hash-link";
 import HomeFooter from "../components/HomeFooter";
 import { useAuth0 } from "@auth0/auth0-react";
+import PreguntasHome from "./PreguntasHome";
 
 const PlayIcon = createIcon({
   displayName: "PlayIcon",
@@ -147,7 +148,7 @@ function Home() {
         </Heading>
       </Flex>
       <Box py="2%">
-        <Faq></Faq>
+        <PreguntasHome />
       </Box>
       <HomeFooter />
     </Container>
