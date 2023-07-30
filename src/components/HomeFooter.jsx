@@ -79,7 +79,7 @@ export default function LargeWithNewsletter() {
       bg={useColorModeValue("teal.50", "whiteAlpha.100")}
       color={useColorModeValue("teal.600", "whiteAlpha.100")}
     >
-      <Container as={Stack} maxW={"6xl"} py={10}>
+      <Container as={Stack} maxW={"full"} py={10}>
         <SimpleGrid
           templateColumns={{ sm: "1fr 1fr", md: "2fr 1fr 1fr 2fr" }}
           spacing={8}
