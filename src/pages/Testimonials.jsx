@@ -46,7 +46,7 @@ const TestimonialContent = ({ children }) => {
 
 const TestimonialHeading = ({ children }) => {
   return (
-    <Heading as={'h3'} fontSize={'xl'}>
+    <Heading color='teal.600' as={'h3'} fontSize={'xl'}>
       {children}
     </Heading>
   );
@@ -56,7 +56,7 @@ const TestimonialText = ({ children }) => {
   return (
     <Text
       textAlign={'center'}
-      color={useColorModeValue('gray.600', 'gray.400')}
+      color={useColorModeValue('blue.700', 'white')}
       fontSize={'sm'}>
       {children}
     </Text>
@@ -72,8 +72,8 @@ const TestimonialAvatar = ({
     <Flex align={'center'} mt={8} direction={'column'}>
       <Avatar src={src} alt={name} mb={2} />
       <Stack spacing={-1} align={'center'}>
-        <Text fontWeight={600}>{name}</Text>
-        <Text fontSize={'sm'} color={useColorModeValue('gray.600', 'gray.400')}>
+        <Text color={useColorModeValue('blue.700', 'white')} fontWeight={600}>{name}</Text>
+        <Text fontSize={'sm'} color={useColorModeValue('blue.700', 'white')}>
           {title}
         </Text>
       </Stack>
@@ -86,58 +86,58 @@ export default function Testimonnials() {
     <Box bg={useColorModeValue('white', 'gray.700')}>
       <Container maxW={'7xl'} py={16} as={Stack} spacing={12}>
         <Stack spacing={0} align={'center'}>
-          <Heading>Our Clients Speak</Heading>
-          <Text>We have been working with clients around the world</Text>
+          <Heading color="teal.600">{`¿Qué dicen nuestros clientes?`}</Heading>
+          <Text>{'¡Fijate sus comentarios! Todos nuestros clientes terminan muy contentos con nuestro trabajo.'}</Text>
         </Stack>
         <Stack
           direction={{ base: 'column', md: 'row' }}
           spacing={{ base: 10, md: 4, lg: 10 }}>
           <Testimonial>
             <TestimonialContent>
-              <TestimonialHeading>Efficient Collaborating</TestimonialHeading>
+              <TestimonialHeading>{'"Respuestas en el acto"'}</TestimonialHeading>
               <TestimonialText>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor
-                neque sed imperdiet nibh lectus feugiat nunc sem.
+                "Yo empecé a usar la aplicación sin saber nada sobre mis ancestros y el trámite. Lo terminé en tiempo récord y con mucha contención del lado de la aplicación ;)"
               </TestimonialText>
             </TestimonialContent>
             <TestimonialAvatar
               src={
-                'https://images.unsplash.com/photo-1586297135537-94bc9ba060aa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80'
+                'https://plus.unsplash.com/premium_photo-1675034393500-dc5fe64b527a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80'
               }
-              name={'Jane Cooper'}
-              title={'CEO at ABC Corporation'}
+              name={'Roberta Fritzenbalden'}
+              title={'San Miguel de Tucumán, Tucumán'}
             />
           </Testimonial>
           <Testimonial>
             <TestimonialContent>
-              <TestimonialHeading>Intuitive Design</TestimonialHeading>
+              <TestimonialHeading>{'"Me ahorró mucha plata"'}</TestimonialHeading>
               <TestimonialText>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor
-                neque sed imperdiet nibh lectus feugiat nunc sem.
+                {`"Venía intentando con varias consultoras, y con varias de ellas tuve que dejar el trámite, por falta de respuesta.
+                Que me faltaban docs, que no podían asesorarme más... Con la aplicación llegué a centralizar todo, y lo mejor, contactar a un traductor
+                directamente, alquien que yo hubiera evaluado y autorizado a ver mis documentos personales. ¡De 10!"`}
               </TestimonialText>
             </TestimonialContent>
             <TestimonialAvatar
               src={
-                'https://images.unsplash.com/photo-1586297135537-94bc9ba060aa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80'
+                'https://plus.unsplash.com/premium_photo-1689551670902-19b441a6afde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80'
               }
-              name={'Jane Cooper'}
-              title={'CEO at ABC Corporation'}
+              name={'Carolina López'}
+              title={'San Martín, Buenos Aires'}
             />
           </Testimonial>
           <Testimonial>
             <TestimonialContent>
-              <TestimonialHeading>Mindblowing Service</TestimonialHeading>
+              <TestimonialHeading>"¡Todo ordenado!"</TestimonialHeading>
               <TestimonialText>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor
-                neque sed imperdiet nibh lectus feugiat nunc sem.
+                {`"Empecé a usar la app después de varias veces de intentar con otras consultoras. A pesar de que el trámite lo finalicé con una consultora, usé la aplicación como backup de
+                toda la documentación que necesitaba. Quería manejar mis documentos y no dejarlos en manos de cualquiera, ¡y eso lo hice con la app!"`}
               </TestimonialText>
             </TestimonialContent>
             <TestimonialAvatar
               src={
-                'https://images.unsplash.com/photo-1586297135537-94bc9ba060aa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80'
+                'https://plus.unsplash.com/premium_photo-1687294575611-e510edf7f5ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80'
               }
-              name={'Jane Cooper'}
-              title={'CEO at ABC Corporation'}
+              name={'Estéban Echeverría'}
+              title={'Rawson, Chubut'}
             />
           </Testimonial>
         </Stack>

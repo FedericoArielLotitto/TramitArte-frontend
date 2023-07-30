@@ -3,11 +3,7 @@ import {
   AccordionItem,
   AccordionButton,
   AccordionPanel,
-  Flex,
-  useColorModeValue,
   Text,
-  Container,
-  Link,
 } from "@chakra-ui/react";
 
 import { ChevronDownIcon } from "@chakra-ui/icons";
@@ -20,6 +16,7 @@ export default function PreguntasHome() {
       allowMultiple
       w="full"
       maxW="100%"
+      pb={8}
     >
       <AccordionItem>
         <AccordionButton
@@ -60,7 +57,7 @@ export default function PreguntasHome() {
           p={4}
         >
           <Text as={"b"} fontSize="xl">
-            {"¿Cuánto tiempo tardo en completar el trámite?"}
+            {"¿Cuánto tiempo tarda?"}
           </Text>
           <ChevronDownIcon fontSize="24px" />
         </AccordionButton>

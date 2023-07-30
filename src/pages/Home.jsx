@@ -143,7 +143,7 @@ function Home() {
       <AboutUs />
       <Testimonials />
       <Flex justifyContent={"center"} py="8">
-        <Heading as="h2" size="2xl">
+        <Heading color={useColorModeValue('teal.600', 'white')} as="h2" size="2xl">
           ¿C&oacute;mo podemos ayudarte?
         </Heading>
       </Flex>
