@@ -10,7 +10,7 @@ import {
   Icon,
   useColorModeValue,
 } from "@chakra-ui/react";
-import { CurrencyBitcoin, Search, Timeline } from "@mui/icons-material";
+import { Timeline, Security, Diversity2, PriceCheck } from "@mui/icons-material";
 
 const Feature = ({ text, icon, iconBg }) => {
   return (
@@ -53,7 +53,7 @@ export default function AboutUs() {
   return (
     <Container id="sobre-nosotros" maxW={"full"} py={12}>
       <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
-        <Flex p="4.8rem">
+        <Flex p="2%">
           <Image
             rounded={"md"}
             alt={"feature image"}
@@ -64,47 +64,41 @@ export default function AboutUs() {
           />
         </Flex>
         <Stack spacing={4}>
-          <Text
-            textTransform={"uppercase"}
-            color={"blue.400"}
-            fontWeight={600}
-            fontSize={"sm"}
-            bg={useColorModeValue("blue.50", "blue.900")}
-            p={2}
-            alignSelf={"flex-start"}
-            rounded={"md"}
-          >
-            Our Story
-          </Text>
-          <Heading>A digital Product design agency</Heading>
-          <Text color={"gray.500"} fontSize={"lg"}>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-            nonumy eirmod tempor invidunt ut labore
+          <Heading textAlign="center" color={useColorModeValue('teal.600', 'white')}>{`Autogestión de tu trámite de ciudadanía`}</Heading>
+          <Text pb={4} color={"gray.500"} fontSize={"lg"}>
+            {`Buscamos que puedas contar con las herramientas necesarias para llevar la autogestión de tu ciudadanía 
+            y puedas contar con nosotros para todas las preguntas que tengas en el proceso. Cada caso es un mundo, y queremos ser parte de
+            ese mundo. Tenés muchos beneficios de sumarte a la comunidad, entre ellos: `}
           </Text>
           <Stack
             spacing={4}
             divider={
               <StackDivider
-                borderColor={useColorModeValue("gray.100", "gray.700")}
+                borderColor={useColorModeValue("teal.100", "whiteAlpha.700")}
               />
             }
           >
             <Feature
-              icon={<Icon as={Timeline} color={"yellow.500"} w={5} h={5} />}
-              iconBg={useColorModeValue("yellow.100", "yellow.900")}
-              text={"Business Planning"}
+              icon={<Icon as={Timeline} color={useColorModeValue('teal.100', 'whiteAlpha.200')} w={5} h={5} />}
+              iconBg={useColorModeValue("teal.600", "white")}
+              text={"Reducción de tiempo al 30%"}
             />
             <Feature
               icon={
-                <Icon as={CurrencyBitcoin} color={"green.500"} w={5} h={5} />
+                <Icon as={PriceCheck} color={"green.500"} w={5} h={5} />
               }
               iconBg={useColorModeValue("green.100", "green.900")}
-              text={"Financial Planning"}
+              text={"Sin costo"}
             />
             <Feature
-              icon={<Icon as={Search} color={"purple.500"} w={5} h={5} />}
-              iconBg={useColorModeValue("purple.100", "purple.900")}
-              text={"Market Analysis"}
+              icon={<Icon as={Security} color={"teal.200"} w={5} h={5} />}
+              iconBg={useColorModeValue("teal.600", "white")}
+              text={"Seguridad en la autogestión"}
+            />
+            <Feature
+              icon={<Icon as={Diversity2} color={"whiteAlpha.800"} w={5} h={5} />}
+              iconBg={useColorModeValue("blue.900", "blue.500")}
+              text={"Acompañamiento constante"}
             />
           </Stack>
         </Stack>
