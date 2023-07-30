@@ -51,7 +51,7 @@ export const Blob = (props) => {
 
 export default function AboutUs() {
   return (
-    <Container id="sobre-nosotros" maxW={"full"} py={12}>
+    <Container id="sobre-nosotros" maxW={"full"} py={8}>
       <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
         <Flex p="2%">
           <Image
