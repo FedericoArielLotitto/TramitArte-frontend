@@ -83,7 +83,7 @@ const TestimonialAvatar = ({ src, name, title }) => {
 
 export default function Testimonnials() {
   return (
-    <Box bg={useColorModeValue("white", "gray.700")}>
+    <Box id="testimonials" bg={useColorModeValue("white", "gray.700")}>
       <Container maxW={"8xl"} py={16} as={Stack} spacing={12}>
         <Stack spacing={0} align={"center"}>
           <Heading color="teal.600">{`¿Qué dicen nuestros clientes?`}</Heading>
