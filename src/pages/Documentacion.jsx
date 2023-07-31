@@ -4,25 +4,28 @@ import {
   Text,
   Flex,
   IconButton,
-  Fade,
+  Collapse,
   Button,
   useDisclosure,
   Input,
-  Slide,
   ScaleFade,
 } from "@chakra-ui/react";
 import { ArrowBack, ArrowForward, ArrowRight } from "@mui/icons-material";
 import { useContext, useState } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { TramiteContext } from "../App";
 import DocumentacionSolicitante from "../components/documentacionSolicitante/DocumentacionSolicitante";
 import DocumentacionAVO from "../components/documentacionSolicitante/DocumentacionAVO";
 import DocumentacionAscendentes from "../components/documentacionSolicitante/DocumentacionAscendentes";
-import InputFile from "../components/documentacionSolicitante/InputFile";
+import ModalConfirmacion from "../components/ModalConfirmacion";
+import ModalIsLoading from "../components/ModalIsLoading";
 
 function Documentacion() {
   const navigate = useNavigate();
+  const { idUsuario } = useParams();
   const { isOpen, onToggle } = useDisclosure();
+  const [estaModalAbierto, setEstaModalAbierto] = useState(false);
+  const [estaCargando, setEstaCargando] = useState(false);
   const tramiteContext = useContext(TramiteContext);
   const [cantidadAncestros, setCantidadAncestros] = useState(0);
   const [documentacionSolicitante, setDocumentacionSolicitante] = useState({})
@@ -31,11 +34,28 @@ function Documentacion() {
     navigate(-1);
   };
 
+  const abrirModal = () => {
+    setEstaModalAbierto(true);
+  }
+
+  const cerrarModal = () => {
+    setEstaModalAbierto(false);
+  }
+
   const handleOnInput = (e) => {
     setCantidadAncestros(Number(e.target.value));
   };
 
   const handleConfirmacion = () => {
+    cerrarModal();
+    setEstaCargando(true);
+    return new Promise()
+      .then((response) => {
+        setEstaCargando(false);
+        navigate(`/home/solicitante/${idUsuario}`);
+        return response;
+      })
+      .catch((error) => navigate("/network-error"));
 
   }
 
@@ -66,7 +86,7 @@ function Documentacion() {
       </Center>
       <Center w="full">
         <Center textAlign="center" flexWrap="wrap">
-          <Fade unmountOnExit={true} in={!isOpen}>
+          <Collapse unmountOnExit={true} in={!isOpen}>
             <Flex
               w={{ base: "full", md: "sm" }}
               justifyContent={"center"}
@@ -112,11 +132,11 @@ function Documentacion() {
                 </Center>
               </Box>
             </Flex>
-          </Fade>
+          </Collapse>
         </Center>
       </Center>
       <Center display={isOpen ? 'flex' : 'none'} flexWrap="wrap" p="2%">
-        <ScaleFade  in={isOpen} initialScale={1}>
+        <ScaleFade in={isOpen} initialScale={1}>
           <Flex
             textAlign="center"
             flexDirection="column"
@@ -188,7 +208,7 @@ function Documentacion() {
           </Flex>
           <Flex w="full" py="4">
             <Button
-              onClick={() => {}}
+              onClick={abrirModal}
               borderRadius="45px"
               color="white"
               w="100%"
@@ -200,6 +220,18 @@ function Documentacion() {
           </Flex>
         </ScaleFade>
       </Center>
+      <ModalConfirmacion
+        id='modal-confirmacion'
+        pregunta={'¿Estás seguro de guardar esta documentación?'}
+        datoAConfirmar={'Podrás modificarlo desde el menú, en cualquier caso ;)'}
+        isOpen={estaModalAbierto}
+        handleConfirmacion={handleConfirmacion}
+        onClose={cerrarModal}
+      />
+      <ModalIsLoading
+        mensaje={"Esperanos mientras guardamos la documentación ;)"}
+        isOpen={estaCargando}
+      />
     </Box>
   );
 }
