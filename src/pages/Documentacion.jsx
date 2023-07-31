@@ -28,7 +28,11 @@ function Documentacion() {
   const [estaCargando, setEstaCargando] = useState(false);
   const tramiteContext = useContext(TramiteContext);
   const [cantidadAncestros, setCantidadAncestros] = useState(0);
-  const [documentacionSolicitante, setDocumentacionSolicitante] = useState({})
+  const [documentacionSolicitante, setDocumentacionSolicitante] = useState({
+    dniFrente: "nada",
+    dniDorso: "nada",
+    certificadoNacimiento: "nada",
+  });
 
   const handleBack = () => {
     navigate(-1);
@@ -36,27 +40,69 @@ function Documentacion() {
 
   const abrirModal = () => {
     setEstaModalAbierto(true);
-  }
+  };
 
   const cerrarModal = () => {
     setEstaModalAbierto(false);
-  }
+  };
 
   const handleOnInput = (e) => {
     setCantidadAncestros(Number(e.target.value));
   };
 
+  const completarDocumentacionSolicitante = async ({ id, archivo }) => {
+    if (id === "dni-frente") {
+      let archivoBase64 = await fileToBase64(archivo);
+      setDocumentacionSolicitante({
+        dniFrente: archivoBase64,
+        dniDorso: documentacionSolicitante.dniDorso,
+        certificadoNacimiento: documentacionSolicitante.certificadoNacimiento,
+      });
+    }
+    if (id === "dni-dorso") {
+      let archivoBase64 = await fileToBase64(archivo);
+      setDocumentacionSolicitante({
+        dniFrente: documentacionSolicitante.dniFrente,
+        dniDorso: archivoBase64,
+        certificadoNacimiento: documentacionSolicitante.certificadoNacimiento,
+      });
+    }
+    if (id === "certificado-nacimiento") {
+      let archivoBase64 = await fileToBase64(archivo);
+      setDocumentacionSolicitante({
+        dniFrente: documentacionSolicitante.dniFrente,
+        dniDorso: documentacionSolicitante.dniDorso,
+        certificadoNacimiento: archivoBase64,
+      });
+    }
+  };
+
   const handleConfirmacion = () => {
     cerrarModal();
-    setEstaCargando(true);
-    return new Promise()
-      .then((response) => {
-        setEstaCargando(false);
-        navigate(`/home/solicitante/${idUsuario}`);
-        return response;
-      })
-      .catch((error) => navigate("/network-error"));
+    setEstaCargando(false);
+    console.log(documentacionSolicitante);
+    // return new Promise()
+    //   .then((response) => {
+    //     setEstaCargando(false);
+    //     navigate(`/home/solicitante/${idUsuario}`);
+    //     return response;
+    //   })
+    //   .catch((error) => navigate("/network-error"));
+  };
 
+  function fileToBase64(archivo) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(archivo);
+
+      reader.onloadend = () => {
+        resolve(reader.result);
+      } 
+
+      reader.onerror = (error) => {
+        reject(error)
+      }
+    });
   }
 
   return (
@@ -135,7 +181,7 @@ function Documentacion() {
           </Collapse>
         </Center>
       </Center>
-      <Center display={isOpen ? 'flex' : 'none'} flexWrap="wrap" p="2%">
+      <Center display={isOpen ? "flex" : "none"} flexWrap="wrap" p="2%">
         <ScaleFade in={isOpen} initialScale={1}>
           <Flex
             textAlign="center"
@@ -158,7 +204,11 @@ function Documentacion() {
             >
               {"Documentación Personal"}
             </Text>
-            <DocumentacionSolicitante />
+            <DocumentacionSolicitante
+              agregarDocumentacionSolicitante={
+                completarDocumentacionSolicitante
+              }
+            />
           </Flex>
           <Flex
             textAlign="center"
@@ -221,9 +271,11 @@ function Documentacion() {
         </ScaleFade>
       </Center>
       <ModalConfirmacion
-        id='modal-confirmacion'
-        pregunta={'¿Estás seguro de guardar esta documentación?'}
-        datoAConfirmar={'Podrás modificarlo desde el menú, en cualquier caso ;)'}
+        id="modal-confirmacion"
+        pregunta={"¿Estás seguro de guardar esta documentación?"}
+        datoAConfirmar={
+          "Podrás modificarlo desde el menú, en cualquier caso ;)"
+        }
         isOpen={estaModalAbierto}
         handleConfirmacion={handleConfirmacion}
         onClose={cerrarModal}

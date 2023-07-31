@@ -6,7 +6,7 @@ function DocumentacionAscendentes({ cantidadAscendentes }) {
   return (
     <Box key={cantidadAscendentes} borderRadius="30px" bg="teal.100">
       {[...Array(cantidadAscendentes).keys()].map((item) => (
-        <>
+        <Box key={item}>
           <Center py="2%">
             <InputCertficadoNoObligatorio
               preguntaConfirmacion={"¿Ha fallecido?"}
@@ -22,7 +22,7 @@ function DocumentacionAscendentes({ cantidadAscendentes }) {
           <Center py="2%">
             <InputFile accion="certificado de nacimiento" />
           </Center>
-        </>
+        </Box>
       ))}
     </Box>
   );
