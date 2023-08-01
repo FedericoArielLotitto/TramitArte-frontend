@@ -19,6 +19,7 @@ import DocumentacionAVO from "../components/documentacionSolicitante/Documentaci
 import DocumentacionAscendentes from "../components/documentacionSolicitante/DocumentacionAscendentes";
 import ModalConfirmacion from "../components/ModalConfirmacion";
 import ModalIsLoading from "../components/ModalIsLoading";
+import tramiteService from "../services/TramiteService";
 
 function Documentacion() {
   const navigate = useNavigate();
@@ -29,10 +30,16 @@ function Documentacion() {
   const tramiteContext = useContext(TramiteContext);
   const [cantidadAncestros, setCantidadAncestros] = useState(0);
   const [documentacionSolicitante, setDocumentacionSolicitante] = useState({
-    dniFrente: "nada",
-    dniDorso: "nada",
-    certificadoNacimiento: "nada",
+    dniFrente: { nombre: "", archivoBase64: "" },
+    dniDorso: { nombre: "", archivoBase64: "" },
+    certificadoNacimiento: { nombre: "", archivoBase64: "" },
   });
+  const [documentacionAVO, setDocumentacionAVO] = useState({
+    certificadoMatrimonio: { nombre: "", archivoBase64: "" },
+    certificadoDefuncion: { nombre: "", archivoBase64: "" },
+    certificadoNacimiento: { nombre: "", archivoBase64: "" },
+  });
+  const [documentacionAncestros, setDocumentacionAncestros] = useState([]);
 
   const handleBack = () => {
     navigate(-1);
@@ -54,40 +61,67 @@ function Documentacion() {
     if (id === "dni-frente") {
       let archivoBase64 = await fileToBase64(archivo);
       setDocumentacionSolicitante({
-        dniFrente: archivoBase64,
-        dniDorso: documentacionSolicitante.dniDorso,
-        certificadoNacimiento: documentacionSolicitante.certificadoNacimiento,
+        dniFrente: { nombre: archivo.name, archivoBase64: archivoBase64 },
+        dniDorso: {
+          nombre: documentacionSolicitante.dniDorso.nombre,
+          archivoBase64: documentacionSolicitante.dniDorso.archivoBase64,
+        },
+        certificadoNacimiento: {
+          nombre: documentacionSolicitante.certificadoNacimiento.nombre,
+          archivoBase64: documentacionSolicitante.certificadoNacimiento.archivoBase64,
+        },
       });
     }
     if (id === "dni-dorso") {
       let archivoBase64 = await fileToBase64(archivo);
       setDocumentacionSolicitante({
-        dniFrente: documentacionSolicitante.dniFrente,
-        dniDorso: archivoBase64,
-        certificadoNacimiento: documentacionSolicitante.certificadoNacimiento,
+        dniFrente: {
+          nombre: documentacionSolicitante.dniFrente.nombre,
+          archivoBase64: documentacionSolicitante.dniFrente.archivoBase64,
+        },
+        dniDorso: { nombre: archivo.name, archivoBase64: archivoBase64 },
+        certificadoNacimiento: {
+          nombre: documentacionSolicitante.certificadoNacimiento.nombre,
+          archivoBase64: documentacionSolicitante.certificadoNacimiento.archivoBase64,
+        },
       });
     }
     if (id === "certificado-nacimiento") {
       let archivoBase64 = await fileToBase64(archivo);
       setDocumentacionSolicitante({
-        dniFrente: documentacionSolicitante.dniFrente,
-        dniDorso: documentacionSolicitante.dniDorso,
-        certificadoNacimiento: archivoBase64,
+        dniFrente: {
+          nombre: documentacionSolicitante.dniFrente.nombre,
+          archivoBase64: documentacionSolicitante.dniFrente.archivoBase64,
+        },
+        dniDorso: {
+          nombre: documentacionSolicitante.dniDorso.nombre,
+          archivoBase64: documentacionSolicitante.dniDorso.archivoBase64,
+        },
+        certificadoNacimiento: {
+          nombre: archivo.name,
+          archivoBase64: archivoBase64,
+        },
       });
     }
   };
 
-  const handleConfirmacion = () => {
+  const handleConfirmacion = async () => {
     cerrarModal();
-    setEstaCargando(false);
-    console.log(documentacionSolicitante);
-    // return new Promise()
-    //   .then((response) => {
-    //     setEstaCargando(false);
-    //     navigate(`/home/solicitante/${idUsuario}`);
-    //     return response;
-    //   })
-    //   .catch((error) => navigate("/network-error"));
+    setEstaCargando(true);
+    console.log("acá", documentacionSolicitante);
+    let tramite = JSON.parse(window.localStorage.getItem('tramite'));
+    try {
+      let respuesta = await tramiteService.cargarDocumentacionPersonal(
+        documentacionSolicitante,
+        tramite.id
+      );
+      console.log(respuesta);
+      setEstaCargando(false);
+      // await tramiteService.cargarDocumentacionAVO("", idUsuario);
+      // await tramiteService.cargarDocumentacionAncestros("", idUsuario);
+    } catch (error) {
+      navigate("/network-error");
+    }
   };
 
   function fileToBase64(archivo) {
@@ -97,11 +131,11 @@ function Documentacion() {
 
       reader.onloadend = () => {
         resolve(reader.result);
-      } 
+      };
 
       reader.onerror = (error) => {
-        reject(error)
-      }
+        reject(error);
+      };
     });
   }
 

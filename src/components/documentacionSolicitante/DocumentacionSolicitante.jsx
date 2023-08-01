@@ -20,7 +20,7 @@ function DocumentacionSolicitante({
 
   const handleInputCertificadoNacimiento = (e) => {
     agregarDocumentacionSolicitante({
-      id: "certficado-nacimiento",
+      id: "certificado-nacimiento",
       archivo: e.target.files[0],
     });
   };

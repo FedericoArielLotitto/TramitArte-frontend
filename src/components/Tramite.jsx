@@ -42,9 +42,15 @@ function Tramite({ setTramiteContext }) {
       .then((response) => {
         setEstaCargando(false);
         let tramitePersistido = response.data;
-        console.log(tramitePersistido);
         setTramite(tramitePersistido);
         setTramiteContext(tramitePersistido);
+        window.localStorage.setItem(
+          "tramite",
+          JSON.stringify({
+            id: tramitePersistido.id,
+            codigo: tramitePersistido.codigo,
+          })
+        );
       })
       .catch((error) => navigate("/network-error"));
   }, []);
