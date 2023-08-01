@@ -12,7 +12,9 @@ import EleccionRol from "../pages/EleccionRol";
 import SolicitudAVO from "../pages/SolicitudAVO";
 import PedidosTraduccion from "../components/PedidosTraduccion";
 import VerifyEmailForm from "../pages/VerificacionEmail";
-import Documentacion from "../pages/Documentacion";
+import Documentacion from "../pages/DocumentacionPersonal";
+import DocumentacionPersonal from "../pages/DocumentacionPersonal";
+import DocumentacionAscendentes from "../pages/DocumentacionAscendentes";
 
 export const RouterApp = ({ setTramiteContext, setUsuarioLogueadoContext }) => {
   return (
@@ -44,8 +46,12 @@ export const RouterApp = ({ setTramiteContext, setUsuarioLogueadoContext }) => {
           />
         </Route>
         <Route
-          path="/home/solicitante/:idUsuario/documentacion"
-          element={<Documentacion />}
+          path="/home/solicitante/:idUsuario/documentacion-personal"
+          element={<DocumentacionPersonal />}
+        />
+        <Route
+          path="/home/solicitante/:idUsuario/documentacion-ascendentes"
+          element={<DocumentacionAscendentes />}
         />
         <Route
           path="/home/solicitante/:idUsuario/solicitud-avo"

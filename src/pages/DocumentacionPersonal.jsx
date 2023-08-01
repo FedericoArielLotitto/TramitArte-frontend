@@ -20,26 +20,19 @@ import DocumentacionAscendentes from "../components/documentacionSolicitante/Doc
 import ModalConfirmacion from "../components/ModalConfirmacion";
 import ModalIsLoading from "../components/ModalIsLoading";
 import tramiteService from "../services/TramiteService";
+import { useAuth0 } from "@auth0/auth0-react";
 
-function Documentacion() {
+function DocumentacionPersonal() {
   const navigate = useNavigate();
-  const { idUsuario } = useParams();
+  const { idUsuario } = useAuth0();
   const { isOpen, onToggle } = useDisclosure();
   const [estaModalAbierto, setEstaModalAbierto] = useState(false);
   const [estaCargando, setEstaCargando] = useState(false);
-  const tramiteContext = useContext(TramiteContext);
-  const [cantidadAncestros, setCantidadAncestros] = useState(0);
   const [documentacionSolicitante, setDocumentacionSolicitante] = useState({
     dniFrente: { nombre: "", archivoBase64: "" },
     dniDorso: { nombre: "", archivoBase64: "" },
     certificadoNacimiento: { nombre: "", archivoBase64: "" },
   });
-  const [documentacionAVO, setDocumentacionAVO] = useState({
-    certificadoMatrimonio: { nombre: "", archivoBase64: "" },
-    certificadoDefuncion: { nombre: "", archivoBase64: "" },
-    certificadoNacimiento: { nombre: "", archivoBase64: "" },
-  });
-  const [documentacionAncestros, setDocumentacionAncestros] = useState([]);
 
   const handleBack = () => {
     navigate(-1);
@@ -53,15 +46,11 @@ function Documentacion() {
     setEstaModalAbierto(false);
   };
 
-  const handleOnInput = (e) => {
-    setCantidadAncestros(Number(e.target.value));
-  };
-
   const completarDocumentacionSolicitante = async ({ id, archivo }) => {
     if (id === "dni-frente") {
       let archivoBase64 = await fileToBase64(archivo);
       setDocumentacionSolicitante({
-        dniFrente: { nombre: archivo.name, archivoBase64: archivoBase64 },
+        dniFrente: { nombre: archivo.name, archivoBase64: "" },
         dniDorso: {
           nombre: documentacionSolicitante.dniDorso.nombre,
           archivoBase64: documentacionSolicitante.dniDorso.archivoBase64,
@@ -79,7 +68,7 @@ function Documentacion() {
           nombre: documentacionSolicitante.dniFrente.nombre,
           archivoBase64: documentacionSolicitante.dniFrente.archivoBase64,
         },
-        dniDorso: { nombre: archivo.name, archivoBase64: archivoBase64 },
+        dniDorso: { nombre: archivo.name, archivoBase64: "" },
         certificadoNacimiento: {
           nombre: documentacionSolicitante.certificadoNacimiento.nombre,
           archivoBase64: documentacionSolicitante.certificadoNacimiento.archivoBase64,
@@ -99,7 +88,7 @@ function Documentacion() {
         },
         certificadoNacimiento: {
           nombre: archivo.name,
-          archivoBase64: archivoBase64,
+          archivoBase64: "",
         },
       });
     }
@@ -113,10 +102,11 @@ function Documentacion() {
     try {
       let respuesta = await tramiteService.cargarDocumentacionPersonal(
         documentacionSolicitante,
-        tramite.id
+        Number(tramite.id)
       );
       console.log(respuesta);
       setEstaCargando(false);
+      navigate(`/home/solicitante/${JSON.parse(window.localStorage.getItem("usuarioLogueado")).id}`);
       // await tramiteService.cargarDocumentacionAVO("", idUsuario);
       // await tramiteService.cargarDocumentacionAncestros("", idUsuario);
     } catch (error) {
@@ -161,62 +151,12 @@ function Documentacion() {
           color="white"
           fontWeight={"700"}
         >
-          {tramiteContext?.codigo}
+          {JSON.parse(window.localStorage.getItem('tramite')).codigo}
         </Center>
       </Center>
-      <Center w="full">
-        <Center textAlign="center" flexWrap="wrap">
-          <Collapse unmountOnExit={true} in={!isOpen}>
-            <Flex
-              w={{ base: "full", md: "sm" }}
-              justifyContent={"center"}
-              flexDirection="column"
-              p="2%"
-            >
-              <Text
-                as={"h2"}
-                fontSize={"3xl"}
-              >{`¿Cuántos ascendentes tenés hasta tu AVO?`}</Text>
-              <Text as="i">{"*sin incluir a tu AVO"}</Text>
-              <Box
-                color="white"
-                bg="teal.500"
-                rounded="40px"
-                shadow="md"
-                pb="2%"
-              >
-                <Flex py="2%" px="0.8rem">
-                  <Text>{"Cantidad de ancestros"}</Text>
-                  <Input
-                    type="number"
-                    min={0}
-                    value={cantidadAncestros}
-                    onInput={handleOnInput}
-                    rounded="45px"
-                    _focus={{ bg: "teal.300" }}
-                  ></Input>
-                </Flex>
-                <Center>
-                  <Button
-                    borderRadius="45px"
-                    color="white"
-                    bg="teal.300"
-                    w="90%"
-                    isDisabled={cantidadAncestros <= 0}
-                    onClick={onToggle}
-                    textTransform={"uppercase"}
-                  >
-                    {"Cargar cantidad de ancestros"}
-                    <ArrowForward />
-                  </Button>
-                </Center>
-              </Box>
-            </Flex>
-          </Collapse>
-        </Center>
-      </Center>
-      <Center display={isOpen ? "flex" : "none"} flexWrap="wrap" p="2%">
-        <ScaleFade in={isOpen} initialScale={1}>
+      
+      <Center flexWrap="wrap" p="16">
+        <ScaleFade in={!isOpen} initialScale={1}>
           <Flex
             textAlign="center"
             flexDirection="column"
@@ -244,53 +184,7 @@ function Documentacion() {
               }
             />
           </Flex>
-          <Flex
-            textAlign="center"
-            flexDirection="column"
-            justifyContent="center"
-            pb="2%"
-            w={"full"}
-          >
-            <Text
-              w="85%"
-              alignSelf="center"
-              borderTopRadius="15px"
-              bg="teal.200"
-              color="white"
-              borderColor="teal.300"
-              borderWidth="1px"
-              as={"h2"}
-              fontSize={"2xl"}
-              fontWeight={300}
-            >
-              {"Documentación AVO"}
-            </Text>
-            <DocumentacionAVO />
-          </Flex>
-          <Flex
-            textAlign="center"
-            flexDirection="column"
-            justifyContent="center"
-            pb="2%"
-            w={"full"}
-          >
-            <Text
-              w="85%"
-              alignSelf="center"
-              borderTopRadius="15px"
-              bg="teal.200"
-              color="white"
-              borderColor="teal.300"
-              borderWidth="1px"
-              as={"h2"}
-              fontSize={"2xl"}
-              fontWeight={300}
-            >
-              {"Documentación Ascendentes"}
-            </Text>
-            <DocumentacionAscendentes cantidadAscendentes={cantidadAncestros} />
-          </Flex>
-          <Flex w="full" py="4">
+          <Flex w="full" py="16">
             <Button
               onClick={abrirModal}
               borderRadius="45px"
@@ -299,7 +193,7 @@ function Documentacion() {
               bg="blue.900"
               textTransform={"uppercase"}
             >
-              {"Guardar documentación"}
+              {"Guardar documentación personal"}
             </Button>
           </Flex>
         </ScaleFade>
@@ -322,4 +216,4 @@ function Documentacion() {
   );
 }
 
-export default Documentacion;
+export default DocumentacionPersonal;

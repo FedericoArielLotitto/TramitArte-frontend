@@ -68,9 +68,9 @@ function Etapa({ tramite }) {
         completePath = `${basePath}/solicitud-avo`;
         break;
       case "CARGAR DOCUMENTACION DE USUARIO":
-        completePath = `${basePath}/documentacion`;
+        completePath = `${basePath}/documentacion-personal`;
         break;
-      case "CARGAR DOCUMENTACIÓN ÁRBOL":
+      case "Cargar documentación de los descendientes entre AVO y solicitante".toUpperCase():
         completePath = `${basePath}/documentacion-ascendentes`;
         break;
       case "CARGAR DOCUMENTACIÓN TRADUCIDA":
