@@ -14,7 +14,7 @@ import { useState } from "react";
 import ModalConfirmacion from "../components/ModalConfirmacion";
 import ModalIsLoading from "../components/ModalIsLoading";
 import DocumentacionAVO from "../components/documentacionSolicitante/DocumentacionAVO";
-
+import tramiteService from "../services/TramiteService";
 function ArchivosAVO() {
   const navigate = useNavigate();
   const { isOpen } = useDisclosure();
@@ -190,7 +190,7 @@ function ArchivosAVO() {
                 {"Documentación AVO"}
               </Text>
             </Flex>
-            <DocumentacionAVO />
+            <DocumentacionAVO agregarDocumentacionAVO={completarDocumentacionAVO} />
           </Flex>
           <Flex justifyContent="center" w="full" py="16">
             <Button

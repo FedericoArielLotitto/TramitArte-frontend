@@ -13,7 +13,7 @@ import {
 } from "@chakra-ui/react";
 import InputFile from "./InputFile";
 
-function InputCertficadoNoObligatorio({ preguntaConfirmacion, accion }) {
+function InputCertficadoNoObligatorio({ preguntaConfirmacion, accion, handleOnInput }) {
   const { isOpen, onToggle } = useDisclosure();
   return (
     <Flex
@@ -41,7 +41,7 @@ function InputCertficadoNoObligatorio({ preguntaConfirmacion, accion }) {
         </GridItem>
         <GridItem colSpan={2}>
           <Collapse in={isOpen}>
-            <InputFile accion={accion} />
+            <InputFile handleOnInput={handleOnInput} accion={accion} />
           </Collapse>
         </GridItem>
       </Grid>
