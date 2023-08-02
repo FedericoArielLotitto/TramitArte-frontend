@@ -70,10 +70,13 @@ function Etapa({ tramite }) {
       case "CARGAR DOCUMENTACION DE USUARIO":
         completePath = `${basePath}/documentacion-personal`;
         break;
-      case "Cargar documentación de los descendientes entre AVO y solicitante".toUpperCase():
+      case "CARGAR DOCUMENTACIÓN DE AVO":
+        completePath = `${basePath}/documentacion-avo`;
+        break;
+      case "CARGAR DOCUMENTACIÓN DESCENDIENTES":
         completePath = `${basePath}/documentacion-ascendentes`;
         break;
-      case "CARGAR DOCUMENTACIÓN TRADUCIDA":
+      case "TRADUCIR TODA LA DOCUMENTACIÓN":
         completePath = `${basePath}/documentacion-traducida`;
         break;
     }
@@ -89,8 +92,11 @@ function Etapa({ tramite }) {
       case "CARGAR DOCUMENTACION DE USUARIO":
         porcentaje = "20";
         break;
-        case "Cargar documentación de los descendientes entre AVO y solicitante".toUpperCase():
+      case "CARGAR DOCUMENTACIÓN DE AVO":
         porcentaje = "55";
+        break;
+      case "CARGAR DOCUMENTACIÓN DESCENDIENTES":
+        porcentaje = "70";
         break;
       case "CARGAR DOCUMENTACIÓN TRADUCIDA":
         porcentaje = "90";

@@ -1,37 +1,31 @@
 import {
-  Box,
-  Center,
-  Text,
   Flex,
+  Box,
   IconButton,
+  Center,
+  ScaleFade,
+  Text,
   Button,
   useDisclosure,
-  ScaleFade,
 } from "@chakra-ui/react";
 import { ArrowBack } from "@mui/icons-material";
-import { useState } from "react";
 import { useNavigate } from "react-router";
-import DocumentacionSolicitante from "../components/documentacionSolicitante/DocumentacionSolicitante";
+import { useState } from "react";
 import ModalConfirmacion from "../components/ModalConfirmacion";
 import ModalIsLoading from "../components/ModalIsLoading";
-import tramiteService from "../services/TramiteService";
-import { useAuth0 } from "@auth0/auth0-react";
+import DocumentacionAVO from "../components/documentacionSolicitante/DocumentacionAVO";
 
-function DocumentacionPersonal() {
+function ArchivosAVO() {
   const navigate = useNavigate();
-  const { idUsuario } = useAuth0();
-  const { isOpen, onToggle } = useDisclosure();
-  const [estaModalAbierto, setEstaModalAbierto] = useState(false);
+  const { isOpen } = useDisclosure();
   const [estaCargando, setEstaCargando] = useState(false);
-  const [documentacionSolicitante, setDocumentacionSolicitante] = useState({
-    dniFrente: { tipo: "", nombre: "", archivoBase64: "" },
-    dniDorso: { tipo: "", nombre: "", archivoBase64: "" },
+  const [estaModalAbierto, setEstaModalAbierto] = useState(false);
+  const [documentacionAVO, setDocumentacionAVO] = useState({
     certificadoNacimiento: { tipo: "", nombre: "", archivoBase64: "" },
+    certificadoMatrimonio: null,
+    certificadoDefuncion: null,
   });
-
-  const handleBack = () => {
-    navigate(-1);
-  };
+  const handleBack = () => navigate(-1);
 
   const abrirModal = () => {
     setEstaModalAbierto(true);
@@ -39,101 +33,6 @@ function DocumentacionPersonal() {
 
   const cerrarModal = () => {
     setEstaModalAbierto(false);
-  };
-
-  const completarDocumentacionSolicitante = async ({ id, archivo }) => {
-    if (id === "dni-frente") {
-      let archivoBase64 = await fileToBase64(archivo);
-      setDocumentacionSolicitante({
-        dniFrente: {
-          tipo: "dni-frente",
-          nombre: archivo.name,
-          archivoBase64: "",
-        },
-        dniDorso: {
-          tipo: documentacionSolicitante.dniDorso.tipo,
-          nombre: documentacionSolicitante.dniDorso.nombre,
-          archivoBase64: documentacionSolicitante.dniDorso.archivoBase64,
-        },
-        certificadoNacimiento: {
-          tipo: documentacionSolicitante.certificadoNacimiento.tipo,
-          nombre: documentacionSolicitante.certificadoNacimiento.nombre,
-          archivoBase64:
-            documentacionSolicitante.certificadoNacimiento.archivoBase64,
-        },
-      });
-    }
-    if (id === "dni-dorso") {
-      let archivoBase64 = await fileToBase64(archivo);
-      setDocumentacionSolicitante({
-        dniFrente: {
-          tipo: documentacionSolicitante.dniFrente.tipo,
-          nombre: documentacionSolicitante.dniFrente.nombre,
-          archivoBase64: documentacionSolicitante.dniFrente.archivoBase64,
-        },
-        dniDorso: {
-          tipo: "dni-dorso",
-          nombre: archivo.name,
-          archivoBase64: "",
-        },
-        certificadoNacimiento: {
-          tipo: documentacionSolicitante.certificadoNacimiento.tipo,
-          nombre: documentacionSolicitante.certificadoNacimiento.nombre,
-          archivoBase64:
-            documentacionSolicitante.certificadoNacimiento.archivoBase64,
-        },
-      });
-    }
-    if (id === "certificado-nacimiento") {
-      let archivoBase64 = await fileToBase64(archivo);
-      setDocumentacionSolicitante({
-        dniFrente: {
-          tipo: documentacionSolicitante.dniFrente.tipo,
-          nombre: documentacionSolicitante.dniFrente.nombre,
-          archivoBase64: documentacionSolicitante.dniFrente.archivoBase64,
-        },
-        dniDorso: {
-          tipo: documentacionSolicitante.dniDorso.tipo,
-          nombre: documentacionSolicitante.dniDorso.nombre,
-          archivoBase64: documentacionSolicitante.dniDorso.archivoBase64,
-        },
-        certificadoNacimiento: {
-          tipo: "certificado-nacimiento",
-          nombre: archivo.name,
-          archivoBase64: "",
-        },
-      });
-    }
-  };
-
-  const handleConfirmacion = async () => {
-    cerrarModal();
-    setEstaCargando(true);
-    console.log("acá", [
-      documentacionSolicitante.dniFrente,
-      documentacionSolicitante.dniDorso,
-      documentacionSolicitante.certificadoNacimiento,
-    ]);
-    let tramite = JSON.parse(window.localStorage.getItem("tramite"));
-    try {
-      let respuesta = await tramiteService.cargarDocumentacionPersonal(
-        [
-          documentacionSolicitante.dniFrente,
-          documentacionSolicitante.dniDorso,
-          documentacionSolicitante.certificadoNacimiento,
-        ],
-        Number(tramite.id)
-      );
-      console.log(respuesta);
-      setEstaCargando(false);
-      navigate(
-        `/home/solicitante/${
-          JSON.parse(window.localStorage.getItem("usuarioLogueado")).id
-        }`
-      );
-    } catch (error) {
-      navigate("/network-error");
-    }
   };
 
   function fileToBase64(archivo) {
@@ -151,6 +50,98 @@ function DocumentacionPersonal() {
     });
   }
 
+  const completarDocumentacionAVO = async ({ id, archivo }) => {
+    if (id === "certificado-defuncion") {
+      let archivoBase64 = await fileToBase64(archivo);
+      setDocumentacionAVO({
+        certificadoDefuncion: {
+          tipo: "certificado-defuncion",
+          nombre: archivo.name,
+          archivoBase64: "",
+        },
+        certificadoMatrimonio: documentacionAVO.certificadoMatrimonio ?? {
+          tipo: documentacionAVO.certificadoMatrimonio.tipo,
+          nombre: documentacionAVO.certificadoMatrimonio.nombre,
+          archivoBase64: documentacionAVO.certificadoMatrimonio.archivoBase64,
+        },
+        certificadoNacimiento: {
+          tipo: documentacionAVO.certificadoNacimiento.tipo,
+          nombre: documentacionAVO.certificadoNacimiento.nombre,
+          archivoBase64: documentacionAVO.certificadoNacimiento.archivoBase64,
+        },
+      });
+    }
+    if (id === "certificado-matrimonio") {
+      let archivoBase64 = await fileToBase64(archivo);
+      setDocumentacionAVO({
+        certificadoDefuncion: documentacionAVO.certificadoDefuncion && {
+          tipo: documentacionAVO.certificadoDefuncion.tipo,
+          nombre: documentacionAVO.certificadoDefuncion.nombre,
+          archivoBase64: documentacionAVO.certificadoDefuncion.archivoBase64,
+        },
+        certificadoMatrimonio: {
+          tipo: "certificado-matrimonio",
+          nombre: archivo.name,
+          archivoBase64: "",
+        },
+        certificadoNacimiento: {
+          tipo: documentacionAVO.certificadoNacimiento.tipo,
+          nombre: documentacionAVO.certificadoNacimiento.nombre,
+          archivoBase64: documentacionAVO.certificadoNacimiento.archivoBase64,
+        },
+      });
+    }
+    if (id === "certificado-nacimiento") {
+      let archivoBase64 = await fileToBase64(archivo);
+      setDocumentacionAVO({
+        certificadoDefuncion: documentacionAVO.certificadoDefuncion && {
+          tipo: documentacionAVO.certificadoDefuncion.tipo,
+          nombre: documentacionAVO.certificadoDefuncion.nombre,
+          archivoBase64: documentacionAVO.certificadoDefuncion.archivoBase64,
+        },
+        certificadoMatrimonio: documentacionAVO.certificadoMatrimonio && {
+          tipo: documentacionAVO.certificadoMatrimonio.tipo,
+          nombre: documentacionAVO.certificadoMatrimonio.nombre,
+          archivoBase64: documentacionAVO.certificadoMatrimonio.archivoBase64,
+        },
+        certificadoNacimiento: {
+          tipo: "certificado-nacimiento",
+          nombre: archivo.name,
+          archivoBase64: "",
+        },
+      });
+    }
+  };
+
+  const handleConfirmacion = async () => {
+    cerrarModal();
+    setEstaCargando(true);
+    console.log("acá", [
+      documentacionAVO.certificadoDefuncion,
+      documentacionAVO.certificadoMatrimonio,
+      documentacionAVO.certificadoNacimiento,
+    ]);
+    let tramite = JSON.parse(window.localStorage.getItem("tramite"));
+    try {
+      let respuesta = await tramiteService.cargarDocumentacionAVO(
+        [
+          documentacionAVO.certificadoDefuncion,
+          documentacionAVO.certificadoMatrimonio,
+          documentacionAVO.certificadoNacimiento,
+        ],
+        Number(tramite.id)
+      );
+      console.log(respuesta);
+      setEstaCargando(false);
+      navigate(
+        `/home/solicitante/${
+          JSON.parse(window.localStorage.getItem("usuarioLogueado")).id
+        }`
+      );
+    } catch (error) {
+      navigate("/network-error");
+    }
+  };
   return (
     <Box minH="100%" h="auto" bg="teal.200">
       <Flex w="100%" p=".8rem" justify="space-between">
@@ -176,15 +167,13 @@ function DocumentacionPersonal() {
           {JSON.parse(window.localStorage.getItem("tramite")).codigo}
         </Center>
       </Center>
-
-      <Center flexWrap="wrap" p={{ base: '8', md: '16'}}>
-        <ScaleFade style={{width: "100%", minWidth: "sm"}} in={!isOpen} initialScale={1}>
-          <Flex
-            textAlign="center"
-            pb="2%"
-            w={"full"}
-            flexWrap="wrap"
-          >
+      <Center flexWrap="wrap" p={{ base: "8", md: "16" }}>
+        <ScaleFade
+          style={{ width: "100%", minWidth: "sm" }}
+          in={!isOpen}
+          initialScale={1}
+        >
+          <Flex textAlign="center" pb="2%" w={"full"} flexWrap="wrap">
             <Flex w="100%" justifyContent="center">
               <Text
                 w="85%"
@@ -198,14 +187,10 @@ function DocumentacionPersonal() {
                 fontSize={"2xl"}
                 fontWeight={300}
               >
-                {"Documentación Personal"}
+                {"Documentación AVO"}
               </Text>
             </Flex>
-            <DocumentacionSolicitante
-              agregarDocumentacionSolicitante={
-                completarDocumentacionSolicitante
-              }
-            />
+            <DocumentacionAVO />
           </Flex>
           <Flex justifyContent="center" w="full" py="16">
             <Button
@@ -216,7 +201,7 @@ function DocumentacionPersonal() {
               bg="blue.900"
               textTransform={"uppercase"}
             >
-              {"Guardar documentación personal"}
+              {"Guardar documentación AVO"}
             </Button>
           </Flex>
         </ScaleFade>
@@ -239,4 +224,4 @@ function DocumentacionPersonal() {
   );
 }
 
-export default DocumentacionPersonal;
+export default ArchivosAVO;

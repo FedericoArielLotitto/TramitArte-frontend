@@ -13,7 +13,7 @@ function InputFile({ accion, handleOnInput }) {
         borderRadius="45px"
         color="white"
         bg="teal.300"
-        _focus={{bg: "teal.300"}}
+        _hover={{bg: "teal.200"}}
         w={{ base: '100%', md: 'auto'}}
         onClick={openInput}
         textTransform={"uppercase"}

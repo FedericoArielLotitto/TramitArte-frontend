@@ -4,20 +4,16 @@ import InputCertficadoNoObligatorio from "./InputCertificadoNoObligatorio";
 
 function DocumentacionAVO() {
   return (
-    <Box borderRadius="30px" bg="teal.100">
-      <Center py="2%">
+    <Box w="100%" borderRadius="30px" bg="teal.100">
+      <Center flexWrap="wrap" gap={2} w="100%" p="2%">
         <InputCertficadoNoObligatorio
           preguntaConfirmacion={"¿Ha fallecido?"}
           accion="certificado de defunción"
         />
-      </Center>
-      <Center py="2%">
         <InputCertficadoNoObligatorio
           preguntaConfirmacion={"¿Estaba en relación de matrimonio?"}
           accion="certificado de matrimonio"
         />
-      </Center>
-      <Center py="2%">
         <InputFile accion="certificado de nacimiento" />
       </Center>
     </Box>

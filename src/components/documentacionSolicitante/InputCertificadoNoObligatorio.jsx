@@ -7,29 +7,44 @@ import {
   Flex,
   Collapse,
   Center,
+  SimpleGrid,
+  Grid,
+  GridItem,
 } from "@chakra-ui/react";
 import InputFile from "./InputFile";
 
 function InputCertficadoNoObligatorio({ preguntaConfirmacion, accion }) {
   const { isOpen, onToggle } = useDisclosure();
   return (
-    <Flex color="blue.900" w="95%" flexDirection={"column"}>
-      <Flex justifyContent="space-around">
-        <Center>
-          <Text textAlign="center">{preguntaConfirmacion}</Text>
-        </Center>
-        <Box>
+    <Flex
+      color="blue.900"
+      flexDirection="column"
+      justifyContent="space-between"
+    >
+      <Grid
+        templateRows="repeat(2, 1fr)"
+        templateColumns="repeat(2, 1fr)"
+        gap={1}
+      >
+        <GridItem colSpan={1}>
+          <Text overflowWrap={"anywhere"} textAlign="center">
+            {preguntaConfirmacion}
+          </Text>
+        </GridItem>
+        <GridItem colSpan={1}>
           <Checkbox isChecked={isOpen} onChange={onToggle}>
             {"Sí"}
           </Checkbox>
           <Checkbox isChecked={!isOpen} onChange={onToggle}>
             No
           </Checkbox>
-        </Box>
-      </Flex>
-      <Collapse in={isOpen}>
-        <InputFile accion={accion} />
-      </Collapse>
+        </GridItem>
+        <GridItem colSpan={2}>
+          <Collapse in={isOpen}>
+            <InputFile accion={accion} />
+          </Collapse>
+        </GridItem>
+      </Grid>
     </Flex>
   );
 }

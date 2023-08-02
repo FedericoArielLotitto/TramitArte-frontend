@@ -15,6 +15,8 @@ import VerifyEmailForm from "../pages/VerificacionEmail";
 import Documentacion from "../pages/DocumentacionPersonal";
 import DocumentacionPersonal from "../pages/DocumentacionPersonal";
 import DocumentacionAscendentes from "../pages/DocumentacionAscendentes";
+import DocumentacionAVO from "../pages/ArchivosAVO";
+import ArchivosAVO from "../pages/ArchivosAVO";
 
 export const RouterApp = ({ setTramiteContext, setUsuarioLogueadoContext }) => {
   return (
@@ -52,6 +54,10 @@ export const RouterApp = ({ setTramiteContext, setUsuarioLogueadoContext }) => {
         <Route
           path="/home/solicitante/:idUsuario/documentacion-ascendentes"
           element={<DocumentacionAscendentes />}
+        />
+        <Route
+          path="/home/solicitante/:idUsuario/documentacion-avo"
+          element={<ArchivosAVO />}
         />
         <Route
           path="/home/solicitante/:idUsuario/solicitud-avo"
