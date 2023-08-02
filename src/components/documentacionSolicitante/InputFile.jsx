@@ -14,7 +14,7 @@ function InputFile({ accion, handleOnInput }) {
         color="white"
         bg="teal.300"
         _focus={{bg: "teal.300"}}
-        w="90%"
+        w={{ base: '100%', md: 'auto'}}
         onClick={openInput}
         textTransform={"uppercase"}
         textAlign={"center"}

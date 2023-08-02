@@ -29,9 +29,9 @@ function DocumentacionPersonal() {
   const [estaModalAbierto, setEstaModalAbierto] = useState(false);
   const [estaCargando, setEstaCargando] = useState(false);
   const [documentacionSolicitante, setDocumentacionSolicitante] = useState({
-    dniFrente: { nombre: "", archivoBase64: "" },
-    dniDorso: { nombre: "", archivoBase64: "" },
-    certificadoNacimiento: { nombre: "", archivoBase64: "" },
+    dniFrente: { tipo: "", nombre: "", archivoBase64: "" },
+    dniDorso: { tipo: "", nombre: "", archivoBase64: "" },
+    certificadoNacimiento: { tipo: "", nombre: "", archivoBase64: "" },
   });
 
   const handleBack = () => {
@@ -50,14 +50,21 @@ function DocumentacionPersonal() {
     if (id === "dni-frente") {
       let archivoBase64 = await fileToBase64(archivo);
       setDocumentacionSolicitante({
-        dniFrente: { nombre: archivo.name, archivoBase64: "" },
+        dniFrente: {
+          tipo: "dni-frente",
+          nombre: archivo.name,
+          archivoBase64: "",
+        },
         dniDorso: {
+          tipo: documentacionSolicitante.dniDorso.tipo,
           nombre: documentacionSolicitante.dniDorso.nombre,
           archivoBase64: documentacionSolicitante.dniDorso.archivoBase64,
         },
         certificadoNacimiento: {
+          tipo: documentacionSolicitante.certificadoNacimiento.tipo,
           nombre: documentacionSolicitante.certificadoNacimiento.nombre,
-          archivoBase64: documentacionSolicitante.certificadoNacimiento.archivoBase64,
+          archivoBase64:
+            documentacionSolicitante.certificadoNacimiento.archivoBase64,
         },
       });
     }
@@ -65,13 +72,20 @@ function DocumentacionPersonal() {
       let archivoBase64 = await fileToBase64(archivo);
       setDocumentacionSolicitante({
         dniFrente: {
+          tipo: documentacionSolicitante.dniFrente.tipo,
           nombre: documentacionSolicitante.dniFrente.nombre,
           archivoBase64: documentacionSolicitante.dniFrente.archivoBase64,
         },
-        dniDorso: { nombre: archivo.name, archivoBase64: "" },
+        dniDorso: {
+          tipo: "dni-dorso",
+          nombre: archivo.name,
+          archivoBase64: "",
+        },
         certificadoNacimiento: {
+          tipo: documentacionSolicitante.certificadoNacimiento.tipo,
           nombre: documentacionSolicitante.certificadoNacimiento.nombre,
-          archivoBase64: documentacionSolicitante.certificadoNacimiento.archivoBase64,
+          archivoBase64:
+            documentacionSolicitante.certificadoNacimiento.archivoBase64,
         },
       });
     }
@@ -79,14 +93,17 @@ function DocumentacionPersonal() {
       let archivoBase64 = await fileToBase64(archivo);
       setDocumentacionSolicitante({
         dniFrente: {
+          tipo: documentacionSolicitante.dniFrente.tipo,
           nombre: documentacionSolicitante.dniFrente.nombre,
           archivoBase64: documentacionSolicitante.dniFrente.archivoBase64,
         },
         dniDorso: {
+          tipo: documentacionSolicitante.dniDorso.tipo,
           nombre: documentacionSolicitante.dniDorso.nombre,
           archivoBase64: documentacionSolicitante.dniDorso.archivoBase64,
         },
         certificadoNacimiento: {
+          tipo: "certificado-nacimiento",
           nombre: archivo.name,
           archivoBase64: "",
         },
@@ -97,16 +114,28 @@ function DocumentacionPersonal() {
   const handleConfirmacion = async () => {
     cerrarModal();
     setEstaCargando(true);
-    console.log("acá", documentacionSolicitante);
-    let tramite = JSON.parse(window.localStorage.getItem('tramite'));
+    console.log("acá", [
+      documentacionSolicitante.dniFrente,
+      documentacionSolicitante.dniDorso,
+      documentacionSolicitante.certificadoNacimiento,
+    ]);
+    let tramite = JSON.parse(window.localStorage.getItem("tramite"));
     try {
       let respuesta = await tramiteService.cargarDocumentacionPersonal(
-        documentacionSolicitante,
+        [
+          documentacionSolicitante.dniFrente,
+          documentacionSolicitante.dniDorso,
+          documentacionSolicitante.certificadoNacimiento,
+        ],
         Number(tramite.id)
       );
       console.log(respuesta);
       setEstaCargando(false);
-      navigate(`/home/solicitante/${JSON.parse(window.localStorage.getItem("usuarioLogueado")).id}`);
+      navigate(
+        `/home/solicitante/${
+          JSON.parse(window.localStorage.getItem("usuarioLogueado")).id
+        }`
+      );
       // await tramiteService.cargarDocumentacionAVO("", idUsuario);
       // await tramiteService.cargarDocumentacionAncestros("", idUsuario);
     } catch (error) {
@@ -151,45 +180,46 @@ function DocumentacionPersonal() {
           color="white"
           fontWeight={"700"}
         >
-          {JSON.parse(window.localStorage.getItem('tramite')).codigo}
+          {JSON.parse(window.localStorage.getItem("tramite")).codigo}
         </Center>
       </Center>
-      
-      <Center flexWrap="wrap" p="16">
-        <ScaleFade in={!isOpen} initialScale={1}>
+
+      <Center flexWrap="wrap" p={{ base: '8', md: '16'}}>
+        <ScaleFade style={{width: "100%", minWidth: "sm"}} in={!isOpen} initialScale={1}>
           <Flex
             textAlign="center"
-            flexDirection="column"
-            justifyContent="center"
             pb="2%"
             w={"full"}
+            flexWrap="wrap"
           >
-            <Text
-              w="85%"
-              alignSelf="center"
-              borderTopRadius="15px"
-              bg="teal.200"
-              color="white"
-              borderColor="teal.300"
-              borderWidth="1px"
-              as={"h2"}
-              fontSize={"2xl"}
-              fontWeight={300}
-            >
-              {"Documentación Personal"}
-            </Text>
+            <Flex w="100%" justifyContent="center">
+              <Text
+                w="85%"
+                alignSelf="center"
+                borderTopRadius="15px"
+                bg="teal.200"
+                color="white"
+                borderColor="teal.300"
+                borderWidth="1px"
+                as={"h2"}
+                fontSize={"2xl"}
+                fontWeight={300}
+              >
+                {"Documentación Personal"}
+              </Text>
+            </Flex>
             <DocumentacionSolicitante
               agregarDocumentacionSolicitante={
                 completarDocumentacionSolicitante
               }
             />
           </Flex>
-          <Flex w="full" py="16">
+          <Flex justifyContent="center" w="full" py="16">
             <Button
               onClick={abrirModal}
               borderRadius="45px"
               color="white"
-              w="100%"
+              w="sm"
               bg="blue.900"
               textTransform={"uppercase"}
             >

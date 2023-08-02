@@ -89,7 +89,7 @@ function Etapa({ tramite }) {
       case "CARGAR DOCUMENTACION DE USUARIO":
         porcentaje = "20";
         break;
-      case "CARGAR DOCUMENTACIÓN ÁRBOL":
+        case "Cargar documentación de los descendientes entre AVO y solicitante".toUpperCase():
         porcentaje = "55";
         break;
       case "CARGAR DOCUMENTACIÓN TRADUCIDA":
@@ -130,12 +130,11 @@ function Etapa({ tramite }) {
       <CardFooter w="100%">
         <Button
           onClick={() => {
-            console.log(tramite.etapa.descripcion);
             navigate(elegirRuta(tramite.etapa.descripcion));
           }}
           textTransform="uppercase"
           borderRadius="45px"
-          w={"100%"}
+          w={{ base: "100%", md: "md"}}
           color="white"
           bg="red.900"
           whiteSpace={'normal'}

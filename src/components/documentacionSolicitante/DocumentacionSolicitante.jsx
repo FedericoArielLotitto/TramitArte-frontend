@@ -1,5 +1,5 @@
 import InputFile from "./InputFile";
-import { Box, Center } from "@chakra-ui/react";
+import { Box, Center, Flex } from "@chakra-ui/react";
 
 function DocumentacionSolicitante({
   agregarDocumentacionSolicitante,
@@ -26,14 +26,10 @@ function DocumentacionSolicitante({
   };
 
   return (
-    <Box borderRadius="30px" bg="teal.100">
-      <Center py="2%">
+    <Box w="100%" borderRadius="30px" bg="teal.100">
+      <Center flexWrap="wrap" gap={2} w="100%" p="2%">
         <InputFile handleOnInput={handleInputDniFrente} accion="dni frente" />
-      </Center>
-      <Center py="2%">
         <InputFile handleOnInput={handleInputDniDorso} accion="dni dorso" />
-      </Center>
-      <Center py="2%">
         <InputFile handleOnInput={handleInputCertificadoNacimiento} accion="certificado de nacimiento" />
       </Center>
     </Box>
